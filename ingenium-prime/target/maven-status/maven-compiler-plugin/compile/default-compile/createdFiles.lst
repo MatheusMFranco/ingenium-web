@@ -1,0 +1,9 @@
+br\com\vieweiv\erp\model\Usuario.class
+br\com\vieweiv\erp\controller\UsuarioBean.class
+br\com\vieweiv\erp\service\CadastroUsuarioService.class
+br\com\vieweiv\erp\model\TipoUsuario.class
+br\com\vieweiv\erp\util\FacesMessages.class
+br\com\vieweiv\erp\util\Transacional.class
+br\com\vieweiv\erp\repository\Usuarios.class
+br\com\vieweiv\erp\util\TransacionalInterceptor.class
+br\com\vieweiv\erp\util\EntityManagerProducer.class
