@@ -1,7 +1,0 @@
-package br.com.ingenium.util;
-
-import java.io.Serializable;
-
-public class JPAUtil implements Serializable {
-
-}
