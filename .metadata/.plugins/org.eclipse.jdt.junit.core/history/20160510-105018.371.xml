@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="UsuarioDAOTest (1)" project="INGENIUM" tests="5" started="5" failures="0" errors="0" ignored="4">
+  <testsuite name="br.com.ingenium.test.UsuarioDAOTest" time="1.968">
+    <testcase name="excluir" classname="br.com.ingenium.test.UsuarioDAOTest" time="0.0" ignored="true"/>
+    <testcase name="salvar" classname="br.com.ingenium.test.UsuarioDAOTest" time="1.968"/>
+    <testcase name="alterar" classname="br.com.ingenium.test.UsuarioDAOTest" time="0.0" ignored="true"/>
+    <testcase name="buscartodos" classname="br.com.ingenium.test.UsuarioDAOTest" time="0.0" ignored="true"/>
+    <testcase name="buscarPorCodigo" classname="br.com.ingenium.test.UsuarioDAOTest" time="0.0" ignored="true"/>
+  </testsuite>
+</testrun>

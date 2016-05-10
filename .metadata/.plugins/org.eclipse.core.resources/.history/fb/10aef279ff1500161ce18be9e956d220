@@ -1,0 +1,13 @@
+package br.com.ingenium.dao;
+
+import java.io.Serializable;
+
+import br.com.ingenium.model.Usuario;
+
+public class UsuarioDAO implements Serializable {
+	
+	public void salvar(Usuario usuario){
+		
+	}
+
+}

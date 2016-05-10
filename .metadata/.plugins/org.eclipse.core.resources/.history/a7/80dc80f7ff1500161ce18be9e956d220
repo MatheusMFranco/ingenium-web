@@ -1,0 +1,19 @@
+package br.com.ingenium.dao;
+
+import java.io.Serializable;
+
+import javax.persistence.EntityManager;
+
+import br.com.ingenium.model.Usuario;
+import br.com.ingenium.util.JPAUtil;
+
+public class UsuarioDAO implements Serializable {
+	
+	
+	public void salvar(Usuario usuario){
+		
+		EntityManager em = JPAUtil.getEntityManager();
+		
+	}
+
+}

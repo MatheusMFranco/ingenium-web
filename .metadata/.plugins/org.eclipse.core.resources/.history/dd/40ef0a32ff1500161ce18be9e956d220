@@ -1,0 +1,9 @@
+package br.com.ingenium.dao;
+
+public class UsuarioDAO {
+	
+	public void salvar(){
+		
+	}
+
+}

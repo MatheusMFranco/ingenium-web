@@ -1,0 +1,55 @@
+package br.com.ingenium.dao;
+
+import java.io.Serializable;
+
+import javax.persistence.EntityManager;
+
+import org.junit.Test;
+
+import br.com.ingenium.model.Usuario;
+import br.com.ingenium.util.JPAUtil;
+
+public class UsuarioDAO implements Serializable {
+
+	EntityManager em = JPAUtil.getEntityManager();
+
+	public void salvar(Usuario usuario) {
+
+		em.getTransaction().begin();
+
+		if (usuario.getEmail() == usuario.getConfirmacaoEmail()
+				&& usuario.getSenha() == usuario.getConfirmacaoSenha()) {
+			em.persist(usuario);
+			em.getTransaction().commit();
+			em.close();
+			System.out.println("Usuario salvo com sucesso");
+		} else if (usuario.getId() != null) {
+
+			em.merge(usuario);
+		} else {
+
+			em.getTransaction().rollback();
+			em.close();
+			System.out.println("Erro ao salva o Usuario");
+		}
+
+	}
+
+	public void alterar(Usuario usuario) {
+
+		em.getTransaction().begin();
+
+		if (usuario.getId() != null) {
+			em.merge(usuario);
+			em.getTransaction().commit();
+			em.close();
+			System.out.println("Usuario salvo com sucesso");
+		} else {
+			em.getTransaction().rollback();
+			em.close();
+			System.out.println("Erro ao salva o Usuario");
+		}
+
+	}
+
+}

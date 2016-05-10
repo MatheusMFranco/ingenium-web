@@ -1,9 +1,12 @@
 package br.com.ingenium.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Transient;
 
 @Entity
 public class Usuario {
@@ -11,12 +14,21 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(length = 15, nullable = false)
 	private String usuario;
+	@Column(length = 100, nullable = false)
 	private String nome;
+	@Column(length = 255, nullable = true)
 	private String descricao;
+	@Lob
+	private byte[] foto;
+	@Column(length = 100, nullable = false)
 	private String email;
+	@Transient
 	private String confirmacaoEmail;
+	@Column(length = 32, nullable = false)
 	private String senha;
+	@Transient
 	private String confirmacaoSenha;
 
 	public Long getId() {
@@ -49,6 +61,15 @@ public class Usuario {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	
+	public byte[] getFoto() {
+		return foto;
+	}
+	
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
+		
 	}
 
 	public String getEmail() {

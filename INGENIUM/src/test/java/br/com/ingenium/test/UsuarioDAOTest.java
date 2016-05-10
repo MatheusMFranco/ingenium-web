@@ -1,5 +1,6 @@
 package br.com.ingenium.test;
 
+import java.io.File;
 import java.util.List;
 
 import org.junit.Ignore;
@@ -11,14 +12,16 @@ import br.com.ingenium.model.Usuario;
 public class UsuarioDAOTest {
 
 	@Test
-	@Ignore
+	//@Ignore
 	public void salvar() {
-
+		
+        
 		Usuario usuario = new Usuario();
 
 		usuario.setUsuario("Wesleyosantos91");
 		usuario.setNome("Wesley Oliveira");
 		usuario.setDescricao(" Teste1 ");
+		//usuario.setFoto();
 		usuario.setEmail("wesleyosantos91@gmail.com");
 		usuario.setConfirmacaoEmail("wesleyosantos91@gmail.com");
 		usuario.setSenha("12345");
@@ -79,6 +82,7 @@ public class UsuarioDAOTest {
 	}
 
 	@Test
+	@Ignore
 	public void alterar() {
 
 		Usuario usuario = new Usuario();

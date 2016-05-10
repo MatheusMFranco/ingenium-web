@@ -1,0 +1,27 @@
+package br.com.ingenium.test;
+
+import br.com.ingenium.dao.UsuarioDAO;
+import br.com.ingenium.model.Usuario;
+
+public class SalvandoPrimeiroObjeto {
+	
+	public static void main(String[] args) {
+		
+		Usuario usuario = new Usuario();
+		
+		usuario.setUsuario("Wesleyosantos91");
+		usuario.setNome("Wesley Oliveira");
+		usuario.setDescricao(" Teste1 ");
+		usuario.setEmail("wesleyosantos91@gmail.com");
+		usuario.setConfirmacaoEmail("wesleyosantos91@gmail.com");
+		usuario.setSenha("12345");
+		usuario.setConfirmacaoSenha("12345");
+		
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		
+		usuarioDAO.salvar(usuario);
+		
+		
+	}
+
+}
