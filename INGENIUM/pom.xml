@@ -13,8 +13,8 @@
 		<mysql-connector-java.version>5.1.36</mysql-connector-java.version>
 		<hibernate-core.version>5.1.0.Final</hibernate-core.version>
 		<hibernate-entitymanager.version>5.1.0.Final</hibernate-entitymanager.version>
-		<primefaces.version>5.3</primefaces.version>
-		<javax.faces.version>2.1.17</javax.faces.version>
+		<primefaces.version>5.1</primefaces.version>
+		<javax.faces.version>2.2.8-02</javax.faces.version>
 	</properties>
 	
 	
@@ -82,6 +82,25 @@
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<version>${primefaces.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>all-themes</artifactId>
+			<version>1.0.10</version>
+		</dependency>
+		
+		<dependency> <!-- Gera XLS e outros arquivos -->
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.10.1</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.lowagie</groupId> <!-- PDF -->
+			<artifactId>itext</artifactId>
+			<version>2.1.7</version>
 		</dependency>
 	
 	</dependencies>
