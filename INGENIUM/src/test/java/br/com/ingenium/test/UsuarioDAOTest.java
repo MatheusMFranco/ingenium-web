@@ -1,6 +1,5 @@
 package br.com.ingenium.test;
 
-import java.io.File;
 import java.util.List;
 
 import org.junit.Ignore;
@@ -21,10 +20,10 @@ public class UsuarioDAOTest {
 		usuario.setUsuario("Wesleyosantos91");
 		usuario.setNome("Wesley Oliveira");
 		usuario.setDescricao(" Teste1 ");
-		//usuario.setFoto();
+		usuario.setCaminhoFoto("C:/Users/Public/Pictures/Sample Pictures/Tulips.jpg");
 		usuario.setEmail("wesleyosantos91@gmail.com");
 		usuario.setConfirmacaoEmail("wesleyosantos91@gmail.com");
-		usuario.setSenha("12345");
+		usuario.setSenha("123456d");
 		usuario.setConfirmacaoSenha("12345");
 
 		UsuarioDAO usuarioDAO = new UsuarioDAO();

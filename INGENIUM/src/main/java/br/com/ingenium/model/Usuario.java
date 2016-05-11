@@ -20,6 +20,8 @@ public class Usuario {
 	private String nome;
 	@Column(length = 255, nullable = true)
 	private String descricao;
+	@Transient
+	private String caminhoFoto;
 	@Lob
 	private byte[] foto;
 	@Column(length = 100, nullable = false)
@@ -61,6 +63,14 @@ public class Usuario {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	
+	public String getCaminhoFoto() {
+		return caminhoFoto;
+	}
+	
+	public void setCaminhoFoto(String caminhoFoto) {
+		this.caminhoFoto = caminhoFoto;
 	}
 	
 	public byte[] getFoto() {

@@ -1,5 +1,7 @@
 package br.com.ingenium.dao;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.Serializable;
 import java.util.List;
 
@@ -17,16 +19,27 @@ public class UsuarioDAO implements Serializable {
 
 		em.getTransaction().begin();
 
-		if (usuario.getEmail() == usuario.getConfirmacaoEmail()
-				&& usuario.getSenha() == usuario.getConfirmacaoSenha()) {
+		/*if (usuario.getEmail() == usuario.getConfirmacaoEmail()
+				&& usuario.getSenha() == usuario.getConfirmacaoSenha()) {*/
+			File file = new File(usuario.getCaminhoFoto());
+			byte[] byteFile = new byte[(int)file.length()];
+			try{
+				FileInputStream fs = new FileInputStream(file);
+				fs.read(byteFile);
+				fs.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
+			usuario.setFoto(byteFile);
 			em.persist(usuario);
 			em.getTransaction().commit();
 			em.close();
-		} else {
+		/*} else {
 
 			em.getTransaction().rollback();
 			System.out.println("Erro ao salva o Usuario");
-		}
+		}*/
 
 	}
 
