@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<ui:define name="corpo">
+		<h:form class="deslogado cadastro">
+			<label class="obr">( <span>*</span> ) Preenchimento
+				Obrigatório
+			</label>
+			<h1>Alteração de Usuário</h1>
+			<br />
+			<h:panelGrid columns="1">
+				<p:outputLabel value="Usuário" for="username" />
+				<p:inputText id="username" alt="Usuário"
+					title="Seu nome de usuário" maxlength="15"  disabled="true"
+					value="#{usuarioManagedBean.usuario.usuario}" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="1">
+				<p:outputLabel value="Nome" for="nomeUsu" />
+				<p:inputText id="nomeUsu" alt="Nome" title="Informe o seu nome completo"
+				 maxlength="100" value="#{usuarioManagedBean.usuario.nome}"/>
+			</h:panelGrid>
+
+			<h:panelGrid columns="1">
+				<p:outputLabel value="Descrição" for="descricaoUsu" />
+				<p:inputTextarea id="descricaoUsu"
+					alt="Descrição" title="Informe a descrição do perfil"
+					maxlength="255" value="#{usuarioManagedBean.usuario.descricao}" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="1" styleClass="quadroArquivo">
+				<p:outputLabel value="Foto" for="fotoUsu" />				
+				<p:fileUpload id="fotoUsu" fileUploadListener="#{usuarioManagedBean.usuario.caminhoFoto}" title="Informe a foto de perfil"
+					mode="simple" auto="true" sizeLimit="100000"
+					allowTypes="/(\.|\/)(gif|jpe?g|png)$/" uploadLabel="Enviar Foto"
+					styleClass="capturaArquivo" />
+					
+				<p:commandButton value="Selecionar Arquivo" styleClass="ativo botaoCapturaArquivo"
+					title="Clique aqui para selecionar um arquivo" alt="Selecione um Arquivo" />
+					
+				<span id="textoArquivo"></span>	
+			</h:panelGrid>
+
+			<h:panelGrid columns="1">
+				<p:outputLabel value="E-mail" for="emailUsu" indicateRequired="true"/>
+				<p:inputText id="emailUsu"
+					placeholder="Sua conta de e-mail, exemplo: geninho@vieweiv.com"
+					alt="E-mail" title="Informe o seu e-mail" maxlength="100" required="true" value="#{usuarioManagedBean.usuario.email}" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="1">
+				<p:outputLabel value="Confirmação de E-mail" for="emailCUsu" indicateRequired="true"/>
+				<p:inputText id="emailCUsu"
+					placeholder="Utilize o mesmo e-mail que informou anteriormente"
+					alt="Confirmação de E-mail" title="Informe o seu e-mail novamente" maxlength="100" required="true" value="#{usuarioManagedBean.usuario.confirmacaoEmail}" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="1">
+				<p:outputLabel value="Senha" for="senhaUsu" indicateRequired="true" />
+				<p:password
+					placeholder="Sua palavra-chave. Lembre-se, não divulgue sua senha por aí."
+					alt="Senha" required="true" id="senhaUsu" title="Informe a senha" value="#{usuarioManagedBean.usuario.senha}" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="1">
+				<p:outputLabel value="Confirmação de Senha" for="senhaCUsu" indicateRequired="true" />
+				<p:password
+					placeholder="Informe novamente a sua senha."
+					alt="Confirmação de Senha" required="true" id="senhaCUsu" title="Informe a senha novamente" value="#{usuarioManagedBean.usuario.confirmacaoSenha}" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="1">
+				<p:outputLabel value="Você é um robô?"  indicateRequired="true" />	
+				<div class="g-recaptcha" data-sitekey="6Lf1WR8TAAAAAMDuGdVRxj4Vuba6ou3v5Mh-kMED"></div>
+			</h:panelGrid>
+			
+			<br/>
+			<div class="barraBotao">
+				<p:commandButton value="Salvar" action="#{usuarioManagedBean.salvar()}" styleClass="ativo"
+					title="Clique aqui para confirmar o cadastro" alt="Confirmar" />
+				<p:commandButton value="Limpar" styleClass="passivo limpar"
+					title="Clique aqui para limpar" alt="Limpar" />
+			</div>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
