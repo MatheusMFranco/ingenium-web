@@ -20,11 +20,9 @@ public class UsuarioDAOTest {
 		usuario.setUsuario("Wesleyosantos91");
 		usuario.setNome("Wesley Oliveira");
 		usuario.setDescricao(" Teste1 ");
-		usuario.setCaminhoFoto("C:/Users/Public/Pictures/Sample Pictures/Tulips.jpg");
+		//usuario.setCaminhoFoto("C:/Users/Public/Pictures/Sample Pictures/Tulips.jpg");
 		usuario.setEmail("wesleyosantos91@gmail.com");
-		usuario.setConfirmacaoEmail("wesleyosantos91@gmail.com");
 		usuario.setSenha("123456d");
-		usuario.setConfirmacaoSenha("12345");
 
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		usuarioDAO.salvar(usuario);
@@ -90,9 +88,7 @@ public class UsuarioDAOTest {
 		usuario.setNome("Wesley Oliveira");
 		usuario.setDescricao(" Teste3 ");
 		usuario.setEmail("wesleyosantos91@gmail.com");
-		usuario.setConfirmacaoEmail("wesleyosantos91@gmail.com");
 		usuario.setSenha("12345");
-		usuario.setConfirmacaoSenha("12345");
 
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		usuarioDAO.alterar(usuario);

@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.Transient;
 
 @Entity
 public class Usuario {
@@ -20,18 +18,14 @@ public class Usuario {
 	private String nome;
 	@Column(length = 255, nullable = true)
 	private String descricao;
-	@Transient
+	/*@Transient
 	private String caminhoFoto;
 	@Lob
-	private byte[] foto;
+	private byte[] foto;*/
 	@Column(length = 100, nullable = false)
 	private String email;
-	@Transient
-	private String confirmacaoEmail;
 	@Column(length = 32, nullable = false)
 	private String senha;
-	@Transient
-	private String confirmacaoSenha;
 
 	public Long getId() {
 		return id;
@@ -65,7 +59,7 @@ public class Usuario {
 		this.descricao = descricao;
 	}
 	
-	public String getCaminhoFoto() {
+/*	public String getCaminhoFoto() {
 		return caminhoFoto;
 	}
 	
@@ -80,7 +74,7 @@ public class Usuario {
 	public void setFoto(byte[] foto) {
 		this.foto = foto;
 		
-	}
+	}*/
 
 	public String getEmail() {
 		return email;
@@ -90,13 +84,6 @@ public class Usuario {
 		this.email = email;
 	}
 
-	public String getConfirmacaoEmail() {
-		return confirmacaoEmail;
-	}
-
-	public void setConfirmacaoEmail(String confirmacaoEmail) {
-		this.confirmacaoEmail = confirmacaoEmail;
-	}
 
 	public String getSenha() {
 		return senha;
@@ -106,12 +93,5 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public String getConfirmacaoSenha() {
-		return confirmacaoSenha;
-	}
-
-	public void setConfirmacaoSenha(String confirmacaoSenha) {
-		this.confirmacaoSenha = confirmacaoSenha;
-	}
 
 }
