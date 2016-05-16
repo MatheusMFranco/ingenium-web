@@ -8,12 +8,21 @@
 
 
 	<ui:define name="corpo">
-		<h:form class="deslogado cadastro">
+		<h:form id="frm" class="formulario deslogado">
 			<label class="obr">( <span>*</span> ) Preenchimento
 				Obrigatório
 			</label>
 			<h1>Cadastro de Usuário</h1>
 			<br />
+			<p:messages id="mensagem" closable="true" styleClass="msgPrime"/>
+			
+			<div id="msgPOG" class="ui-messages-error ui-corner-all msgPOG">
+				<i id="fecharMsg" class="ui-messages-close"><span
+					class="ui-icon ui-icon-close"></span></i><span
+					class="ui-messages-error-icon"></span>
+					<b id="msgPOG-text" class="ui-messages-error-summary msgPOG-text"></b>
+			</div>
+			
 			<h:panelGrid columns="1">
 				<p:outputLabel value="Usuário" for="username"
 					indicateRequired="true" />
@@ -51,14 +60,14 @@
 
 			<h:panelGrid columns="1">
 				<p:outputLabel value="E-mail" for="emailUsu" indicateRequired="true"/>
-				<p:inputText id="emailUsu"
+				<p:inputText id="emailUsu" styleClass="email"
 					placeholder="Sua conta de e-mail, exemplo: geninho@vieweiv.com"
 					alt="E-mail" title="Informe o seu e-mail" maxlength="100" required="true" value="#{usuarioManagedBean.usuario.email}" />
 			</h:panelGrid>
 
 			<h:panelGrid columns="1">
 				<p:outputLabel value="Confirmação de E-mail" for="emailCUsu" indicateRequired="true"/>
-				<p:inputText id="emailCUsu"
+				<p:inputText id="emailCUsu" styleClass="confirmaEmail"
 					placeholder="Utilize o mesmo e-mail que informou anteriormente"
 					alt="Confirmação de E-mail" title="Informe o seu e-mail novamente" maxlength="100" required="true"  />
 			</h:panelGrid>
@@ -66,14 +75,14 @@
 			<h:panelGrid columns="1">
 				<p:outputLabel value="Senha" for="senhaUsu" indicateRequired="true" />
 				<p:password
-					placeholder="Sua palavra-chave. Lembre-se, não divulgue sua senha por aí."
+					placeholder="Sua palavra-chave. Lembre-se, não divulgue sua senha por aí." styleClass="senha"
 					alt="Senha" required="true" id="senhaUsu" title="Informe a senha" value="#{usuarioManagedBean.usuario.senha}" />
 			</h:panelGrid>
 
 			<h:panelGrid columns="1">
 				<p:outputLabel value="Confirmação de Senha" for="senhaCUsu" indicateRequired="true" />
 				<p:password
-					placeholder="Informe novamente a sua senha."
+					placeholder="Informe novamente a sua senha." styleClass="confirmaSenha"
 					alt="Confirmação de Senha" required="true" id="senhaCUsu" title="Informe a senha novamente "/>
 			</h:panelGrid>
 			
@@ -86,7 +95,10 @@
 			<br/>
 			<div class="barraBotao">
 				<p:commandButton value="Salvar" action="#{usuarioManagedBean.salvar()}" styleClass="ativo"
-					title="Clique aqui para confirmar o cadastro" alt="Confirmar" />
+					title="Clique aqui para confirmar o cadastro" alt="Confirmar"  
+					update=":frm:mensagem" onclick="cadastroUsuario();" 
+					oncomplete="cadastroRealizado()"/>
+					
 				<p:commandButton value="Limpar" styleClass="passivo limpar"
 					title="Clique aqui para limpar" alt="Limpar" />
 			</div>

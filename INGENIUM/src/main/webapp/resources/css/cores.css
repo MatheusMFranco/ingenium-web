@@ -14,7 +14,8 @@ footer,
 button,
 .ui-menuitem-text,
 .ui-button-text,
-.ui-inputfield{
+.ui-inputfield,
+#textoArquivo{
 	color: #FFF !important;
 } 
 /*--*/
@@ -74,14 +75,20 @@ button{
 .passivo{
 	background: #333 !important;
 }
-/*---*/
+/*--*/
 
 /* Vermelho */
 .ui-outputlabel-rfi,
 .obr span{
 	color: #FF0000;
 }
+.ui-inputfield.ui-state-error{
+	border: #FF0000 1px solid !important;
+} 
+/*--*/
 
-#textoArquivo{
-	color: #000 !important;
+/* Transparente */
+.ui-state-error{
+	background-color: transparent;
 }
+/*--*/

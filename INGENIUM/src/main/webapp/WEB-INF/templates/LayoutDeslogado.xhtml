@@ -8,7 +8,7 @@
 	<meta charset="UTF-8" />
 	<title>Ingenium</title>
 	<link rel="shortcut icon" type="image/x-icon"
-		href="resources/img/favicon.ico" />
+		href="#{request.contextPath}/resources/img/favicon.ico" />
 	<h:outputStylesheet library="css" name="reset.css" />
 	<h:outputStylesheet library="css" name="estilo.css" />
 	<h:outputStylesheet library="css" name="cores.css" />
@@ -18,9 +18,9 @@
 <h:body>
 	<header>
 		<p:commandButton value="Entrar" styleClass="botaoEntrar" 
-			alt="Entrar" title="Clique aqui para fazer o login" onclick="location.href='login.xhtml';"/>
+			alt="Entrar" title="Clique aqui para fazer o login" onclick="location.href='http://localhost:8080/INGENIUM/login.xhtml';"/>
 		<div id="cabecalhoDeslogado">
-			<p:link href="index.xhtml"> <h:graphicImage library="img" name="logo.png" alt="Logo"
+			<p:link href="http://localhost:8080/INGENIUM/"> <h:graphicImage library="img" name="logo.png" alt="Logo"
 				title="Clique aqui para ir a página inicial" /></p:link>
 		</div>
 	</header>

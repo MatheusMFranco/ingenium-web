@@ -8,7 +8,7 @@
 	<meta charset="UTF-8" />
 	<title>Ingenium</title>
 	<link rel="shortcut icon" type="image/x-icon"
-		href="resources/img/favicon.ico" />
+		href="#{request.contextPath}/resources/img/favicon.ico" />
 	<h:outputStylesheet library="css" name="reset.css" />
 	<h:outputStylesheet library="css" name="estilo.css" />
 	<h:outputStylesheet library="css" name="cores.css" />
@@ -22,14 +22,14 @@
 	<header>
 		<div id="cabecalho">
 			<h:form>
-				<h:graphicImage library="img" name="logo.png" />
+				<p:link href="http://localhost:8080/INGENIUM/"> <h:graphicImage library="img" name="logo.png" /></p:link>
 
 				<p:menubar styleClass="menuTopo">
-					<p:submenu label="Usuário" url="#" />
-					<p:submenu label="Categoria" url="#" />
-					<p:submenu label="Objetivo" url="#" />
-					<p:submenu label="Meta" url="#" />
-					<p:submenu label="Relatorio" url="#" />
+					<p:submenu label="Usuário" url="uc/usuario/alteraUsuario.xhtml" />
+					<p:submenu label="Categoria" url="uc/categoria/consultaCategoria.xhtml" />
+					<p:submenu label="Objetivo" url="uc/objetivo/consultaObjetivo.xhtml" />
+					<p:submenu label="Meta" url="uc/meta/consultaMeta.xhtml" />
+					<p:submenu label="Relatorio" url="uc/relatorio/geral.xhtml" />
 
 					<f:facet name="options">
 						<p:inputText style="margin-right:10px" placeholder="Buscar" />

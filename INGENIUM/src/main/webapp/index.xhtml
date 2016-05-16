@@ -8,24 +8,9 @@
 
 
 	<ui:define name="corpo">
-		<h:form class="deslogado">
-
-			<h:panelGrid columns="1">
-				<p:inputText placeholder="Usuário" alt="Usuário" 
-					title="Informe o nome de usuário" />
-			</h:panelGrid>
-
-			<h:panelGrid columns="1">
-				<p:password placeholder="Senha" alt="Senha" 
-					title="Informe a senha"/>
-			</h:panelGrid>
-
-			<div class="barraBotao">
-				<p:commandButton value="Cadastrar" styleClass="ativo"
-					title="Clique aqui para se cadastrar" alt="Cadastrar"/>
-				<p:commandButton value="Limpar" styleClass="passivo limpar"
-					title="Clique aqui para limpar" alt="Limpar" />
-			</div>
-		</h:form>
+		<h1>Você está sendo redirecionado...</h1>
+		<h:outputScript>
+			location.href = "telaInicial.xhtml";
+		</h:outputScript>
 	</ui:define>
 </ui:composition>

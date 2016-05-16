@@ -8,7 +8,10 @@
 
 
 	<ui:define name="corpo">
-		<h:form class="deslogado cadastro">
+		<f:metadata>
+			<f:viewAction action="#{usuarioManagedBean.consultar()}" />
+		</f:metadata>
+		<h:form class="formulario">
 			<label class="obr">( <span>*</span> ) Preenchimento
 				Obrigatório
 			</label>
@@ -71,8 +74,7 @@
 					indicateRequired="true" />
 				<p:password placeholder="Informe novamente a nova senha."
 					alt="Confirmação de Senha" id="senhaCUsu"
-					title="Informe a nova senha novamente"
-					value="#{usuarioManagedBean.usuario.confirmacaoSenha}" />
+					title="Informe a nova senha novamente" />
 			</h:panelGrid>
 
 			<br />

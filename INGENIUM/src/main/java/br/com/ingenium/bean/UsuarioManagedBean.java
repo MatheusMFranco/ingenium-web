@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 
 import br.com.ingenium.dao.UsuarioDAO;
 import br.com.ingenium.model.Usuario;
+import br.com.ingenium.util.JSFUtil;
 
 @SuppressWarnings("serial")
 @ManagedBean
@@ -22,6 +23,8 @@ public class UsuarioManagedBean implements Serializable {
 	public void salvar() {
 		usuarioDAO.salvar(usuario);
 		novo();
+		JSFUtil.adicionarMensagemSucesso("Cadastro realizado com sucesso!");
+		System.out.println("Cadastro realizado com sucesso!");
 	}
 
 	public Usuario getUsuario() {
