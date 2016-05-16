@@ -9,6 +9,10 @@
 var erro = new Array();
 erro[0] = "A confirmação de senha deve ser igual à senha informada.";
 erro[1] = "A confirmação de e-mail deve ser igual ao e-mail informado.";
+erro[2] = "O usuário deve ter pelo menos 3 caracteres.";
+erro[3] = "O nome deve ter pelo menos 3 caracteres.";
+erro[4] = "E-mail inválido.";
+erro[5] = "A senha deve conter mais que 5(cinco) caracteres e menos que 16(dezesseis).";
 //Sucesso
 var sucesso = new Array();
 sucesso[0] = "Cadastro realizado com sucesso!";
@@ -66,9 +70,16 @@ function validaEmail(){
 		$(".email").val(null);
 		//$(".email").addClass("ui-state-error");
 	}
+	
+	if(email.search("@") < 0 || email.search(".") < 0){
+		$(".msgPOG").show();
+		$(".msgPOG-text").text(erro[4]);
+		$(".email").val(null);
+	}
+	
 	/*--*/
 	
-	/* Validação de E-mail */
+	/* Validação de Senha */
 	var senha = $(".senha").val();
 	var confSenha = $(".confirmaSenha").val();
 	
@@ -77,7 +88,30 @@ function validaEmail(){
 		$(".msgPOG-text").text(erro[0]);
 		$(".senha").val(null);
 	}
+	if(senha.lenght < 6 || senha.lenght > 16){
+		$(".msgPOG").show();
+		$(".msgPOG-text").text(erro[5]);
+		$(".senha").val(null);
+	}
+	
 	/*--*/
+	
+	/* Validação Usuário e Nome */
+	var username = $(".username").val();
+	var nome = $(".nome").val();
+	
+	//Usuário
+	if(username.lenght < 3){
+		$(".msgPOG").show();
+		$(".msgPOG-text").text(erro[2]);
+		$(".username").val(null);
+	}
+	//Nome
+	if(nome.lenght < 3){
+		$(".msgPOG").show();
+		$(".msgPOG-text").text(erro[3]);
+		$(".nome").val(null);
+	}
 	
 	/* Validação de Sucesso */
 	if(email == confEmail && senha == confSenha){
