@@ -1,6 +1,7 @@
 package br.com.ingenium.bean;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 
 import javax.faces.bean.ManagedBean;
 
@@ -21,10 +22,17 @@ public class UsuarioManagedBean implements Serializable {
 	}
 
 	public void salvar() {
+		
+	try{
 		usuarioDAO.salvar(usuario);
 		novo();
 		JSFUtil.adicionarMensagemSucesso("Cadastro realizado com sucesso!");
 		System.out.println("Cadastro realizado com sucesso!");
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("erro sql");
+			
+		}
 	}
 
 	public Usuario getUsuario() {
