@@ -1,7 +1,6 @@
 package br.com.ingenium.bean;
 
 import java.io.Serializable;
-import java.sql.SQLException;
 
 import javax.faces.bean.ManagedBean;
 
