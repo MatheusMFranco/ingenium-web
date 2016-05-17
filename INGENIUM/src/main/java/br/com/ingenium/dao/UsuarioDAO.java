@@ -65,7 +65,6 @@ public class UsuarioDAO implements Serializable {
 	}
 
 	public void alterar(Usuario usuario) {
-	
 		if (usuario != null) {
 			em.getTransaction().begin();
 			em.merge(usuario);
@@ -73,4 +72,6 @@ public class UsuarioDAO implements Serializable {
 		}
 
 	}
+	
+	
 }

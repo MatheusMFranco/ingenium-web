@@ -3,6 +3,7 @@ package br.com.ingenium.bean;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 import br.com.ingenium.dao.UsuarioDAO;
 import br.com.ingenium.model.Usuario;
@@ -10,6 +11,7 @@ import br.com.ingenium.util.JSFUtil;
 
 @SuppressWarnings("serial")
 @ManagedBean
+@RequestScoped
 public class UsuarioManagedBean implements Serializable {
 
 	protected Usuario usuario;
@@ -24,7 +26,7 @@ public class UsuarioManagedBean implements Serializable {
 		
 	try{
 		usuarioDAO.salvar(usuario);
-		novo();
+		this.usuario = new Usuario();
 		JSFUtil.adicionarMensagemSucesso("Cadastro realizado com sucesso!");
 		System.out.println("Cadastro realizado com sucesso!");
 		}catch(Exception e){
@@ -32,6 +34,20 @@ public class UsuarioManagedBean implements Serializable {
 			System.out.println("erro sql");
 			
 		}
+	}
+	
+	
+	public void alterar(){
+		usuarioDAO.alterar(usuario);
+		this.usuario = usuarioDAO.buscarPeloCodigo(usuario.getId());
+	}
+	
+	public void excluir(){
+		usuarioDAO.excluir(usuario);
+	}
+	
+	public void consultar() {
+		usuarioDAO.buscarTodos();
 	}
 
 	public Usuario getUsuario() {
