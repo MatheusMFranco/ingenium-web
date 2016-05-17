@@ -11,7 +11,7 @@ import br.com.ingenium.model.Usuario;
 public class UsuarioDAOTest {
 
 	@Test
-	//@Ignore
+	@Ignore
 	public void salvar() {
 		
         
@@ -46,6 +46,18 @@ public class UsuarioDAOTest {
 			System.out.println();
 
 		}
+	}
+	
+	@Test
+	public void login(){
+		Usuario usuario = new Usuario();
+		usuario.setUsuario("wesleyosantos91");
+		usuario.setSenha("120691bt");
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		
+		usuarioDAO.login(usuario);
+		
+		
 	}
 
 	@Test
@@ -94,4 +106,6 @@ public class UsuarioDAOTest {
 		usuarioDAO.alterar(usuario);
 
 	}
+	
+	
 }

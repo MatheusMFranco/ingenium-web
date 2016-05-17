@@ -18,14 +18,14 @@
 			<h1>Alteração de Usuário</h1>
 			<br />
 			<h:panelGrid columns="1">
-				<p:outputLabel value="Usuário" for="username" />
+				<p:outputLabel  for="username"  value="#{usuarioManagedBean.usuario.usuario}" />
 				<p:inputText id="username" alt="Usuário" title="Seu nome de usuário"
 					maxlength="15" disabled="true"
 					value="#{usuarioManagedBean.usuario.usuario}" />
 			</h:panelGrid>
 
 			<h:panelGrid columns="1">
-				<p:outputLabel value="Nome" for="nomeUsu" />
+				<p:outputLabel value="#{usuarioManagedBean.usuario.nome}" for="nomeUsu" />
 				<p:inputText id="nomeUsu" alt="Nome"
 					title="Informe o seu nome completo" maxlength="100"
 					value="#{usuarioManagedBean.usuario.nome}" />

@@ -42,9 +42,19 @@ public class UsuarioManagedBean implements Serializable {
 		this.usuario = usuarioDAO.buscarPeloCodigo(usuario.getId());
 	}
 	
-	public void excluir(){
-		usuarioDAO.excluir(usuario);
-	}
+	public void excluir() {
+		
+		try{
+			usuarioDAO.excluir(usuario);
+			this.usuario = new Usuario();
+			JSFUtil.adicionarMensagemSucesso("Exclusão realizada com sucesso!");
+			System.out.println("Exclusão realizada com sucesso!");
+			}catch(Exception e){
+				e.printStackTrace();
+				System.out.println("erro sql");
+				
+			}
+		}
 	
 	public void consultar() {
 		usuarioDAO.buscarTodos();

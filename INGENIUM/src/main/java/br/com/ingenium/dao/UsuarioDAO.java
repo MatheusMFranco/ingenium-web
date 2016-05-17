@@ -45,6 +45,22 @@ public class UsuarioDAO implements Serializable {
 	public List<Usuario> buscarTodos() {
 		return em.createQuery("from Usuario").getResultList();
 	}
+	
+	public boolean login(Usuario usuario){
+		
+		List<Usuario> usuarioLogin = buscarTodos();
+		
+		for (Usuario usuarioL : usuarioLogin) {
+			
+			if(usuario.getUsuario().equals(usuarioL.getUsuario()) && usuario.getSenha().equals(usuarioL.getSenha())){
+				System.out.println("login efetuado com sucesso");
+				return true;
+			}
+		}
+		System.out.println("erro ao efetuar o login");
+		return false;
+		
+	}
 
 	public Usuario buscarPeloCodigo(Long codigo) {
 		return em.find(Usuario.class, codigo);
