@@ -36,6 +36,15 @@ public class UsuarioManagedBean implements Serializable {
 		}
 	}
 	
+	public void login(){
+		try{
+		usuarioDAO.login(usuario);
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("erro ao efetuar login");
+		}
+	}
+	
 	
 	public void alterar(){
 		usuarioDAO.alterar(usuario);

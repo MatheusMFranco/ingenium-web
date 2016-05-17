@@ -17,17 +17,17 @@
 			</div>
 			<h:panelGrid columns="1">
 				<p:inputText placeholder="Usuário" alt="Usuário" 
-					title="Informe o nome de usuário" />
+					title="Informe o nome de usuário" value="#{usuarioManagedBean.usuario.usuario}" />
 			</h:panelGrid>
 
 			<h:panelGrid columns="1">
 				<p:password placeholder="Senha" alt="Senha" 
-					title="Informe a senha"/>
+					title="Informe a senha" value="#{usuarioManagedBean.usuario.senha}"/>
 			</h:panelGrid>
 
 			<div class="barraBotao">
 				<p:commandButton value="Logar" styleClass="ativo"
-					title="Clique aqui para acessar" alt="Logar"/>
+					title="Clique aqui para acessar" alt="Logar" action="#{usuarioManagedBean.login()}"/>
 				<p:commandButton value="Limpar" styleClass="passivo limpar"
 					title="Clique aqui para limpar" alt="Limpar" />
 			</div>
