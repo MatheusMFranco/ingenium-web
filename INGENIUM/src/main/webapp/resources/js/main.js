@@ -6,7 +6,6 @@
 
 /* Mensagens */
 //Erro
-alert("Teste 18");
 var erro = new Array();
 erro[0] = "A confirmação de senha deve ser igual à senha informada.";
 erro[1] = "A confirmação de e-mail deve ser igual ao e-mail informado.";

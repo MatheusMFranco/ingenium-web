@@ -8,33 +8,43 @@
 
 
 	<ui:define name="corpo">
-		<h:form class="deslogado formulario">
-		<!--<div id="msgPOG" class="ui-messages-info ui-corner-all msgPOG">
+		<h:form id="frm" class="deslogado formulario">
+			<!--<div id="msgPOG" class="ui-messages-info ui-corner-all msgPOG">
 				<i id="fecharMsg" class="ui-messages-close"><span
 					class="ui-icon ui-icon-close"></span></i><span
 					class="ui-messages-info-icon"></span>
 					<b id="msgPOG-text" class="ui-messages-info-summary msgPOG-text"></b>
 			</div> -->
+			<p:messages id="mensagem" closable="true" styleClass="msgPrime" />
 			<h:panelGrid columns="1">
-				<p:inputText placeholder="Usuário" alt="Usuário" 
-					title="Informe o nome de usuário" value="#{usuarioManagedBean.usuario.usuario}" />
+				<p:outputLabel value="Usuário" for="username" styleClass="esconder"
+					indicateRequired="true" />
+				<p:inputText placeholder="Usuário" alt="Usuário" id="username"
+					required="true" title="Informe o nome de usuário"
+					value="#{usuarioManagedBean.usuario.usuario}" />
 			</h:panelGrid>
 
 			<h:panelGrid columns="1">
-				<p:password placeholder="Senha" alt="Senha" 
-					title="Informe a senha" value="#{usuarioManagedBean.usuario.senha}"/>
+				<p:outputLabel value="Senha" for="senha" indicateRequired="true"
+					styleClass="esconder" />
+				<p:password placeholder="Senha" alt="Senha" id="senha"
+					required="true" title="Informe a senha"
+					value="#{usuarioManagedBean.usuario.senha}" />
 			</h:panelGrid>
 
 			<div class="barraBotao">
 				<p:commandButton value="Logar" styleClass="ativo"
-					title="Clique aqui para acessar" alt="Logar" action="#{usuarioManagedBean.login()}"/>
+					update=":frm:mensagem" title="Clique aqui para acessar" alt="Logar"
+					action="#{usuarioManagedBean.login()}" oncomplete="if(!args.validationFailed) location.href='telaLogado.xhtml';" />
 				<p:commandButton value="Limpar" styleClass="passivo limpar"
 					title="Clique aqui para limpar" alt="Limpar" />
 			</div>
-			<br/>
+			<br />
 			<div class="alinharCentro">
-				<p:link href="uc/acessaAplicacao/esqueciSenha.xhtml" value="Esqueceu a senha?" />
-				<p:link href="uc/usuario/cadastraUsuario.xhtml" value="Criar uma conta" />
+				<p:link href="uc/acessaAplicacao/esqueciSenha.xhtml"
+					value="Esqueceu a senha?" />
+				<p:link href="uc/usuario/cadastraUsuario.xhtml"
+					value="Criar uma conta" />
 			</div>
 		</h:form>
 	</ui:define>

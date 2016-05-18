@@ -185,6 +185,10 @@ label{
 .alinharCentro{
 	text-align: center;
 }
+
+.esconder{
+	display: none;
+}
 /*--*/
 
 /* Captcha */

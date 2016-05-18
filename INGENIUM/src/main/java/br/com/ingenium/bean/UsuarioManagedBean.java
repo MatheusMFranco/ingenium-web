@@ -32,7 +32,7 @@ public class UsuarioManagedBean implements Serializable {
 		}catch(Exception e){
 			e.printStackTrace();
 			System.out.println("erro sql");
-			
+			JSFUtil.adicionarMensagemErro("Não foi possível fazer o cadastro.");
 		}
 	}
 	
@@ -42,6 +42,7 @@ public class UsuarioManagedBean implements Serializable {
 		}catch(Exception e){
 			e.printStackTrace();
 			System.out.println("erro ao efetuar login");
+			JSFUtil.adicionarMensagemErro("Não foi possível efetuar o login.");
 		}
 	}
 	
