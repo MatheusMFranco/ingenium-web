@@ -26,14 +26,14 @@
 			<h:panelGrid columns="1">
 				<p:outputLabel value="Usuário" for="username"
 					indicateRequired="true" />
-				<p:inputText id="username"
+				<p:inputText id="username" styleClass="username"
 					placeholder="Seu apelido, exemplo: geninho" alt="Usuário"
 					title="Informe o nome de usuário" required="true" maxlength="15"  value="#{usuarioManagedBean.usuario.usuario}"/>
 			</h:panelGrid>
 
 			<h:panelGrid columns="1">
 				<p:outputLabel value="Nome" for="nomeUsu" />
-				<p:inputText id="nomeUsu"
+				<p:inputText id="nomeUsu" styleClass="nome"
 					placeholder="Seu nome completo, exemplo: Geninho, o Gato"
 					alt="Nome" title="Informe o seu nome completo" maxlength="100" value="#{usuarioManagedBean.usuario.nome}"/>
 			</h:panelGrid>
@@ -96,7 +96,7 @@
 			<div class="barraBotao">
 				<p:commandButton value="Salvar" action="#{usuarioManagedBean.salvar()}" styleClass="ativo"
 					title="Clique aqui para confirmar o cadastro" alt="Confirmar"  
-					update=":frm:mensagem" onclick="cadastroUsuario();" 
+					update=":frm:mensagem :frm" onclick="cadastroUsuario();" 
 					oncomplete="cadastroRealizado()"/>
 					
 				<p:commandButton value="Limpar" styleClass="passivo limpar"

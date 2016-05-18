@@ -6,6 +6,7 @@
 
 /* Mensagens */
 //Erro
+alert("Teste 18");
 var erro = new Array();
 erro[0] = "A confirmação de senha deve ser igual à senha informada.";
 erro[1] = "A confirmação de e-mail deve ser igual ao e-mail informado.";
@@ -65,52 +66,48 @@ function validaEmail(){
 	var confEmail = $(".confirmaEmail").val();
 	
 	if(email != confEmail){
+		$(".email").val(null);
+		$(".confirmaEmail").val(null);
 		$(".msgPOG").show();
 		$(".msgPOG-text").text(erro[1]);
-		$(".email").val(null);
 		//$(".email").addClass("ui-state-error");
 	}
+	/*--*/
 	
-	if(email.search("@") < 0 || email.search(".") < 0){
+	if(email.search("@") < 0 || email.search(".") < 0 || email.length < 4){
+		$(".email").val(null);
+		$(".confirmaEmail").val(null);
 		$(".msgPOG").show();
 		$(".msgPOG-text").text(erro[4]);
-		$(".email").val(null);
 	}
-	
-	/*--*/
 	
 	/* Validação de Senha */
 	var senha = $(".senha").val();
 	var confSenha = $(".confirmaSenha").val();
 	
 	if(senha != confSenha){
+		$(".senha").val(null);
+		$(".confirmaSenha").val(null);
 		$(".msgPOG").show();
 		$(".msgPOG-text").text(erro[0]);
-		$(".senha").val(null);
 	}
-	if(senha.lenght < 6 || senha.lenght > 16){
-		$(".msgPOG").show();
-		$(".msgPOG-text").text(erro[5]);
-		$(".senha").val(null);
-	}
-	
 	/*--*/
 	
 	/* Validação Usuário e Nome */
 	var username = $(".username").val();
 	var nome = $(".nome").val();
-	
+
 	//Usuário
-	if(username.lenght < 3){
+	if(username.length < 3){
+		$(".username").val(null);
 		$(".msgPOG").show();
 		$(".msgPOG-text").text(erro[2]);
-		$(".username").val(null);
 	}
 	//Nome
-	if(nome.lenght < 3){
+	if(nome.length < 3){
+		$(".nome").val(null);
 		$(".msgPOG").show();
 		$(".msgPOG-text").text(erro[3]);
-		$(".nome").val(null);
 	}
 	
 	/* Validação de Sucesso */
@@ -128,8 +125,11 @@ function cadastroUsuario(){
 
 function cadastroRealizado(){
 	if(!args.validationFailed){
-		location.href="../../login.xhtml";
-		localStorage.setItem("sucesso", sucesso[0]);
+		//location.href="../../login.xhtml";
+		//localStorage.setItem("sucesso", sucesso[0]);
+		$("input").val(null);
+		$("textarea").val(null);
+		$("#textoArquivo").text("Selecionar um Arquivo");
 		$(".msgPOG-text").text(msgSucesso);
 		$(".msgPOG").show();
 	}
