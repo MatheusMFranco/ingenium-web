@@ -20,31 +20,21 @@ public class LoginManagedBean {
 		usuarioDAO = new UsuarioDAO();
 	}
 	
-	
-
 	public Usuario getUsuario() {
 		return usuario;
 	}
-
-
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 
-
-
 	public UsuarioDAO getUsuarioDAO() {
 		return usuarioDAO;
 	}
 
-
-
 	public void setUsuarioDAO(UsuarioDAO usuarioDAO) {
 		this.usuarioDAO = usuarioDAO;
 	}
-
-
 
 	// validate login
 	public String validateUsernamePassword() {

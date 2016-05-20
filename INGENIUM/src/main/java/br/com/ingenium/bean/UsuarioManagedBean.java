@@ -34,7 +34,7 @@ public class UsuarioManagedBean implements Serializable {
 		}catch(Exception e){
 			e.printStackTrace();
 			System.out.println("erro sql");
-			JSFUtil.adicionarMensagemErro("Não foi possível fazer o cadastro.");
+			JSFUtil.adicionarMensagemErro("Este usuário já existe!");
 		}
 	}
 	
@@ -66,16 +66,10 @@ public class UsuarioManagedBean implements Serializable {
 	
 	public Usuario consultarPorId(){
 		
-		
-		
-		
 		System.out.println(usuario.getId());
 		//usuario = usuarioDAO.buscarPeloCodigo(usuario.getId());
-		
 		return usuario;
 	}
-	
-	
 
 	public Usuario getUsuario() {
 		return usuario;

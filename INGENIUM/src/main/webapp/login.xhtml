@@ -15,7 +15,7 @@
 					class="ui-messages-info-icon"></span>
 					<b id="msgPOG-text" class="ui-messages-info-summary msgPOG-text"></b>
 			</div> -->
-			<p:messages id="mensagem" closable="true" styleClass="msgPrime" />
+			<p:messages id="mensagem" closable="true" styleClass="msgPrime" autoupdate="true" />
 			<h:panelGrid columns="1">
 				<p:outputLabel value="Usuário" for="username" styleClass="esconder"
 					indicateRequired="true" />
@@ -34,8 +34,8 @@
 
 			<div class="barraBotao">
 				<p:commandButton value="Logar" styleClass="ativo"
-					update=":frm:mensagem" title="Clique aqui para acessar" alt="Logar"
-					action="#{loginManagedBean.validateUsernamePassword()}"  />
+					update=":frm:mensagem :frm" title="Clique aqui para acessar" alt="Logar"
+					actionListener="#{loginManagedBean.validateUsernamePassword()}"  />
 				<p:commandButton value="Limpar" styleClass="passivo limpar"
 					title="Clique aqui para limpar" alt="Limpar" />
 			</div>
