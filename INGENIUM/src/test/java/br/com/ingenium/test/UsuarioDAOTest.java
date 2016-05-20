@@ -30,7 +30,7 @@ public class UsuarioDAOTest {
 	}
 
 	@Test
-	@Ignore
+	//@Ignore
 	public void buscartodos() {
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 
@@ -49,10 +49,11 @@ public class UsuarioDAOTest {
 	}
 	
 	@Test
+	@Ignore
 	public void login(){
 		Usuario usuario = new Usuario();
 		usuario.setUsuario("wesleyosantos91");
-		usuario.setSenha("120691bt");
+		usuario.setSenha("12345");
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		
 		usuarioDAO.login(usuario);

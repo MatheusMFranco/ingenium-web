@@ -13,7 +13,7 @@ import javax.persistence.Id;
 public class Usuario implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@Column(length = 15, nullable = false, unique = true)
 	private String usuario;

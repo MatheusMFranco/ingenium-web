@@ -1,9 +1,10 @@
 package br.com.ingenium.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 import br.com.ingenium.dao.UsuarioDAO;
 import br.com.ingenium.model.Usuario;
@@ -11,16 +12,17 @@ import br.com.ingenium.util.JSFUtil;
 
 @SuppressWarnings("serial")
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class UsuarioManagedBean implements Serializable {
 
-	protected Usuario usuario;
-	UsuarioDAO usuarioDAO;
+	private Usuario usuario;
+	private UsuarioDAO usuarioDAO;
 
 	public UsuarioManagedBean() {
 		usuario = new Usuario();
 		usuarioDAO = new UsuarioDAO();
 	}
+	
 
 	public void salvar() {
 		
@@ -39,6 +41,7 @@ public class UsuarioManagedBean implements Serializable {
 	public void login(){
 		try{
 		usuarioDAO.login(usuario);
+		System.out.println(usuario.getNome());
 		}catch(Exception e){
 			e.printStackTrace();
 			System.out.println("erro ao efetuar login");
@@ -47,12 +50,12 @@ public class UsuarioManagedBean implements Serializable {
 	}
 	
 	
-	public void alterar(){
+	public void alterar(Usuario usuario){
 		usuarioDAO.alterar(usuario);
 		this.usuario = usuarioDAO.buscarPeloCodigo(usuario.getId());
 	}
 	
-	public void excluir() {
+	public void excluir(Usuario usuario) {
 		
 		try{
 			usuarioDAO.excluir(usuario);
@@ -66,9 +69,24 @@ public class UsuarioManagedBean implements Serializable {
 			}
 		}
 	
-	public void consultar() {
-		usuarioDAO.buscarTodos();
+	public List<Usuario> consultar() {
+		List<Usuario> usuarios = usuarioDAO.buscarTodos();
+		
+		return usuarios;
 	}
+	
+	public Usuario consultarPorId(){
+		
+		
+		
+		
+		System.out.println(usuario.getId());
+		//usuario = usuarioDAO.buscarPeloCodigo(usuario.getId());
+		
+		return usuario;
+	}
+	
+	
 
 	public Usuario getUsuario() {
 		return usuario;

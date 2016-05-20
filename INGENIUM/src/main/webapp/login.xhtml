@@ -21,7 +21,7 @@
 					indicateRequired="true" />
 				<p:inputText placeholder="Usuário" alt="Usuário" id="username"
 					required="true" title="Informe o nome de usuário"
-					value="#{usuarioManagedBean.usuario.usuario}" />
+					value="#{loginManagedBean.usuario.usuario}" />
 			</h:panelGrid>
 
 			<h:panelGrid columns="1">
@@ -29,13 +29,13 @@
 					styleClass="esconder" />
 				<p:password placeholder="Senha" alt="Senha" id="senha"
 					required="true" title="Informe a senha"
-					value="#{usuarioManagedBean.usuario.senha}" />
+					value="#{loginManagedBean.usuario.senha}" />
 			</h:panelGrid>
 
 			<div class="barraBotao">
 				<p:commandButton value="Logar" styleClass="ativo"
 					update=":frm:mensagem" title="Clique aqui para acessar" alt="Logar"
-					action="#{usuarioManagedBean.login()}" oncomplete="if(!args.validationFailed) location.href='telaLogado.xhtml';" />
+					action="#{loginManagedBean.validateUsernamePassword()}"  />
 				<p:commandButton value="Limpar" styleClass="passivo limpar"
 					title="Clique aqui para limpar" alt="Limpar" />
 			</div>
