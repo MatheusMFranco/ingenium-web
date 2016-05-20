@@ -15,7 +15,7 @@
 	<navigation-rule>
 		<from-view-id>/login.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>telaInicial</from-outcome>
+			<from-outcome>telaLogado</from-outcome>
 			<to-view-id>/telaLogado.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>

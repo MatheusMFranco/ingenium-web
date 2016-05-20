@@ -38,17 +38,6 @@ public class UsuarioManagedBean implements Serializable {
 		}
 	}
 	
-	public void login(){
-		try{
-		usuarioDAO.login(usuario);
-		System.out.println(usuario.getNome());
-		}catch(Exception e){
-			e.printStackTrace();
-			System.out.println("erro ao efetuar login");
-			JSFUtil.adicionarMensagemErro("Não foi possível efetuar o login.");
-		}
-	}
-	
 	
 	public void alterar(Usuario usuario){
 		usuarioDAO.alterar(usuario);
