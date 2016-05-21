@@ -38,7 +38,7 @@ public class AuthorizationFilter implements Filter {
 					|| (ses != null && ses.getAttribute("username") != null)
 					|| reqURI.indexOf("/public/") >= 0
 					|| reqURI.contains("javax.faces.resource")
-					/* || reqURI.indexOf("/uc/usuario/cadastraUsuario.xhtml") >= 0 */)
+					|| reqURI.indexOf("/uc/usuario/cadastraUsuario.xhtml") >= 0)
 				chain.doFilter(request, response);
 			else
 				resp.sendRedirect(reqt.getContextPath() + "/login.xhtml");

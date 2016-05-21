@@ -34,7 +34,7 @@ public class UsuarioManagedBean implements Serializable {
 		}catch(Exception e){
 			e.printStackTrace();
 			System.out.println("erro sql");
-			JSFUtil.adicionarMensagemErro("Este usuário já existe!");
+			JSFUtil.adicionarMensagemErro("Erro interno do sistema.");
 		}
 	}
 	
