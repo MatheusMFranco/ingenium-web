@@ -54,6 +54,7 @@ public class LoginManagedBean {
 	public String logout() {
 		HttpSession session = SessionBean.getSession();
 		session.invalidate();
+		System.out.println("Logout realizado com sucesso!");
 		return "login.xhtml?faces-redirect=true";
 	}
 }

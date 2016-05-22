@@ -14,8 +14,6 @@
 	<h:outputStylesheet library="css" name="cores.css" />
 	<h:outputStylesheet library="css" name="impressao.css" />
 
-	<h:outputScript library="js" name="jquery.js" />
-	<h:outputScript library="js" name="main.js" />
 </h:head>
 <h:body>
 
@@ -33,7 +31,9 @@
 
 					<f:facet name="options">
 						<p:inputText style="margin-right:10px" placeholder="Buscar" />
-						<p:commandButton type="button" value="Sair" action="#{loginManagedBean.logout()}"/>
+						<p:commandButton value="Sair"  alt="Sair"
+						title="Clique aqui para deslogar"
+						action="#{loginManagedBean.logout()}" />
 					</f:facet>
 				</p:menubar>
 			</h:form>
@@ -60,5 +60,7 @@
 		</p:confirmDialog>
 	</h:form>
 
+	<h:outputScript library="js" name="jquery.js" />
+	<h:outputScript library="js" name="main.js" />
 </h:body>
 </html>

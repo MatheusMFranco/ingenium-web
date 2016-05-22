@@ -44,6 +44,8 @@ public class AuthorizationFilter implements Filter {
 				resp.sendRedirect(reqt.getContextPath() + "/login.xhtml");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			//System.out.println("Não foi possível efetuar o login.");
+			//JSFUtil.adicionarMensagemErro("Não foi possível efetuar o login.");
 		}
 	}
 
