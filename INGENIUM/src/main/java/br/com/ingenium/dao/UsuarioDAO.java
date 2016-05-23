@@ -57,12 +57,14 @@ public class UsuarioDAO implements Serializable {
 				System.out.println("login efetuado com sucesso");
 				System.out.println("Usuário logado: " + usuario.getUsuario());
 				UsuarioDTO.nick = usuarioL;
+				UsuarioDTO.setId(usuarioL.getId());
 				UsuarioDTO.setUsuario(usuarioL.getUsuario());
 				UsuarioDTO.setNome(usuarioL.getNome());
 				UsuarioDTO.setDescricao(usuarioL.getDescricao());
 				UsuarioDTO.setEmail(usuarioL.getEmail());
 				UsuarioDTO.setSenha(usuarioL.getSenha());
 				
+				System.out.println("Código: " + UsuarioDTO.getId());
 				System.out.println("Nome: " + UsuarioDTO.getNome());
 				System.out.println("Descrição: " + UsuarioDTO.getDescricao());
 				System.out.println("E-mail: " + UsuarioDTO.getEmail());

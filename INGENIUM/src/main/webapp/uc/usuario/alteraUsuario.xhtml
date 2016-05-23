@@ -12,14 +12,15 @@
 		</f:metadata>
 	</ui:define>
 	<ui:define name="corpo">
-		<h:form class="formulario">
-			<!-- <h:inputHidden value="#{usuarioManagedBean.usuario.id}" /> -->
+		<h:form id="frm" class="formulario">
 			<label class="obr">( <span>*</span> ) Preenchimento
 				Obrigatório
 			</label>
 			
 			<h1>Alteração de Usuário</h1>
 			<br />
+			<p:messages id="mensagem" closable="true" styleClass="msgPrime"/>
+
 			<h:panelGrid columns="1">
 				<p:outputLabel  for="username"  value="Usuário" />
 				<p:inputText id="username" alt="Usuário" title="Seu nome de usuário"
@@ -85,11 +86,18 @@
 				<p:commandButton value="Alterar"
 					action="#{usuarioManagedBean.alterar()}" styleClass="ativo"
 					title="Clique aqui para alterar os dados da sua conta"
-					alt="Alterar" process="@this" />
+					alt="Alterar" update=":frm :frm:mensagem"/>
 
 				<p:commandButton value="Excluir"
 					action="#{usuarioManagedBean.excluir()}" styleClass="ativo"
-					title="Clique aqui para excluir sua conta" alt="Excluir" />
+					update=":frm :frm:mensagem" alt="Excluir"
+					title="Clique aqui para excluir sua conta">
+
+					<p:confirm header="Confirmação de Exclusão de Conta"
+						message="Você tem certeza que deseja excluir sua conta? Todos os dados cadastrados serão apagados."
+						icon="ui-icon-alert" />
+
+				</p:commandButton>
 
 				<p:commandButton value="Limpar" styleClass="passivo limpar"
 					title="Clique aqui para limpar" alt="Limpar" />

@@ -40,22 +40,31 @@ public class UsuarioManagedBean implements Serializable {
 	}
 	
 	
-	public void alterar(Usuario usuario){
+	public void alterar(){
+		Usuario usuario = UsuarioDTO.getNick();
+
 		usuarioDAO.alterar(usuario);
 		this.usuario = usuarioDAO.buscarPeloCodigo(usuario.getId());
+		JSFUtil.adicionarMensagemSucesso("Conta alterada com sucesso!");
+		System.out.println("Conta alterada com sucesso!");
 	}
 	
-	public void excluir(Usuario usuario) {
-		
+	public void excluir() {
+		Usuario usuario = UsuarioDTO.getNick();
+
 		try{
 			usuarioDAO.excluir(usuario);
 			this.usuario = new Usuario();
-			JSFUtil.adicionarMensagemSucesso("Exclusão realizada com sucesso!");
-			System.out.println("Exclusão realizada com sucesso!");
+			LoginManagedBean conta = new LoginManagedBean();
+			conta.logout();
+			JSFUtil.adicionarMensagemSucesso("Conta excluída com sucesso!");
+			System.out.println("Conta excluída com sucesso!");
+
 			}catch(Exception e){
 				e.printStackTrace();
 				System.out.println("erro sql");
-				
+				System.out.println("Erro Interno do Sistema.");
+				JSFUtil.adicionarMensagemSucesso("Erro Interno do Sistema.");
 			}
 		}
 	
@@ -65,9 +74,8 @@ public class UsuarioManagedBean implements Serializable {
 	}
 	
 	public Usuario consultarPorUserName(){
-		System.out.println("Usuário logado no momento: " + UsuarioDTO.getUsuario());
 		usuario = UsuarioDTO.getNick();
-		//usuario = usuarioDAO.buscarPeloUserName(UsuarioDTO.getUsuario());
+		//System.out.println("Usuário logado no momento: " + usuario.getUsuario());
 		return usuario;
 	}
 	
