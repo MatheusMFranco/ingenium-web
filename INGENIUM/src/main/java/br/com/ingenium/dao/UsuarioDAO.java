@@ -56,8 +56,18 @@ public class UsuarioDAO implements Serializable {
 			if(usuario.getUsuario().equals(usuarioL.getUsuario()) && usuario.getSenha().equals(usuarioL.getSenha())){
 				System.out.println("login efetuado com sucesso");
 				System.out.println("Usuário logado: " + usuario.getUsuario());
-				UsuarioDTO.nick = usuario;
-				UsuarioDTO.usuario = usuario.getUsuario();
+				UsuarioDTO.nick = usuarioL;
+				UsuarioDTO.setUsuario(usuarioL.getUsuario());
+				UsuarioDTO.setNome(usuarioL.getNome());
+				UsuarioDTO.setDescricao(usuarioL.getDescricao());
+				UsuarioDTO.setEmail(usuarioL.getEmail());
+				UsuarioDTO.setSenha(usuarioL.getSenha());
+				
+				System.out.println("Nome: " + UsuarioDTO.getNome());
+				System.out.println("Descrição: " + UsuarioDTO.getDescricao());
+				System.out.println("E-mail: " + UsuarioDTO.getEmail());
+				System.out.println("Senha: " + UsuarioDTO.getSenha());
+				
 				return true;
 			}
 		}
