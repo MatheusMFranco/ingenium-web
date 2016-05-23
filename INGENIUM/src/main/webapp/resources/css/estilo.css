@@ -45,7 +45,7 @@ header{
 /* Menu */
 .menuTopo{
 	width:500px;
-	display: inline-block !important;
+	display: inline-block;
 	float: right;
 	margin-top: 25px;
 }

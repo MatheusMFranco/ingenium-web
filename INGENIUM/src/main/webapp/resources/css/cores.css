@@ -15,14 +15,16 @@ button,
 .ui-menuitem-text,
 .ui-button-text,
 .ui-inputfield,
-#textoArquivo{
+#textoArquivo,
+.menuTopo{
 	color: #FFF !important;
 } 
 /*--*/
 
 /* Preto */
 header,
-.barraBotao button {
+.barraBotao button,
+.menuTopo{
 	background-color: #000;
 }
 .ativo,
@@ -47,7 +49,8 @@ button:hover,
 .quadroArquivo:hover button{
 	background: #7f428f !important;
 }
-.ui-menuitem-link:hover .ui-menuitem-text{
+.ui-menuitem-link:hover .ui-menuitem-text,
+.ui-menubar a:hover{
 	color: #7f428f !important;
 }
 /*--*/
