@@ -5,12 +5,13 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import br.com.ingenium.dto.UsuarioDTO;
 import br.com.ingenium.model.Usuario;
 import br.com.ingenium.util.JPAUtil;
 
 @SuppressWarnings("serial")
 public class UsuarioDAO implements Serializable {
-
+	
 	EntityManager em = JPAUtil.getEntityManager();
 
 	public void salvar(Usuario usuario) {
@@ -54,6 +55,9 @@ public class UsuarioDAO implements Serializable {
 			
 			if(usuario.getUsuario().equals(usuarioL.getUsuario()) && usuario.getSenha().equals(usuarioL.getSenha())){
 				System.out.println("login efetuado com sucesso");
+				System.out.println("Usuário logado: " + usuario.getUsuario());
+				UsuarioDTO.nick = usuario;
+				UsuarioDTO.usuario = usuario.getUsuario();
 				return true;
 			}
 		}
@@ -62,10 +66,14 @@ public class UsuarioDAO implements Serializable {
 		
 	}
 
+	public Usuario buscarPeloUserName(String username) {
+		return em.find(Usuario.class, username);
+	}
+
 	public Usuario buscarPeloCodigo(Long codigo) {
 		return em.find(Usuario.class, codigo);
 	}
-
+	
 	public void excluir(Usuario usuario) {
 
 		usuario = em.find(Usuario.class, usuario.getId());

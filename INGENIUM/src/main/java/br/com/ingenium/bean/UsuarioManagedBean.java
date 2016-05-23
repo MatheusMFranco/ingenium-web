@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import br.com.ingenium.dao.UsuarioDAO;
+import br.com.ingenium.dto.UsuarioDTO;
 import br.com.ingenium.model.Usuario;
 import br.com.ingenium.util.JSFUtil;
 
@@ -60,12 +61,17 @@ public class UsuarioManagedBean implements Serializable {
 	
 	public List<Usuario> consultar() {
 		List<Usuario> usuarios = usuarioDAO.buscarTodos();
-		
 		return usuarios;
 	}
 	
+	public Usuario consultarPorUserName(){
+		System.out.println("Usuário logado no momento: " + UsuarioDTO.getUsuario());
+		usuario = UsuarioDTO.getNick();
+		//usuario = usuarioDAO.buscarPeloUserName(UsuarioDTO.getUsuario());
+		return usuario;
+	}
+	
 	public Usuario consultarPorId(){
-		
 		System.out.println(usuario.getId());
 		//usuario = usuarioDAO.buscarPeloCodigo(usuario.getId());
 		return usuario;

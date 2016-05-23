@@ -4,6 +4,8 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
+	<ui:insert name="metadata" />
+	
 <h:head>
 	<meta charset="UTF-8" />
 	<title>Ingenium</title>
@@ -22,20 +24,20 @@
 			<h:form>
 				<p:link href="http://localhost:8080/INGENIUM/"> <h:graphicImage library="img" name="logo.png" /></p:link>
 
-				<p:menubar styleClass="menuTopo">
-					<p:submenu label="Usuário" url="uc/usuario/alteraUsuario.xhtml" />
-					<p:submenu label="Categoria" url="uc/categoria/consultaCategoria.xhtml" />
-					<p:submenu label="Objetivo" url="uc/objetivo/consultaObjetivo.xhtml" />
-					<p:submenu label="Meta" url="uc/meta/consultaMeta.xhtml" />
-					<p:submenu label="Relatorio" url="uc/relatorio/geral.xhtml" />
+				<div class="menuTopo">
+					<a href="uc/usuario/alteraUsuario.xhtml">Usuário</a>
+					<a href="uc/categoria/consultaCategoria.xhtml">Categoria</a>
+					<a href="uc/objetivo/consultaObjetivo.xhtml">Objetivo</a>
+					<a href="uc/meta/consultaMeta.xhtml">Meta</a>
+					<a href="uc/relatorio/geral.xhtml">Relatório</a>
 
-					<f:facet name="options">
+					<div class="menuInput">
 						<p:inputText style="margin-right:10px" placeholder="Buscar" />
 						<p:commandButton value="Sair"  alt="Sair"
 						title="Clique aqui para deslogar"
 						action="#{loginManagedBean.logout()}" />
-					</f:facet>
-				</p:menubar>
+					</div>
+				</div>
 			</h:form>
 		</div>
 	</header>
