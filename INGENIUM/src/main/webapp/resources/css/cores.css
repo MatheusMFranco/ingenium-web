@@ -16,7 +16,8 @@ button,
 .ui-button-text,
 .ui-inputfield,
 #textoArquivo,
-.menuTopo{
+.menuTopo,
+.menuTopo a{
 	color: #FFF !important;
 } 
 /*--*/
@@ -50,7 +51,8 @@ button:hover,
 	background: #7f428f !important;
 }
 .ui-menuitem-link:hover .ui-menuitem-text,
-.ui-menubar a:hover{
+.ui-menubar a:hover, 
+.menuTopo a:hover{
 	color: #7f428f !important;
 }
 /*--*/
