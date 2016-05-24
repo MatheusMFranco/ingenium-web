@@ -53,6 +53,20 @@ public class CategorioDAOTest {
 
 	}
 	
+	@Test
+	//@Ignore
+	public void buscarPorCodigo() {
+
+		Long codigo = 1L;
+
+		CategoriaDAO categoriaDAO = new CategoriaDAO();
+
+		Categoria categoria = categoriaDAO.buscarPeloCodigo(codigo);
+
+		System.out.println(categoria.getId());
+
+	}
+	
 	
 	
 	
