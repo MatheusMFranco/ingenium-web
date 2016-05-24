@@ -1,8 +1,11 @@
 package br.com.ingenium.dto;
 
+import java.io.Serializable;
+
 import br.com.ingenium.model.Usuario;
 
-public class UsuarioDTO{
+@SuppressWarnings("serial")
+public class UsuarioDTO implements Serializable{
 
 	public static String usuario;
 	public static Usuario nick;

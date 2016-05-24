@@ -1,5 +1,7 @@
 package br.com.ingenium.bean;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.servlet.http.HttpSession;
@@ -8,9 +10,10 @@ import br.com.ingenium.dao.UsuarioDAO;
 import br.com.ingenium.model.Usuario;
 import br.com.ingenium.util.JSFUtil;
 
+@SuppressWarnings("serial")
 @ManagedBean
 @SessionScoped
-public class LoginManagedBean {
+public class LoginManagedBean  implements Serializable{
 
 	private Usuario usuario;
 	private UsuarioDAO usuarioDAO;

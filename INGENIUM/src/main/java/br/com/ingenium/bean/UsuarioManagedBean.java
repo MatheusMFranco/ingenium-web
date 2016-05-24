@@ -53,13 +53,14 @@ public class UsuarioManagedBean implements Serializable {
 		Usuario usuario = UsuarioDTO.getNick();
 
 		try{
+			
 			usuarioDAO.excluir(usuario);
 			this.usuario = new Usuario();
 			LoginManagedBean conta = new LoginManagedBean();
 			conta.logout();
 			JSFUtil.adicionarMensagemSucesso("Conta excluída com sucesso!");
 			System.out.println("Conta excluída com sucesso!");
-
+			
 			}catch(Exception e){
 				e.printStackTrace();
 				System.out.println("erro sql");
