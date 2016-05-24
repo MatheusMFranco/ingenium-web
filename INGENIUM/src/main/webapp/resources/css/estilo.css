@@ -44,13 +44,27 @@ header{
 
 /* Menu */
 .menuTopo{
-	width:500px;
+	width: auto;
 	display: inline-block;
-	float: right;
-	margin-top: 25px;
+	/* float: right !important; */
+	margin: 40px 40px;
+	position: absolute;
 }
+.menuTopo a{
+	font-size: 12pt;
+	text-decoration: none !important;
+  font-weight: bold;
+}
+
+.menuTopo a:before{
+	content: " | ";
+}
+
 .menuTopo .ui-menuitem-link{
 	margin-right: 20px;
+}
+.menuInput{
+	display: inline-block;
 }
 .ui-menuitem-link .ui-icon{
 	display: none !important;
