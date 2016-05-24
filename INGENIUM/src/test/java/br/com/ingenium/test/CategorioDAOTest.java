@@ -36,7 +36,7 @@ public class CategorioDAOTest {
 	
 	
 	@Test
-	//@Ignore
+	@Ignore
 	public void buscartodos() {
 		CategoriaDAO categoriaDAO = new CategoriaDAO();
 
@@ -52,6 +52,8 @@ public class CategorioDAOTest {
 		}
 
 	}
+	
+	
 	
 	
 

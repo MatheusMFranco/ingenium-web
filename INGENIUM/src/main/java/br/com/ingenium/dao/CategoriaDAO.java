@@ -26,5 +26,36 @@ public class CategoriaDAO implements Serializable {
 	public List<Categoria> buscarTodos() {
 		return em.createQuery("from Categoria").getResultList();
 	}
+	
+	public Categoria buscarPeloUserName(String username) {
+		return em.find(Categoria.class, username);
+	}
+
+	public Categoria buscarPeloCodigo(Long codigo) {
+		return em.find(Categoria.class, codigo);
+	}
+	
+	public void excluir(Categoria categoria) {
+
+		categoria = em.find(Categoria.class, categoria.getId());
+		if (categoria != null) {
+			em.getTransaction().begin();
+			em.remove(categoria);
+			em.getTransaction().commit();
+			em.close();
+		} else {
+			em.getTransaction().rollback();
+			em.close();
+		}
+	}
+
+	public void alterar(Categoria categoria) {
+		if (categoria != null) {
+			em.getTransaction().begin();
+			em.merge(categoria);
+			em.getTransaction().commit();
+		}
+
+	}
 
 }
