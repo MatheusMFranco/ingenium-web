@@ -1,7 +1,7 @@
 package br.com.ingenium.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,7 +26,7 @@ public class Objetivo implements Serializable {
 	private String descricao;
 	@Temporal(value=TemporalType.DATE)
 	@Column(nullable = false)
-	private Date data;
+	private Calendar data;
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private Categoria categoria;
@@ -48,10 +48,10 @@ public class Objetivo implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public Date getData() {
+	public Calendar getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(Calendar data) {
 		this.data = data;
 	}
 	public Categoria getCategoria() {
