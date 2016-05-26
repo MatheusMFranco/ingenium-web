@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import br.com.ingenium.dto.UsuarioDTO;
 import br.com.ingenium.model.Categoria;
 import br.com.ingenium.util.JPAUtil;
 
@@ -15,11 +16,17 @@ public class CategoriaDAO implements Serializable {
 	
 	public void salvar(Categoria categoria){
 		
+		categoria.setUsuario(UsuarioDTO.getNick());
 		em.getTransaction().begin();
 		em.persist(categoria);
 		em.getTransaction().commit();
 		em.close();
-		
+
+		System.out.println("Código: " + categoria.getId());
+		System.out.println("Nome: " + categoria.getNome());
+		System.out.println("Descrição: " + categoria.getDescricao());
+		//System.out.println("Ícone: " + categoria.getIcone());
+
 	}
 	
 	@SuppressWarnings("unchecked")

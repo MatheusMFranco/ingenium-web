@@ -30,8 +30,6 @@
 		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
 	</properties>
 
-
-
 	<!-- Parâmetros de execução -->
 	<build>
 		<!-- Nome do projeto empacotado -->
@@ -176,7 +174,6 @@
 		</dependency>
 
 	</dependencies>
-		
 
 	<repositories>
 		<!-- Repositorio Primefaces -->

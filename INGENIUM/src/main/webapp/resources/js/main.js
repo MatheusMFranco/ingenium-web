@@ -33,6 +33,12 @@ $(document).ready( function(){
 	});
 	/*--*/
 	
+	/* Voltar Página */
+	$(".voltar").click( function voltarPagina(){
+		history.back();
+	});
+	/*--*/
+	
 	var textoArquivo;
 	capturaArquivo();
 	
