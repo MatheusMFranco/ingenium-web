@@ -13,9 +13,9 @@ import br.com.ingenium.util.JPAUtil;
 public class CategoriaDAO implements Serializable {
 
 	EntityManager em = JPAUtil.getEntityManager();
+	Categoria categoria = new Categoria();
 	
-	public void salvar(Categoria categoria){
-		
+	public void salvar(Categoria categoria){	
 		categoria.setUsuario(UsuarioDTO.getNick());
 		em.getTransaction().begin();
 		em.persist(categoria);
@@ -31,19 +31,22 @@ public class CategoriaDAO implements Serializable {
 	
 	@SuppressWarnings("unchecked")
 	public List<Categoria> buscarTodos() {
+		categoria.setUsuario(UsuarioDTO.getNick());
 		return em.createQuery("from Categoria").getResultList();
 	}
 	
-	public Categoria buscarPeloUserName(String username) {
-		return em.find(Categoria.class, username);
+	public Categoria buscarPeloNome(String nome) {
+		categoria.setUsuario(UsuarioDTO.getNick());
+		return em.find(Categoria.class, nome);
 	}
 
 	public Categoria buscarPeloCodigo(Long codigo) {
+		categoria.setUsuario(UsuarioDTO.getNick());
 		return em.find(Categoria.class, codigo);
 	}
 	
 	public void excluir(Categoria categoria) {
-
+		categoria.setUsuario(UsuarioDTO.getNick());
 		categoria = em.find(Categoria.class, categoria.getId());
 		if (categoria != null) {
 			em.getTransaction().begin();
@@ -57,6 +60,7 @@ public class CategoriaDAO implements Serializable {
 	}
 
 	public void alterar(Categoria categoria) {
+		categoria.setUsuario(UsuarioDTO.getNick());
 		if (categoria != null) {
 			em.getTransaction().begin();
 			em.merge(categoria);
@@ -64,5 +68,5 @@ public class CategoriaDAO implements Serializable {
 		}
 
 	}
-
+	
 }

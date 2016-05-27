@@ -6,12 +6,12 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-
 	<ui:define name="corpo">
 		<div class="formulario">
-			<h:form>
+			<h:form id="frm">
 				<h1>Consulta de Categoria</h1>
 				<br />
+				<p:messages id="mensagem" closable="true" styleClass="msgPrime"/>
 				<h:panelGrid columns="1">
 					<p:outputLabel value="Nome" for="nomeCat" />
 					<p:inputText id="nomeCat"
@@ -23,30 +23,36 @@
 				<br />
 				<div class="barraBotao">
 					<p:commandButton value="Consultar"
-						action="#{categoriaManagedBean.consultar()}" styleClass="ativo"
+						action="#{categoriaManagedBean.consultarPeloNome()}" styleClass="ativo"
 						title="Clique aqui para consultar uma categoria" alt="Consultar" />
 					<p:commandButton value="Limpar" styleClass="passivo limpar"
 						title="Clique aqui para limpar" alt="Limpar" />
 					<p:commandButton value="Incluir Nova Categoria"
 						onclick="location.href='#{request.contextPath}/uc/categoria/cadastraCategoria.xhtml'"
+						update=":frm :frm:mensagem"
 						title="Clique aqui para incluir uma nova categoria"
 						alt="Incluir Nova Categoria" styleClass="passivo dir" />
 				</div>
 			</h:form>
 			<br />
 			<h1>Resultado da Consulta</h1>
-			<p:dataTable var="categoria" emptyMessage="Nenhuma categoria encontrada"
-				value="#{categoriaManagedBean.consultar()}">
-				<p:column>
-					<h:outputText value="#{categoriaManagedBean.categoria.icone}" />
-				</p:column>
+			<p:dataTable var="categoria"
+				emptyMessage="Nenhuma categoria encontrada"
+				value="#{categoriaManagedBean.consultar()}" rows="10"
+				paginator="true" paginatorPosition="bottom"
+				widgetVar="tabelaCategoria" id="tabCategoria"
+				filteredValue="#{categoriaManagedBean.consultarPeloNome()}">
+
+				<!-- <p:column>
+					<h:outputText value="#{categoria.icone}" />
+				</p:column> -->
 				<p:column headerText="Nome">
-					<h:outputText value="#{categoriaManagedBean.categoria.nome}" />
+					<h:outputText value="#{categoria.nome}" />
 				</p:column>
-				<p:column headerText="Metas">
+				<!--	<p:column headerText="Metas">
 					<h:outputText
 						value="#{categoriaManagedBean.categoria.quantidadeMetas}" />
-				</p:column>
+				</p:column> -->
 			</p:dataTable>
 		</div>
 	</ui:define>

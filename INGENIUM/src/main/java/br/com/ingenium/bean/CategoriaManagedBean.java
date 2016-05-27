@@ -7,7 +7,6 @@ import javax.faces.bean.ManagedBean;
 
 import br.com.ingenium.model.Categoria;
 import br.com.ingenium.dao.CategoriaDAO;
-import br.com.ingenium.dto.UsuarioDTO;
 import br.com.ingenium.util.JSFUtil;
 
 @SuppressWarnings("serial")
@@ -16,19 +15,19 @@ public class CategoriaManagedBean implements Serializable {
 
 	private Categoria categoria;
 	private CategoriaDAO categoriaDAO;
-	
+	private Categoria categoriaSelecionada;
+
 	public CategoriaManagedBean() {
 		categoria = new Categoria();
 		categoriaDAO = new CategoriaDAO();
 	}
 	
 	public void salvar() {
-	//UsuarioDTO.nick
-	try{
-		categoriaDAO.salvar(categoria);
-		this.categoria = new Categoria();
-		JSFUtil.adicionarMensagemSucesso("Categoria incluída com sucesso!");
-		System.out.println("Categoria incluída com sucesso!");
+		try{
+			categoriaDAO.salvar(categoria);
+			this.categoria = new Categoria();
+			JSFUtil.adicionarMensagemSucesso("Categoria incluída com sucesso!");
+			System.out.println("Categoria incluída com sucesso!");
 		}catch(Exception e){
 			e.printStackTrace();
 			System.out.println("Não foi possível incluir a categoria informada.");
@@ -45,22 +44,25 @@ public class CategoriaManagedBean implements Serializable {
 	
 	public void excluir() {
 		try{
-			
 			categoriaDAO.excluir(categoria);
 			this.categoria = new Categoria();
 			JSFUtil.adicionarMensagemSucesso("Categoria excluída com sucesso!");
 			System.out.println("Categoria excluída com sucesso!");
-			
-			}catch(Exception e){
-				e.printStackTrace();
-				System.out.println("Não foi possível incluir a categoria informada.");
-				JSFUtil.adicionarMensagemSucesso("Erro Interno do Sistema.");
-			}
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("Não foi possível incluir a categoria informada.");
+			JSFUtil.adicionarMensagemSucesso("Erro Interno do Sistema.");
 		}
+	}
 	
 	public List<Categoria> consultar() {
 		List<Categoria> categorias = categoriaDAO.buscarTodos();
 		return categorias;
+	}
+	
+	public Categoria consultarPeloNome(){
+		categoria = categoriaDAO.buscarPeloNome(categoria.getNome());
+		return categoria;
 	}
 	
 	public Categoria consultarPorId(){
@@ -78,6 +80,15 @@ public class CategoriaManagedBean implements Serializable {
 
 	public void novo() {
 		categoria = new Categoria();
+	}
+	
+	public Categoria getCategoriaSelecionada() {
+		return categoriaSelecionada;
+	}
+
+	public void setCategoriaSelecionada(Categoria categoriaSelecionada) {
+		System.out.println("Chamando...");
+		this.categoriaSelecionada = categoriaSelecionada;
 	}
 	
 }
