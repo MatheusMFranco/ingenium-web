@@ -1,0 +1,234 @@
+@charset "utf-8";
+
+/* 
+	Autor: Matheus Franco
+	Criação: 04/2016 
+	Arquivo: Estilo.css
+*/
+
+/* Geral */
+body {
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0px;
+	font-weight: normal
+}
+.deslogado{
+	width: 500px !important;
+	margin: auto !important;
+}
+#conteudo {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 50px !important;
+	
+}
+/*--*/
+
+/* Cabeçalho */
+header{
+	padding: 10px 0;
+	margin-bottom: 20px;
+	height: 100px;
+}
+#cabecalhoDeslogado{
+	margin: auto;
+	width: 260px;
+}
+#cabecalho{
+	width: 80%;
+	margin: auto;
+}
+/*--*/
+
+/* Menu */
+.menuTopo{
+	width: auto;
+	display: inline-block;
+	/* float: right !important; */
+	margin: 40px 40px;
+	position: absolute;
+}
+.menuTopo a{
+	font-size: 12pt;
+	text-decoration: none !important;
+  font-weight: bold;
+}
+
+.menuTopo a:before{
+	content: " | ";
+}
+
+.menuTopo .ui-menuitem-link{
+	margin-right: 20px;
+}
+.menuInput{
+	display: inline-block;
+}
+.ui-menuitem-link .ui-icon{
+	display: none !important;
+}
+.ui-menuitem-text,
+.ui-button-text{
+	font-weight: bold;
+}
+.ui-menuitem-link{
+	background: none !important;
+}
+/*--*/
+
+/* Rodape */
+footer{
+	bottom: 0;
+	position: fixed;
+	text-align: center;
+	width: 100%;
+	padding: 5px 8px;
+}
+/*--*/
+
+/* Botões */
+button{
+	font-weight: bold;
+}
+.barraBotao{
+	width: 550px !important;
+	text-align: center;
+}
+.botaoEntrar{
+	margin: 10px;
+	padding: 10px;
+	right: 20px !important;
+	position: absolute !important;
+	display: inline-block;
+}
+.barraBotao button{
+	padding: 5px;
+	margin-left: 5px;
+	min-width: 30%;
+	background-color: #000;
+}
+/*--*/
+
+/* Campos */
+.formulario .ui-inputtext,
+.formulario .ui-password,
+.formulario .ui-inputfield{
+	width: 500px !important;
+	padding: 15px !important;
+	margin: 5px !important;
+} 
+.menuTopo input[type="text"],
+.ui-password,
+.ui-inputfield{
+	margin-left: 50px;
+}
+.ui-inputtext, 
+.ui-password,
+.ui-inputfield{
+	box-shadow: none !important; 
+}
+.formulario .ui-inputtext, 
+.formulario .ui-password,
+.formulario .ui-inputtextarea-resizable,
+.ui-inputfield{
+	margin-bottom: 15px !important;
+}
+/*--*/
+
+/* Campo de Upload */
+.capturaArquivo{
+	opacity: 0;
+	z-index: 999;
+	position: absolute;
+	cursor: pointer;
+	padding: 10px;
+}
+.botaoCapturaArquivo{
+	margin: 10px 0px;
+	cursor: pointer;
+}
+#textoArquivo{
+	position: absolute;
+	margin-top: -30px;
+	margin-left: 157px;
+}
+/*--*/
+
+/* Elementos */
+h1 {
+	font-size: 24px;
+	font-weight: 500;
+	padding: 0px;
+	padding-top: 5px;
+	margin-bottom: 10px;
+	font-weight: bold;
+	width: 100%;
+}
+.ui-outputlabel-rfi,
+.ui-outputlabel{
+	font-weight: bold;
+	font-size: 14pt;
+}
+.ui-outputlabel{
+	padding: 5px;
+}
+label{
+	font-weight: bold;
+}
+.obr{
+	right: 20px !important;
+	padding: 15px;
+	display: block;
+	position: relative;
+	position: absolute;
+}
+.esq{
+	float: left;
+}
+.dir{
+	float: right;
+}
+.ui-link{
+	font-weight: bold;
+	font-size: 12pt;
+	margin: 10px;
+}
+
+.alinharCentro{
+	text-align: center;
+}
+
+.esconder{
+	display: none;
+}
+/*--*/
+
+/* Captcha */
+.rc-anchor-light,
+.rc-anchor-normal,
+iframe{
+	margin: 5px !important;
+}
+
+/* Mensagens */
+.ui-messages{
+	width: 107% !important;
+}
+#msgPOG{
+	width: 102% !important;
+}
+#msgPOG .ui-icon-close{
+	float: right;
+}
+#fecharMsg{
+	cursor: pointer;
+}
+/*--*/
+
+/* Erro */
+label.ui-state-error{
+  text-transform: uppercase !important; 
+}
+/*--*/

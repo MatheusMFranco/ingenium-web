@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewAction action="#{usuarioManagedBean.consultarPorUserName()}" />
+		</f:metadata>
+	</ui:define>
+	<ui:define name="corpo">
+		<h:form id="frm" class="formulario">
+			<label class="obr">( <span>*</span> ) Preenchimento
+				Obrigatório
+			</label>
+			
+			<h1>Alteração de Usuário</h1>
+			<br />
+			<p:messages id="mensagem" closable="true" styleClass="msgPrime"/>
+
+			<h:panelGrid columns="1">
+				<p:outputLabel  for="username"  value="Usuário" />
+				<p:inputText id="username" alt="Usuário" title="Seu nome de usuário"
+					maxlength="15" disabled="true"
+					value="#{usuarioManagedBean.usuario.usuario}" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="1">
+				<p:outputLabel value="Nome" for="nomeUsu" />
+				<p:inputText id="nomeUsu" alt="Nome"
+					title="Informe o seu nome completo" maxlength="100"
+					value="#{usuarioManagedBean.usuario.nome}" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="1">
+				<p:outputLabel value="Descrição" for="descricaoUsu" />
+				<p:inputTextarea id="descricaoUsu" alt="Descrição"
+					title="Informe a descrição do perfil" maxlength="255"
+					value="#{usuarioManagedBean.usuario.descricao}" />
+			</h:panelGrid>
+
+		<!--	<h:panelGrid columns="1" styleClass="quadroArquivo">
+				<p:outputLabel value="Foto" for="fotoUsu" />
+				<p:fileUpload id="fotoUsu"
+					value="#{usuarioManagedBean.usuario.caminhoFoto}"
+					title="Informe a foto de perfil" mode="simple" auto="true"
+					sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+					uploadLabel="Enviar Foto" styleClass="capturaArquivo" />
+
+				<p:commandButton value="Selecionar Arquivo"
+					styleClass="ativo botaoCapturaArquivo"
+					title="Clique aqui para selecionar um arquivo"
+					alt="Selecione um Arquivo" />
+
+				<span id="textoArquivo"></span>
+			</h:panelGrid> -->
+
+			<h:panelGrid columns="1">
+				<p:outputLabel value="E-mail" for="emailUsu" indicateRequired="true" />
+				<p:inputText id="emailUsu" alt="E-mail" title="Informe o seu e-mail"
+					maxlength="100" required="true"
+					value="#{usuarioManagedBean.usuario.email}" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="1">
+				<p:outputLabel value="Senha" for="senhaUsu" />
+				<p:password
+					placeholder="Sua palavra-chave. Lembre-se, não divulgue sua senha por aí."
+					alt="Senha" id="senhaUsu" title="Informe a sua nova senha"
+					value="#{usuarioManagedBean.usuario.senha}" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="1">
+				<p:outputLabel value="Confirmação de Senha" for="senhaCUsu"
+					indicateRequired="true" />
+				<p:password placeholder="Informe novamente a nova senha."
+					alt="Confirmação de Senha" id="senhaCUsu"
+					title="Informe a nova senha novamente" />
+			</h:panelGrid>
+
+			<br />
+			<div class="barraBotao">
+				<p:commandButton value="Alterar"
+					action="#{usuarioManagedBean.alterar()}" styleClass="ativo"
+					title="Clique aqui para alterar os dados da sua conta"
+					alt="Alterar" update=":frm :frm:mensagem"/>
+
+				<p:commandButton value="Excluir"
+					action="#{usuarioManagedBean.excluir()}" styleClass="ativo"
+					update=":frm :frm:mensagem" alt="Excluir"
+					title="Clique aqui para excluir sua conta">
+
+					<p:confirm header="Confirmação de Exclusão de Conta"
+						message="Você tem certeza que deseja excluir sua conta? Todos os dados cadastrados serão apagados."
+						icon="ui-icon-alert" />
+
+				</p:commandButton>
+
+				<p:commandButton value="Limpar" styleClass="passivo limpar"
+					title="Clique aqui para limpar" alt="Limpar" />
+			</div>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

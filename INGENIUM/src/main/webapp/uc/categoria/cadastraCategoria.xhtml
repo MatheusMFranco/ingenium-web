@@ -6,13 +6,18 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:event listener="#{categoriaManagedBean.carregarCategoria()}" type="preRenderView" />
+		</f:metadata>
+	</ui:define>
 	<ui:define name="corpo">
 		<h:form id="frm" class="formulario">
 			<label class="obr">( <span>*</span> ) Preenchimento
 				Obrigatório
 			</label>
 			<h1>Cadastro de Categoria</h1>
+			<h1>Alteração de Categoria</h1>
 			<br />
 			<p:messages id="mensagem" closable="true" styleClass="msgPrime"/>
 			<h:panelGrid columns="1">
@@ -48,6 +53,8 @@
 			<div class="barraBotao">
 				<p:commandButton value="Incluir" action="#{categoriaManagedBean.salvar()}" styleClass="ativo"
 					title="Clique aqui para confirmar o cadastro" alt="Incluir" type="submit" update=":frm:mensagem :frm" />
+				<p:commandButton value="Alterar" action="#{categoriaManagedBean.alterar()}" styleClass="ativo"
+					title="Clique aqui para alterar o cadastro" alt="Alterar" type="submit" update=":frm:mensagem :frm" />
 				<p:commandButton value="Limpar" styleClass="passivo limpar"
 					title="Clique aqui para limpar" alt="Limpar" type="button" />
 				<p:commandButton value="Voltar" styleClass="passivo voltar dir"

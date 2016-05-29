@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<ui:define name="corpo">
+		<div class="formulario">
+			<h:form>
+				<h1>Consulta de Categoria</h1>
+				<br />
+				<h:panelGrid columns="1">
+					<p:outputLabel value="Nome" for="nomeCat" />
+					<p:inputText id="nomeCat"
+						placeholder="O nome da categoria, exemplo: Gramática Japonesa"
+						alt="Nome" title="Informe o nome da categoria" maxlength="100"
+						value="#{categoriaManagedBean.categoria.nome}" />
+				</h:panelGrid>
+
+				<br />
+				<div class="barraBotao">
+					<p:commandButton value="Consultar"
+						action="#{categoriaManagedBean.consultar()}" styleClass="ativo"
+						title="Clique aqui para consultar uma categoria" alt="Consultar" />
+					<p:commandButton value="Limpar" styleClass="passivo limpar"
+						title="Clique aqui para limpar" alt="Limpar" />
+				</div>
+			</h:form>
+			<br />
+			<h1>Resultado da Consulta</h1>
+			<p:dataTable var="categoria"
+				value="#{categoriaManagedBean.consultar()}">
+				<p:column>
+					<h:outputText value="#{categoriaManagedBean.categoria.icone}" />
+				</p:column>
+				<p:column headerText="Nome">
+					<h:outputText value="#{categoriaManagedBean.categoria.nome}" />
+				</p:column>
+				<p:column headerText="Metas">
+					<h:outputText
+						value="#{categoriaManagedBean.categoria.quantidadeMetas}" />
+				</p:column>
+			</p:dataTable>
+		</div>
+	</ui:define>
+</ui:composition>

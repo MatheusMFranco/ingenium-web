@@ -70,6 +70,22 @@ public class CategoriaManagedBean implements Serializable {
 		return categoria;
 	}
 
+	public void carregarCategoria(){
+		try{
+			String valor = JSFUtil.getParam("catCod");
+			
+			if(valor != null){
+				Long codigo = Long.parseLong(valor);
+				CategoriaDAO categoriaDAO = new CategoriaDAO();
+				categoria = categoriaDAO.buscarPeloCodigo(codigo);
+			}
+			
+		}catch(RuntimeException ex){
+			JSFUtil.adicionarMensagemErro("Erro ao tentar obter os dados de categoria.");
+			System.out.println("Erro ao tentar obter os dados de categoria.");
+		}
+	}
+	
 	public Categoria getCategoria() {
 		return categoria;
 	}
