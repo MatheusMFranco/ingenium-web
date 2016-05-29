@@ -29,11 +29,12 @@
 					</p:commandButton>
 					<p:commandButton value="Limpar" styleClass="passivo limpar"
 						title="Clique aqui para limpar" alt="Limpar" type="reset" />
-					<p:commandButton value="Incluir Nova Categoria"
-						onclick="location.href='#{request.contextPath}/uc/categoria/cadastraCategoria.xhtml'"
-						update=":frm :frm:mensagem"
+					<p:button value="Incluir Nova Categoria"
+						outcome="cadastraCategoria.xhtml"
 						title="Clique aqui para incluir uma nova categoria"
-						alt="Incluir Nova Categoria" styleClass="passivo dir" />
+						alt="Incluir Nova Categoria" styleClass="passivo dir">
+						<f:param name="catAcao" value="Novo" />
+					</p:button>
 				</div>
 			</h:form>
 			<br />
@@ -50,10 +51,12 @@
 						<p:button value="Alterar " 
 							outcome="cadastraCategoria.xhtml">
 							<f:param name="catCod" value="#{categoria.id}"></f:param>
+							<f:param name="catAcao" value="Alterar" />
 						</p:button>
 						<p:button value="Excluir "
 							outcome="cadastraCategoria.xhtml">
 							<f:param name="catCod" value="#{categoria.id}"></f:param>
+							<f:param name="catAcao" value="Excluir" />
 							<!-- <p:confirm header="Confirmação de Exclusão de Categoria"
 								message="Você tem certeza que deseja excluir sua categoria? Todos os objetivos serão apagados."
 								icon="ui-icon-alert" /> -->

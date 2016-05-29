@@ -16,14 +16,17 @@
 			<label class="obr">( <span>*</span> ) Preenchimento
 				Obrigatório
 			</label>
-			<h1>Cadastro de Categoria</h1>
-			<h1>Alteração de Categoria</h1>
-			<h1>Exclusão de Categoria</h1>
-			<br />
+			<p:outputLabel styleClass="titulo" rendered="#{categoriaManagedBean.acao == 'Novo'}">Cadastro de Categoria</p:outputLabel>
+			<p:outputLabel styleClass="titulo" rendered="#{categoriaManagedBean.acao == 'Alterar'}">Alteração de Categoria</p:outputLabel>
+			<p:outputLabel styleClass="titulo" rendered="#{categoriaManagedBean.acao == 'Excluir'}">Exclusão de Categoria</p:outputLabel>
+			<br /><br />
 			<p:messages id="mensagem" closable="true" styleClass="msgPrime"/>
 			<h:panelGrid columns="1">
 				<p:outputLabel value="Nome" for="nomeCat" indicateRequired="true" />
-				<p:inputText id="nomeCat"
+				
+				<p:outputLabel styleClass="labelValor" value="#{categoriaManagedBean.categoria.nome}"
+				rendered="#{categoriaManagedBean.acao == 'Excluir'}" />
+				<p:inputText id="nomeCat" rendered="#{categoriaManagedBean.acao != 'Excluir'}"
 					placeholder="O nome da categoria, exemplo: Gramática Japonesa"
 					alt="Nome" title="Informe o nome da categoria" maxlength="100" required="true"
 					value="#{categoriaManagedBean.categoria.nome}"/>
@@ -31,7 +34,10 @@
 
 			<h:panelGrid columns="1">
 				<p:outputLabel value="Descrição" for="descricaoCat" />
-				<p:inputTextarea id="descricaoCat"
+				
+				<p:outputLabel styleClass="labelValor" value="#{categoriaManagedBean.categoria.descricao}"
+				rendered="#{categoriaManagedBean.acao == 'Excluir'}" />
+				<p:inputTextarea id="descricaoCat" rendered="#{categoriaManagedBean.acao != 'Excluir'}"
 					placeholder="Descreva esta categoria, exemplo: Todos os objetivos relacionados a gramática japonesa."
 					alt="Descrição" title="Informe a descrição da categoria"
 					maxlength="255" value="#{categoriaManagedBean.categoria.descricao}" />
@@ -50,24 +56,23 @@
 				<span id="textoArquivo"></span>	
 			</h:panelGrid> -->
 			
-			<h:panelGrid columns="1">
-				<p:outputLabel value="Nome" />
-				<p:outputLabel styleClass="labelValor" value="#{categoriaManagedBean.categoria.nome}"/>
-			</h:panelGrid>
-
-			<h:panelGrid columns="1">
-				<p:outputLabel value="Descrição"/>
-				<p:outputLabel styleClass="labelValor" value="#{categoriaManagedBean.categoria.descricao}" />
-			</h:panelGrid>
-			
 			<br/>
 			<div class="barraBotao">
 				<p:commandButton value="Incluir" action="#{categoriaManagedBean.salvar()}" styleClass="ativo"
-					title="Clique aqui para confirmar a inclusão" alt="Incluir" update=":frm:mensagem :frm" />
+					title="Clique aqui para confirmar a inclusão" alt="Incluir" update=":frm:mensagem :frm"
+					rendered="#{categoriaManagedBean.acao == 'Novo'}">
+				</p:commandButton>
+				
 				<p:commandButton value="Excluir" actionListener="#{categoriaManagedBean.excluir()}" styleClass="ativo"
-					title="Clique aqui para excluir a categoria" alt="Excluir"  update=":frm:mensagem :frm" />
+					title="Clique aqui para excluir a categoria" alt="Excluir"  update=":frm:mensagem :frm"
+					rendered="#{categoriaManagedBean.acao == 'Excluir'}">
+				</p:commandButton>
+				
 				<p:commandButton value="Alterar" actionListener="#{categoriaManagedBean.alterar()}" styleClass="ativo"
-					title="Clique aqui para alterar a categoria" alt="Alterar" update=":frm:mensagem :frm" />
+					title="Clique aqui para alterar a categoria" alt="Alterar" update=":frm:mensagem :frm"
+					rendered="#{categoriaManagedBean.acao == 'Alterar'}">
+				</p:commandButton>
+				
 				<p:commandButton value="Limpar" styleClass="passivo limpar"
 					title="Clique aqui para limpar" alt="Limpar" type="button" />
 				<p:commandButton value="Voltar" styleClass="passivo voltar dir"

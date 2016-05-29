@@ -17,6 +17,8 @@ public class CategoriaManagedBean implements Serializable {
 	private Categoria categoria;
 	private CategoriaDAO categoriaDAO;
 	private Categoria categoriaSelecionada;
+	
+	private String acao;
 
 	public CategoriaManagedBean() {
 		categoria = new Categoria();
@@ -88,6 +90,7 @@ public class CategoriaManagedBean implements Serializable {
 
 	public void carregarCategoria(){
 		try{
+			acao = JSFUtil.getParam("catAcao");
 			String valor = JSFUtil.getParam("catCod");
 			
 			if(valor != null){
@@ -125,4 +128,11 @@ public class CategoriaManagedBean implements Serializable {
 		this.categoriaSelecionada = categoriaSelecionada;
 	}
 	
+	public String getAcao() {
+		return acao;
+	}
+
+	public void setAcao(String acao) {
+		this.acao = acao;
+	}
 }
