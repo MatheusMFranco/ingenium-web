@@ -33,7 +33,9 @@ public class CategoriaDAO implements Serializable {
 	@SuppressWarnings("unchecked")
 	public List<Categoria> buscarTodos() {
 		categoria.setUsuario(UsuarioDTO.getNick());
-		return em.createQuery("from Categoria").getResultList();
+		Long idUsuario = UsuarioDTO.getId();
+		//return em.createQuery("from Categoria").getResultList();
+		return em.createQuery("from Categoria where usuario_id=?1").setParameter(1, idUsuario).getResultList();
 	}
 	
 	public Categoria buscarPeloNome(String nome) {

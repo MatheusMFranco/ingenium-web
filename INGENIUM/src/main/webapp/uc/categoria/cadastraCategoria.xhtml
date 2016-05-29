@@ -60,20 +60,18 @@
 			
 			<br/>
 			<div class="barraBotao">
-				<p:commandButton value="Incluir" action="#{categoriaManagedBean.salvar()}" styleClass="ativo"
+				<p:commandButton value="Incluir" actionListener="#{categoriaManagedBean.salvar()}" styleClass="ativo"
 					title="Clique aqui para confirmar a inclusão" alt="Incluir" update=":frm:mensagem :frm"
-					rendered="#{categoriaManagedBean.acao == 'Novo'}">
-				</p:commandButton>
+					rendered="#{(categoriaManagedBean.acao != 'Excluir') and (categoriaManagedBean.acao != 'Alterar')}" />
 				
 				<p:commandButton value="Excluir" actionListener="#{categoriaManagedBean.excluir()}" styleClass="ativo"
-					title="Clique aqui para excluir a categoria" alt="Excluir"  update=":frm:mensagem :frm"
-					rendered="#{categoriaManagedBean.acao == 'Excluir'}">
-				</p:commandButton>
+					title="Clique aqui para excluir a categoria" alt="Excluir"  update=":frm:mensagem"
+					outcome="consultaCategoria.xhtml"
+					rendered="#{(categoriaManagedBean.acao != 'Novo') and (categoriaManagedBean.acao != 'Alterar')}" />
 				
 				<p:commandButton value="Alterar" actionListener="#{categoriaManagedBean.alterar()}" styleClass="ativo"
 					title="Clique aqui para alterar a categoria" alt="Alterar" update=":frm:mensagem :frm"
-					rendered="#{categoriaManagedBean.acao == 'Alterar'}">
-				</p:commandButton>
+					rendered="#{(categoriaManagedBean.acao != 'Novo') and (categoriaManagedBean.acao != 'Excluir')}" />
 				
 				<p:commandButton value="Limpar" styleClass="passivo limpar"
 					title="Clique aqui para limpar" alt="Limpar" type="button" />

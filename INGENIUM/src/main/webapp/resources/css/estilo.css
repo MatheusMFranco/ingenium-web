@@ -157,7 +157,7 @@ button{
 /*--*/
 
 /* Elementos */
-h1 {
+h1, .titulo {
 	font-size: 24px;
 	font-weight: 500;
 	padding: 0px;
@@ -170,6 +170,10 @@ h1 {
 .ui-outputlabel{
 	font-weight: bold;
 	font-size: 14pt;
+}
+.labelValor{
+	font-weigt: normal !important;
+	font-size: 12pt !important;
 }
 .ui-outputlabel{
 	padding: 5px;
@@ -232,3 +236,9 @@ label.ui-state-error{
   text-transform: uppercase !important; 
 }
 /*--*/
+
+/* Tabela */
+.ui-column-filter{
+	padding: 0 !important;
+	width: auto !important;
+}

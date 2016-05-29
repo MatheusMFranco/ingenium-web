@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import br.com.ingenium.model.Categoria;
 import br.com.ingenium.dao.CategoriaDAO;
 import br.com.ingenium.dto.CategoriaDTO;
+import br.com.ingenium.filter.ParametrosFilter;
 import br.com.ingenium.util.JSFUtil;
 
 @SuppressWarnings("serial")
@@ -20,7 +21,8 @@ public class CategoriaManagedBean implements Serializable {
 	
 	private String acao;
 	private Long codigo;
-	
+	private ParametrosFilter parametrosFilter = new ParametrosFilter();
+
 	public CategoriaManagedBean() {
 		categoria = new Categoria();
 		categoriaDAO = new CategoriaDAO();
@@ -44,6 +46,7 @@ public class CategoriaManagedBean implements Serializable {
 		try{
 			//CategoriaDAO categoriaDAO = new CategoriaDAO();
 			categoriaDAO.alterar(categoria);
+			this.categoria = new Categoria();
 			//categoriaDAO.alterar(categoria);
 			//this.categoria = categoriaDAO.buscarPeloCodigo(categoria.getId());
 			JSFUtil.adicionarMensagemSucesso("Categoria alterada com sucesso!");
@@ -64,9 +67,9 @@ public class CategoriaManagedBean implements Serializable {
 			System.out.println("Código: " + CategoriaDTO.getId());
 			System.out.println("Descrição: " + CategoriaDTO.getDescricao());
 			//categoriaDAO.excluir(categoria);
-			this.categoria = new Categoria();
 			JSFUtil.adicionarMensagemSucesso("Categoria excluída com sucesso!");
 			System.out.println("Categoria excluída com sucesso!");
+			this.categoria = new Categoria();
 		}catch(Exception e){
 			e.printStackTrace();
 			System.out.println("Não foi possível excluir a categoria informada.");
@@ -103,7 +106,7 @@ public class CategoriaManagedBean implements Serializable {
 			}
 			
 		}catch(RuntimeException ex){
-			JSFUtil.adicionarMensagemErro("Erro ao tentar obter os dados de categoria.");
+			//JSFUtil.adicionarMensagemErro("Erro ao tentar obter os dados de categoria.");
 			System.out.println("Erro ao tentar obter os dados de categoria.");
 		}
 	}
@@ -145,4 +148,12 @@ public class CategoriaManagedBean implements Serializable {
 		this.codigo = codigo;
 	}
 
+	public ParametrosFilter getParametrosFilter() {
+		return parametrosFilter;
+	}
+
+	public void setParametrosFilter(ParametrosFilter parametrosFilter) {
+		this.parametrosFilter = parametrosFilter;
+	}
+	
 }

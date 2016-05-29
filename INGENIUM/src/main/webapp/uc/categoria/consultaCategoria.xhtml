@@ -7,38 +7,38 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="corpo">
-		<div class="formulario">
+		<div>
 			<h:form id="frm">
-				<h1>Consulta de Categoria</h1>
+				<!--  <h1>Consulta de Categoria</h1> -->
 				<br />
 				<p:messages id="mensagem" closable="true" styleClass="msgPrime"/>
-				<h:panelGrid columns="1">
+				<!-- <h:panelGrid columns="1">
 					<p:outputLabel value="Nome" for="nomeCat" />
 					<p:inputText id="nomeCat"
 						placeholder="O nome da categoria, exemplo: Gramática Japonesa"
 						alt="Nome" title="Informe o nome da categoria" maxlength="100"
 						value="#{categoriaManagedBean.categoria.nome}" />
 				</h:panelGrid>
-
-				<br />
+				
+				<br /> -->
 				<div class="barraBotao">
-					<p:commandButton value="Consultar"
+				<!--<p:commandButton value="Consultar"
 						action="#{categoriaManagedBean.consultarPeloNome()}" styleClass="ativo"
 						title="Clique aqui para consultar uma categoria" alt="Consultar">
 						<f:ajax execute="@form" render="@form :frmTabela" />
 					</p:commandButton>
 					<p:commandButton value="Limpar" styleClass="passivo limpar"
-						title="Clique aqui para limpar" alt="Limpar" type="reset" />
+						title="Clique aqui para limpar" alt="Limpar" type="reset" /> -->
 					<p:button value="Incluir Nova Categoria"
 						outcome="cadastraCategoria.xhtml"
 						title="Clique aqui para incluir uma nova categoria"
-						alt="Incluir Nova Categoria" styleClass="passivo dir">
+						alt="Incluir Nova Categoria" styleClass="passivo">
 						<f:param name="catAcao" value="Novo" />
 					</p:button>
 				</div>
 			</h:form>
 			<br />
-			<h1>Resultado da Consulta</h1>
+			<h1>Lista de Categorias</h1>
 			<h:form id="frmTabela">
 				<p:dataTable var="categoria"
 					emptyMessage="Nenhuma categoria encontrada"
