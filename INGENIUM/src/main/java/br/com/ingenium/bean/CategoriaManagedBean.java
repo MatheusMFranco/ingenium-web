@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 
 import br.com.ingenium.model.Categoria;
 import br.com.ingenium.dao.CategoriaDAO;
+import br.com.ingenium.dto.CategoriaDTO;
 import br.com.ingenium.util.JSFUtil;
 
 @SuppressWarnings("serial")
@@ -36,7 +37,10 @@ public class CategoriaManagedBean implements Serializable {
 	}
 	
 	public void alterar(){
-		categoriaDAO.alterar(categoria);
+		//carregarCategoria();
+		CategoriaDAO categoriaDAO = new CategoriaDAO();
+		categoriaDAO.alterar(CategoriaDTO.getCategoria());
+		//categoriaDAO.alterar(categoria);
 		this.categoria = categoriaDAO.buscarPeloCodigo(categoria.getId());
 		JSFUtil.adicionarMensagemSucesso("Categoria alterada com sucesso!");
 		System.out.println("Categoria alterada com sucesso!");
@@ -44,14 +48,20 @@ public class CategoriaManagedBean implements Serializable {
 	
 	public void excluir() {
 		try{
-			categoriaDAO.excluir(categoria);
-			this.categoria = new Categoria();
+			//carregarCategoria();
+			CategoriaDAO categoriaDAO = new CategoriaDAO();
+			categoriaDAO.excluir(CategoriaDTO.getCategoria());
+			System.out.println("Categoria excluída: " + CategoriaDTO.getNome());
+			System.out.println("Código: " + CategoriaDTO.getId());
+			System.out.println("Descrição: " + CategoriaDTO.getDescricao());
+			//categoriaDAO.excluir(categoria);
+			//this.categoria = new Categoria();
 			JSFUtil.adicionarMensagemSucesso("Categoria excluída com sucesso!");
 			System.out.println("Categoria excluída com sucesso!");
 		}catch(Exception e){
 			e.printStackTrace();
-			System.out.println("Não foi possível incluir a categoria informada.");
-			JSFUtil.adicionarMensagemSucesso("Erro Interno do Sistema.");
+			System.out.println("Não foi possível excluir a categoria informada.");
+			JSFUtil.adicionarMensagemErro("Erro ao tentar excluir a categoria.");
 		}
 	}
 	
@@ -78,6 +88,7 @@ public class CategoriaManagedBean implements Serializable {
 				Long codigo = Long.parseLong(valor);
 				CategoriaDAO categoriaDAO = new CategoriaDAO();
 				categoria = categoriaDAO.buscarPeloCodigo(codigo);
+				CategoriaDTO.setCategoria(categoria);
 			}
 			
 		}catch(RuntimeException ex){

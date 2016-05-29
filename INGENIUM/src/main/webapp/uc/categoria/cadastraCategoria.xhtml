@@ -18,6 +18,7 @@
 			</label>
 			<h1>Cadastro de Categoria</h1>
 			<h1>Alteração de Categoria</h1>
+			<h1>Exclusão de Categoria</h1>
 			<br />
 			<p:messages id="mensagem" closable="true" styleClass="msgPrime"/>
 			<h:panelGrid columns="1">
@@ -35,7 +36,7 @@
 					alt="Descrição" title="Informe a descrição da categoria"
 					maxlength="255" value="#{categoriaManagedBean.categoria.descricao}" />
 			</h:panelGrid>
-
+			
 			<!--  <h:panelGrid columns="1" styleClass="quadroArquivo">
 				<p:outputLabel value="Foto" for="fotoCat" />				
 				<p:fileUpload id="fotoCat" fileUploadListener="#{categoriaManagedBean.categoria.caminhoFoto}" title="Informe o ícone da categoria"
@@ -48,13 +49,25 @@
 					
 				<span id="textoArquivo"></span>	
 			</h:panelGrid> -->
+			
+			<h:panelGrid columns="1">
+				<p:outputLabel value="Nome" />
+				<p:outputLabel styleClass="labelValor" value="#{categoriaManagedBean.categoria.nome}"/>
+			</h:panelGrid>
 
+			<h:panelGrid columns="1">
+				<p:outputLabel value="Descrição"/>
+				<p:outputLabel styleClass="labelValor" value="#{categoriaManagedBean.categoria.descricao}" />
+			</h:panelGrid>
+			
 			<br/>
 			<div class="barraBotao">
 				<p:commandButton value="Incluir" action="#{categoriaManagedBean.salvar()}" styleClass="ativo"
-					title="Clique aqui para confirmar o cadastro" alt="Incluir" type="submit" update=":frm:mensagem :frm" />
-				<p:commandButton value="Alterar" action="#{categoriaManagedBean.alterar()}" styleClass="ativo"
-					title="Clique aqui para alterar o cadastro" alt="Alterar" type="submit" update=":frm:mensagem :frm" />
+					title="Clique aqui para confirmar a inclusão" alt="Incluir" update=":frm:mensagem :frm" />
+				<p:commandButton value="Excluir" actionListener="#{categoriaManagedBean.excluir()}" styleClass="ativo"
+					title="Clique aqui para excluir a categoria" alt="Excluir"  update=":frm:mensagem :frm" />
+				<p:commandButton value="Alterar" actionListener="#{categoriaManagedBean.alterar()}" styleClass="ativo"
+					title="Clique aqui para alterar a categoria" alt="Alterar" update=":frm:mensagem :frm" />
 				<p:commandButton value="Limpar" styleClass="passivo limpar"
 					title="Clique aqui para limpar" alt="Limpar" type="button" />
 				<p:commandButton value="Voltar" styleClass="passivo voltar dir"

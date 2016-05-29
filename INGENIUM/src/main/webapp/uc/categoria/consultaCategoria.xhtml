@@ -51,8 +51,13 @@
 							outcome="cadastraCategoria.xhtml">
 							<f:param name="catCod" value="#{categoria.id}"></f:param>
 						</p:button>
-						<p:button value="Excluir " process="@this"
-							action="#{categoriaManagedBean.excluir()}" />
+						<p:button value="Excluir "
+							outcome="cadastraCategoria.xhtml">
+							<f:param name="catCod" value="#{categoria.id}"></f:param>
+							<!-- <p:confirm header="Confirmação de Exclusão de Categoria"
+								message="Você tem certeza que deseja excluir sua categoria? Todos os objetivos serão apagados."
+								icon="ui-icon-alert" /> -->
+						</p:button>
 					</p:column>
 					<!-- <p:column>
 						<h:outputText value="#{categoria.icone}" />

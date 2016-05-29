@@ -46,9 +46,9 @@ public class CategoriaDAO implements Serializable {
 	}
 	
 	public void excluir(Categoria categoria) {
-		categoria.setUsuario(UsuarioDTO.getNick());
 		categoria = em.find(Categoria.class, categoria.getId());
 		if (categoria != null) {
+			categoria.setUsuario(UsuarioDTO.getNick());
 			em.getTransaction().begin();
 			em.remove(categoria);
 			em.getTransaction().commit();
@@ -60,8 +60,8 @@ public class CategoriaDAO implements Serializable {
 	}
 
 	public void alterar(Categoria categoria) {
-		categoria.setUsuario(UsuarioDTO.getNick());
 		if (categoria != null) {
+			categoria.setUsuario(UsuarioDTO.getNick());
 			em.getTransaction().begin();
 			em.merge(categoria);
 			em.getTransaction().commit();
