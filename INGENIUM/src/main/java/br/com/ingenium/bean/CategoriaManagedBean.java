@@ -38,12 +38,18 @@ public class CategoriaManagedBean implements Serializable {
 	
 	public void alterar(){
 		//carregarCategoria();
-		CategoriaDAO categoriaDAO = new CategoriaDAO();
-		categoriaDAO.alterar(CategoriaDTO.getCategoria());
-		//categoriaDAO.alterar(categoria);
-		this.categoria = categoriaDAO.buscarPeloCodigo(categoria.getId());
-		JSFUtil.adicionarMensagemSucesso("Categoria alterada com sucesso!");
-		System.out.println("Categoria alterada com sucesso!");
+		try{
+			//CategoriaDAO categoriaDAO = new CategoriaDAO();
+			categoriaDAO.alterar(categoria);
+			//categoriaDAO.alterar(categoria);
+			//this.categoria = categoriaDAO.buscarPeloCodigo(categoria.getId());
+			JSFUtil.adicionarMensagemSucesso("Categoria alterada com sucesso!");
+			System.out.println("Categoria alterada com sucesso!");
+		}catch(RuntimeException e){
+			e.printStackTrace();
+			System.out.println("Não foi possível alterar a categoria informada.");
+			JSFUtil.adicionarMensagemErro("Erro ao tentar alterar a categoria.");
+		}
 	}
 	
 	public void excluir() {
@@ -55,7 +61,7 @@ public class CategoriaManagedBean implements Serializable {
 			System.out.println("Código: " + CategoriaDTO.getId());
 			System.out.println("Descrição: " + CategoriaDTO.getDescricao());
 			//categoriaDAO.excluir(categoria);
-			//this.categoria = new Categoria();
+			this.categoria = new Categoria();
 			JSFUtil.adicionarMensagemSucesso("Categoria excluída com sucesso!");
 			System.out.println("Categoria excluída com sucesso!");
 		}catch(Exception e){
@@ -89,6 +95,7 @@ public class CategoriaManagedBean implements Serializable {
 				CategoriaDAO categoriaDAO = new CategoriaDAO();
 				categoria = categoriaDAO.buscarPeloCodigo(codigo);
 				CategoriaDTO.setCategoria(categoria);
+				CategoriaDTO.setId(codigo);
 			}
 			
 		}catch(RuntimeException ex){

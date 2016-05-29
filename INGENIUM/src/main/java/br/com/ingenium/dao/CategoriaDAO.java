@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import br.com.ingenium.dto.CategoriaDTO;
 import br.com.ingenium.dto.UsuarioDTO;
 import br.com.ingenium.model.Categoria;
 import br.com.ingenium.util.JPAUtil;
@@ -60,8 +61,15 @@ public class CategoriaDAO implements Serializable {
 	}
 
 	public void alterar(Categoria categoria) {
+		//CategoriaDTO.setCategoria(categoria);
 		if (categoria != null) {
 			categoria.setUsuario(UsuarioDTO.getNick());
+			categoria.setId(CategoriaDTO.getId());
+			
+			System.out.println("Novo nome: " + categoria.getNome());
+			System.out.println("Código: " + categoria.getId());
+			System.out.println("Nova Descrição: " + categoria.getDescricao());
+			
 			em.getTransaction().begin();
 			em.merge(categoria);
 			em.getTransaction().commit();
