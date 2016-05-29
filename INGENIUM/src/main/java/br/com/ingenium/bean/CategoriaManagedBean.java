@@ -19,7 +19,8 @@ public class CategoriaManagedBean implements Serializable {
 	private Categoria categoriaSelecionada;
 	
 	private String acao;
-
+	private Long codigo;
+	
 	public CategoriaManagedBean() {
 		categoria = new Categoria();
 		categoriaDAO = new CategoriaDAO();
@@ -90,11 +91,11 @@ public class CategoriaManagedBean implements Serializable {
 
 	public void carregarCategoria(){
 		try{
-			acao = JSFUtil.getParam("catAcao");
-			String valor = JSFUtil.getParam("catCod");
+			//acao = JSFUtil.getParam("catAcao");
+			//String valor = JSFUtil.getParam("catCod");
 			
-			if(valor != null){
-				Long codigo = Long.parseLong(valor);
+			if(codigo != null){
+				//Long codigo = Long.parseLong(valor);
 				CategoriaDAO categoriaDAO = new CategoriaDAO();
 				categoria = categoriaDAO.buscarPeloCodigo(codigo);
 				CategoriaDTO.setCategoria(categoria);
@@ -135,4 +136,13 @@ public class CategoriaManagedBean implements Serializable {
 	public void setAcao(String acao) {
 		this.acao = acao;
 	}
+	
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
 }
