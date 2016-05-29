@@ -44,8 +44,7 @@
 					emptyMessage="Nenhuma categoria encontrada"
 					value="#{categoriaManagedBean.consultar()}" rows="10"
 					paginator="true" paginatorPosition="bottom"
-					widgetVar="tabelaCategoria" id="tabCategoria"
-					filteredValue="#{categoriaManagedBean.consultarPeloNome()}">
+					widgetVar="tabelaCategoria" id="tabCategoria">
 	
 					<p:column headerText=" ">
 						<p:button value="Alterar " 
@@ -65,7 +64,8 @@
 					<!-- <p:column>
 						<h:outputText value="#{categoria.icone}" />
 					</p:column> -->
-					<p:column headerText="Nome">
+					<p:column headerText="Nome" filterBy="#{categoria.nome}"
+						filterMatchMode="contains">
 						<h:outputText value="#{categoria.nome}" />
 					</p:column>
 					<!--	<p:column headerText="Metas">
