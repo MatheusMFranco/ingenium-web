@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="objAcao" value="#{objetivoManagedBean.acao}" />
+			<f:viewParam name="objCod" value="#{objetivoManagedBean.codigo}" />
+			<f:event listener="#{objetivoManagedBean.carregarObjetivo()}" type="preRenderView" />
+		</f:metadata>
+	</ui:define>
+	<ui:define name="corpo">
+		<h:form id="frm" class="formulario">
+			<label class="obr">( <span>*</span> ) Preenchimento
+				Obrigatório
+			</label>
+			<p:outputLabel styleClass="titulo" rendered="#{objetivoManagedBean.acao == 'Novo'}">Cadastro de Objetivo</p:outputLabel>
+			<p:outputLabel styleClass="titulo" rendered="#{objetivoManagedBean.acao == 'Alterar'}">Alteração de Objetivo</p:outputLabel>
+			<p:outputLabel styleClass="titulo" rendered="#{objetivoManagedBean.acao == 'Excluir'}">Exclusão de Objetivo</p:outputLabel>
+			<br /><br />
+			<p:messages id="mensagem" closable="true" styleClass="msgPrime"/>
+			<h:panelGrid columns="1">
+				<p:outputLabel value="Nome" for="nomeObj" indicateRequired="#{objetivoManagedBean.acao != 'Excluir'}" />
+				
+				<p:outputLabel styleClass="labelValor" value="#{objetivoManagedBean.objetivo.nome}"
+					rendered="#{objetivoManagedBean.acao == 'Excluir'}" />
+				<p:inputText id="nomeObj" rendered="#{objetivoManagedBean.acao != 'Excluir'}"
+					placeholder="O nome do objetivo. Ex.: Estudar pronomes."
+					alt="Nome" title="Informe o nome do objetivo" maxlength="100" required="true"
+					value="#{objetivoManagedBean.objetivo.nome}"/>
+			</h:panelGrid>
+
+			<h:panelGrid columns="1">
+				<p:outputLabel value="Descrição" for="descricaoObj" />
+				
+				<p:outputLabel styleClass="labelValor" value="#{objetivoManagedBean.objetivo.descricao}"
+				rendered="#{objetivoManagedBean.acao == 'Excluir'}" />
+				<p:inputTextarea id="descricaoObj" rendered="#{objetivoManagedBean.acao != 'Excluir'}"
+					placeholder="Descreva esta categoria, exemplo: Todos as metas para estudar pronomes em japonês."
+					alt="Descrição" title="Informe a descrição do objetivo"
+					maxlength="255" value="#{objetivoManagedBean.objetivo.descricao}" />
+			</h:panelGrid>
+			<br/>
+			<div class="barraBotao">
+				<p:commandButton value="Incluir" actionListener="#{objetivoManagedBean.salvar()}" styleClass="ativo"
+					title="Clique aqui para confirmar a inclusão" alt="Incluir" update=":frm:mensagem :frm"
+					rendered="#{(objetivoManagedBean.acao != 'Excluir') and (objetivoManagedBean.acao != 'Alterar')}" />
+				
+				<p:commandButton value="Excluir" actionListener="#{objetivoManagedBean.excluir()}" styleClass="ativo"
+					title="Clique aqui para excluir o objetivo" alt="Excluir"  update=":frm:mensagem"
+					outcome="consultaObjetivo.xhtml"
+					rendered="#{(objetivoManagedBean.acao != 'Novo') and (objetivoManagedBean.acao != 'Alterar')}" />
+				
+				<p:commandButton value="Alterar" actionListener="#{objetivoManagedBean.alterar()}" styleClass="ativo"
+					title="Clique aqui para alterar o objetivo" alt="Alterar" update=":frm:mensagem :frm"
+					rendered="#{(objetivoManagedBean.acao != 'Novo') and (objetivoManagedBean.acao != 'Excluir')}" />
+				
+				<p:commandButton value="Limpar" styleClass="passivo limpar"
+					title="Clique aqui para limpar" alt="Limpar" type="button" />
+				<p:commandButton value="Voltar" styleClass="passivo voltar dir"
+					title="Clique aqui para voltar" alt="Voltar" type="button" />
+			</div>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

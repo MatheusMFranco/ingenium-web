@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/templates/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="corpo">
+		<div>
+			<h:form id="frm">
+				<br />
+				<p:messages id="mensagem" closable="true" styleClass="msgPrime"/>
+				<div class="barraBotao">
+					<p:button value="Incluir Novo Objetivo"
+						outcome="cadastraObjetivo.xhtml"
+						title="Clique aqui para incluir um novo objetivo"
+						alt="Incluir Novo Objetivo" styleClass="passivo">
+						<f:param name="objAcao" value="Novo" />
+					</p:button>
+				</div>
+			</h:form>
+			<br />
+			<h1>Lista de Objetivos</h1>
+			<h:form id="frmTabela">
+				<p:dataTable var="objetivo"
+					emptyMessage="Nenhum objetivo encontrado"
+					value="#{objetivoaManagedBean.consultar()}" rows="10"
+					paginator="true" paginatorPosition="bottom"
+					widgetVar="tabelaObjetivo" id="tabObjetivo">
+	
+					<p:column headerText=" ">
+						<p:button value="Alterar " 
+							outcome="cadastraObjetivo.xhtml">
+							<f:param name="catCod" value="#{categoria.id}"></f:param>
+							<f:param name="catAcao" value="Alterar" />
+						</p:button>
+						<p:button value="Excluir "
+							outcome="cadastraObjetivo.xhtml">
+							<f:param name="objCod" value="#{objetivo.id}"></f:param>
+							<f:param name="objAcao" value="Excluir" />
+						</p:button>
+					</p:column>
+					<p:column headerText="Nome" filterBy="#{objetivo.nome}"
+						filterMatchMode="contains">
+						<h:outputText value="#{objetivo.nome}" />
+					</p:column>
+					<p:column headerText="Categoria" filterBy="#{objetivo.categoria}"
+						filterMatchMode="contains">
+						<h:outputText value="#{objetivo.categoria}" />
+					</p:column>
+					<p:column headerText="Duração" filterBy="#{objetivo.duracao}"
+						filterMatchMode="contains">
+						<h:outputText value="#{objetivo.duracao}" />
+					</p:column>
+					<p:column headerText="Tipo de Duração" filterBy="#{objetivo.tipoDuracao}"
+						filterMatchMode="contains">
+						<h:outputText value="#{objetivo.tipoDuracao}" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import br.com.ingenium.dto.CategoriaDTO;
 import br.com.ingenium.model.Objetivo;
 import br.com.ingenium.util.JPAUtil;
 
@@ -24,7 +25,8 @@ public class ObjetivoDAO implements Serializable {
 
 	@SuppressWarnings("unchecked")
 	public List<Objetivo> buscarTodos() {
-		return em.createQuery("from Objetivo").getResultList();
+		Long idCategoria = CategoriaDTO.getId();
+		return em.createQuery("from Objetivo where categoria_id=?1").setParameter(1, idCategoria).getResultList();
 	}
 
 	public Objetivo buscarPeloUserName(String username) {
