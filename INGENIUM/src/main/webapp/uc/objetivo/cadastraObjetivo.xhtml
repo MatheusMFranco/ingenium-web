@@ -44,6 +44,18 @@
 					alt="Descrição" title="Informe a descrição do objetivo"
 					maxlength="255" value="#{objetivoManagedBean.objetivo.descricao}" />
 			</h:panelGrid>
+			
+			<h:panelGrid columns="1">
+				<p:outputLabel value="Categoria" for="catObj" indicateRequired="#{objetivoManagedBean.acao != 'Excluir'}" />
+				
+				<p:outputLabel styleClass="labelValor" value="#{objetivoManagedBean.objetivo.categoria}"
+					rendered="#{objetivoManagedBean.acao == 'Excluir'}" />
+				<p:selectOneButton id="catObj" value="#{objetivoManagedBean.objetivo.categoria}">
+					<f:selectItem itemLabel=" Selecione uma categoria " itemValue="" />
+					<f:selectItems value="#{objetivoManagedBean.categorias()}" />
+				</p:selectOneButton>
+			</h:panelGrid>
+			
 			<br/>
 			<div class="barraBotao">
 				<p:commandButton value="Incluir" actionListener="#{objetivoManagedBean.salvar()}" styleClass="ativo"

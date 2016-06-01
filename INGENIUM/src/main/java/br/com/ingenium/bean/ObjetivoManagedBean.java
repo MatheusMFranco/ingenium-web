@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 
 import br.com.ingenium.dao.ObjetivoDAO;
 import br.com.ingenium.dto.ObjetivoDTO;
+import br.com.ingenium.model.Categoria;
 import br.com.ingenium.model.Objetivo;
 import br.com.ingenium.util.JSFUtil;
 
@@ -74,6 +75,11 @@ public class ObjetivoManagedBean implements Serializable {
 		return objetivos;
 	}
 	
+	public List<Categoria> categorias() {
+		List<Categoria> categorias = objetivoDAO.buscarCategorias();
+		return categorias;
+	}
+	
 	public Objetivo consultarPorId(){
 		objetivo = objetivoDAO.buscarPeloCodigo(objetivo.getId());
 		return objetivo;
@@ -84,8 +90,8 @@ public class ObjetivoManagedBean implements Serializable {
 			if(codigo != null){
 				ObjetivoDAO objetivoDAO = new ObjetivoDAO();
 				objetivo = objetivoDAO.buscarPeloCodigo(codigo);
-				//ObjetivoDTO.setObjetivo(objetivo);
-				//ObjetivoDTO.setId(codigo);
+				ObjetivoDTO.setObjetivo(objetivo);
+				ObjetivoDTO.setId(codigo);
 			}
 			
 		}catch(RuntimeException ex){
