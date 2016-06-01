@@ -35,7 +35,18 @@
         <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
         <param-value>true</param-value>
     </context-param>
+    
+    <!-- Captcha -->
+    <context-param>
+		<param-name>primefaces.PRIVATE_CAPTCHA_KEY</param-name>
+		<param-value>6Lf1WR8TAAAAAJSGLQV8KPoLSfwNiBer1Z9pWNbT</param-value>
+	</context-param>
 
+	<context-param>
+		<param-name>primefaces.PUBLIC_CAPTCHA_KEY</param-name>
+		<param-value>6Lf1WR8TAAAAAMDuGdVRxj4Vuba6ou3v5Mh-kMED</param-value>
+	</context-param>
+	
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
 		<param-value>bootstrap</param-value>

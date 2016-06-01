@@ -30,11 +30,11 @@ public class ObjetivoManagedBean implements Serializable {
 		try{
 			objetivoDAO.salvar(objetivo);
 			this.objetivo = new Objetivo();
-			JSFUtil.adicionarMensagemSucesso("Objetivo incluída com sucesso!");
-			System.out.println("Objetivo incluída com sucesso!");
+			JSFUtil.adicionarMensagemSucesso("Objetivo incluído com sucesso!");
+			System.out.println("Objetivo incluído com sucesso!");
 		}catch(Exception e){
 			e.printStackTrace();
-			System.out.println("Não foi possível incluir a objetivo informada.");
+			System.out.println("Não foi possível incluir o objetivo informado.");
 			JSFUtil.adicionarMensagemErro("Erro interno do sistema.");
 		}
 	}
@@ -44,11 +44,11 @@ public class ObjetivoManagedBean implements Serializable {
 			objetivoDAO.alterar(objetivo);
 			this.objetivo = new Objetivo();
 			JSFUtil.adicionarMensagemSucesso("Objetivo alterada com sucesso!");
-			System.out.println("Objetivo alterada com sucesso!");
+			System.out.println("Objetivo alterado com sucesso!");
 		}catch(RuntimeException e){
 			e.printStackTrace();
-			System.out.println("Não foi possível alterar a objetivo informada.");
-			JSFUtil.adicionarMensagemErro("Erro ao tentar alterar a objetivo.");
+			System.out.println("Não foi possível alterar o objetivo informado.");
+			JSFUtil.adicionarMensagemErro("Erro ao tentar alterar o objetivo.");
 		}
 	}
 	
@@ -56,16 +56,16 @@ public class ObjetivoManagedBean implements Serializable {
 		try{
 			ObjetivoDAO objetivoDAO = new ObjetivoDAO();
 			objetivoDAO.excluir(ObjetivoDTO.getObjetivo());
-			System.out.println("Objetivo excluída: " + ObjetivoDTO.getNome());
+			System.out.println("Objetivo excluído: " + ObjetivoDTO.getNome());
 			System.out.println("Código: " + ObjetivoDTO.getId());
 			System.out.println("Descrição: " + ObjetivoDTO.getDescricao());
-			JSFUtil.adicionarMensagemSucesso("Objetivo excluída com sucesso!");
-			System.out.println("Objetivo excluída com sucesso!");
+			JSFUtil.adicionarMensagemSucesso("Objetivo excluído com sucesso!");
+			System.out.println("Objetivo excluído com sucesso!");
 			this.objetivo = new Objetivo();
 		}catch(Exception e){
 			e.printStackTrace();
-			System.out.println("Não foi possível excluir a objetivo informada.");
-			JSFUtil.adicionarMensagemErro("Erro ao tentar excluir a objetivo.");
+			System.out.println("Não foi possível excluir o objetivo informado.");
+			JSFUtil.adicionarMensagemErro("Erro ao tentar excluir o objetivo.");
 		}
 	}
 	
