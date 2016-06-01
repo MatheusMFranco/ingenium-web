@@ -5,6 +5,32 @@
 	<artifactId>INGENIUM</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
+	
+  <developers>
+
+	<developer>
+		<id>wesleyosantos91</id>
+		<name>Wesley Oliveira Santos</name>
+		<email>Wesleyosantos91@gmail.com</email>
+		<url>https://github.com/wesleyosantos91</url>
+		<roles>
+			<role>developer Back-End</role>
+		</roles>
+		<timezone>Brazil/Brazilian</timezone>
+	</developer>
+
+	<developer>
+		<id>MatheusMFranco</id>
+		<name>Matheus M. Franco</name>
+		<email>cajondefox@gmail.com</email>
+		<url>https://github.com/MatheusMFranco</url>
+		<roles>
+			<role>developer Front-End</role>
+		</roles>
+		<timezone>Brazil/Brazilian</timezone>
+	</developer>
+
+</developers>
 
 
 	<!-- Codificação dos caracteres / versionamento das apis -->
