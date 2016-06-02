@@ -45,12 +45,12 @@ public class ObjetivoDAO implements Serializable {
 	@SuppressWarnings("unchecked")
 	public List<Categoria> buscarCategorias() {
 		Long idUsuario = UsuarioDTO.getId();
-		return em.createQuery("from Categoria where usuario_id=?1").setParameter(1, idUsuario).getResultList();
+		return em.createQuery("select nome from Categoria where usuario_id=?1").setParameter(1, idUsuario).getResultList();
 	}
 
-	public Objetivo buscarPeloUserName(String username) {
+	public Objetivo buscarPeloNome(String nome) {
 		objetivo.setCategoria(CategoriaDTO.getCategoria());
-		return em.find(Objetivo.class, username);
+		return em.find(Objetivo.class, nome);
 	}
 
 	public Objetivo buscarPeloCodigo(Long codigo) {

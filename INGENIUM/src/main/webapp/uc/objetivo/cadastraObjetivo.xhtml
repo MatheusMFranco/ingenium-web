@@ -50,10 +50,11 @@
 				
 				<p:outputLabel styleClass="labelValor" value="#{objetivoManagedBean.objetivo.categoria}"
 					rendered="#{objetivoManagedBean.acao == 'Excluir'}" />
-				<p:selectOneButton id="catObj" value="#{objetivoManagedBean.objetivo.categoria}">
+				<p:selectOneMenu id="catObj">
 					<f:selectItem itemLabel=" Selecione uma categoria " itemValue="" />
-					<f:selectItems value="#{objetivoManagedBean.categorias()}" />
-				</p:selectOneButton>
+					<f:selectItems value="#{categoriaManagedBean.consultar()}"
+						var="categoriaObj" itemValue="#{categoriaObj.id}" itemLabel="#{categoriaObj.nome}" />
+				</p:selectOneMenu>
 			</h:panelGrid>
 			
 			<br/>
@@ -72,7 +73,7 @@
 					rendered="#{(objetivoManagedBean.acao != 'Novo') and (objetivoManagedBean.acao != 'Excluir')}" />
 				
 				<p:commandButton value="Limpar" styleClass="passivo limpar"
-					title="Clique aqui para limpar" alt="Limpar" type="button" />
+					title="Clique aqui para limpar" alt="Limpar" type="reset" />
 				<p:commandButton value="Voltar" styleClass="passivo voltar dir"
 					title="Clique aqui para voltar" alt="Voltar" type="button" />
 			</div>

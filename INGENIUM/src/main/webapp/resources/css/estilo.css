@@ -242,3 +242,9 @@ label.ui-state-error{
 	padding: 0 !important;
 	width: auto !important;
 }
+
+/* Combobox */
+.ui-selectonemenu .ui-helper-hidden-accessible {
+    clip: unset !important;
+    overflow: visible !important;
+}
