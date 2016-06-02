@@ -17,7 +17,8 @@ button,
 .ui-inputfield,
 #textoArquivo,
 .menuTopo,
-.menuTopo a{
+.menuTopo a,
+.formulario select{
 	color: #FFF !important;
 } 
 /*--*/
@@ -39,11 +40,14 @@ footer{
 .ui-inputtext, 
 .ui-password,
 .ui-menubar,
-.ui-inputfield{
+.ui-inputfield,
+.formulario select{
 	border-color: #763f83 !important;
 }
 .ui-state-focus,
-.ui-inputfield:focus{
+.ui-inputfield:focus,
+.formulario select:focus,
+.formulario select option:focus{
 	background-color: #763f83 !important;
 }
 button:hover,
@@ -60,7 +64,8 @@ button:hover,
 /* Roxo Escuro */
 .ui-inputtext, 
 .ui-password,
-.ui-inputfield{
+.ui-inputfield,
+.formulario select{
 	background-color: #482a46 !important; 
 }
 .ui-state-focus{
