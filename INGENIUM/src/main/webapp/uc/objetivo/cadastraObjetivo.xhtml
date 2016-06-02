@@ -35,6 +35,48 @@
 			</h:panelGrid>
 
 			<h:panelGrid columns="1">
+				<p:outputLabel value="Categoria" for="catObj" indicateRequired="#{objetivoManagedBean.acao != 'Excluir'}" />
+				
+				<p:outputLabel styleClass="labelValor" value="#{objetivoManagedBean.objetivo.categoria}"
+					rendered="#{objetivoManagedBean.acao == 'Excluir'}" />
+				<h:selectOneMenu id="catObj" required="true" title="Informe uma opção">
+					<f:selectItem itemLabel=" Selecione uma categoria " itemValue="" />
+					<f:selectItems value="#{categoriaManagedBean.consultar()}"
+						var="categoriaObj" itemValue="#{categoriaObj.id}" itemLabel="#{categoriaObj.nome}" />
+				</h:selectOneMenu>
+			</h:panelGrid>
+
+			<h:panelGrid columns="1">
+				<p:outputLabel value="Tipo de Duração" for="tipoObj" indicateRequired="#{objetivoManagedBean.acao != 'Excluir'}" />
+				
+				<p:outputLabel styleClass="labelValor" value="#{objetivoManagedBean.objetivo.tipoDuracao}"
+					rendered="#{objetivoManagedBean.acao == 'Excluir'}" />
+				<h:selectOneMenu id="tipoObj" required="true" title="Informe uma opção">
+					<f:selectItem itemLabel=" Selecione o tipo da Duração" itemValue="#{objetivoManagedBean.objetivo.tipoDuracao}" />
+					<f:selectItem itemLabel="Semanal" itemValue="Semanal" />
+					<f:selectItem itemLabel="Mensal" itemValue="Mensal" />
+					<f:selectItem itemLabel="Anual" itemValue="Anual" />
+				</h:selectOneMenu>
+			</h:panelGrid>
+
+			<h:panelGrid columns="1">
+				<p:outputLabel value="Duração" for="duracaoObj" indicateRequired="#{objetivoManagedBean.acao != 'Excluir'}" 
+					rendered="#{objetivoManagedBean.acao == 'Excluir'}"/>
+				<p:outputLabel styleClass="labelValor" value="#{objetivoManagedBean.objetivo.dataInicial} - {objetivoManagedBean.objetivo.dataFinal}"
+					rendered="#{objetivoManagedBean.acao == 'Excluir'}" />
+				
+				<p:panelGrid rendered="#{objetivoManagedBean.acao != 'Excluir'}">
+					<p:outputLabel value="Data Inicial" for="dataInicial" indicateRequired="true" />
+					<p:calendar id="dataInicial"  value="#{objetivoManagedBean.objetivo.dataInicial}" 
+						mask="99/99/9999" required="true" showOn="button" title="Informe uma Data Inicial" />
+					
+					<p:outputLabel value="Data Final" for="dataFinal" indicateRequired="true" />
+					<p:calendar id="dataFinal"  value="#{objetivoManagedBean.objetivo.dataFinal}" 
+						mask="99/99/9999" required="true" showOn="button" title="Informe uma Data Final" />	
+				</p:panelGrid>
+			</h:panelGrid>
+
+			<h:panelGrid columns="1">
 				<p:outputLabel value="Descrição" for="descricaoObj" />
 				
 				<p:outputLabel styleClass="labelValor" value="#{objetivoManagedBean.objetivo.descricao}"
@@ -43,18 +85,6 @@
 					placeholder="Descreva esta categoria, exemplo: Todos as metas para estudar pronomes em japonês."
 					alt="Descrição" title="Informe a descrição do objetivo"
 					maxlength="255" value="#{objetivoManagedBean.objetivo.descricao}" />
-			</h:panelGrid>
-			
-			<h:panelGrid columns="1">
-				<p:outputLabel value="Categoria" for="catObj" indicateRequired="#{objetivoManagedBean.acao != 'Excluir'}" />
-				
-				<p:outputLabel styleClass="labelValor" value="#{objetivoManagedBean.objetivo.categoria}"
-					rendered="#{objetivoManagedBean.acao == 'Excluir'}" />
-				<p:selectOneMenu id="catObj">
-					<f:selectItem itemLabel=" Selecione uma categoria " itemValue="" />
-					<f:selectItems value="#{categoriaManagedBean.consultar()}"
-						var="categoriaObj" itemValue="#{categoriaObj.id}" itemLabel="#{categoriaObj.nome}" />
-				</p:selectOneMenu>
 			</h:panelGrid>
 			
 			<br/>

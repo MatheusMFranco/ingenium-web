@@ -1,7 +1,7 @@
 package br.com.ingenium.dto;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.util.Date;
 
 import br.com.ingenium.model.Categoria;
 import br.com.ingenium.model.Objetivo;
@@ -55,16 +55,24 @@ public class ObjetivoDTO implements Serializable{
 		objetivo.setDescricao(descricao);
 	}
 
-	 
-	public static Calendar getData() {
+	public static Date getDataInicial() {
 		 
-		return objetivo.getData();
+		return objetivo.getDataInicial();
 	}
 
-	 
-	public static void setData(Calendar data) {
+	public static void setDataInicial(Date data) {
 		 
-		objetivo.setData(data);
+		objetivo.setDataInicial(data);
+	}
+	
+	public static Date getDataFinal() {
+		 
+		return objetivo.getDataFinal();
+	}
+
+	public static void setDataFinal(Date data) {
+		 
+		objetivo.setDataFinal(data);
 	}
 
 	 

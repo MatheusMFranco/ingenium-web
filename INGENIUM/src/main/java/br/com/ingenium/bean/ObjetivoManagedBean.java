@@ -6,7 +6,6 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 import br.com.ingenium.dao.ObjetivoDAO;
-import br.com.ingenium.dto.CategoriaDTO;
 import br.com.ingenium.dto.ObjetivoDTO;
 import br.com.ingenium.model.Categoria;
 import br.com.ingenium.model.Objetivo;
