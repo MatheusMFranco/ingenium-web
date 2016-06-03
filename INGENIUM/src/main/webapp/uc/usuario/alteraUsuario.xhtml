@@ -90,7 +90,7 @@
 
 				<p:commandButton value="Excluir"
 					action="#{usuarioManagedBean.excluir()}" styleClass="ativo"
-					update=":frm :frm:mensagem" alt="Excluir"
+					update=":frm :frm:mensagem" alt="Excluir" oncomplete="atualizar()" 
 					title="Clique aqui para excluir sua conta">
 
 					<p:confirm header="Confirmação de Exclusão de Conta"

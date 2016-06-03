@@ -21,15 +21,15 @@
 					indicateRequired="true" />
 				<p:inputText placeholder="Usuário" alt="Usuário" id="username"
 					required="true" title="Informe o nome de usuário"
-					value="#{loginManagedBean.usuario.usuario}" />
+					value="#{loginManagedBean.usuario.usuario}" validatorMessage="Usuário inválido" />
 			</h:panelGrid>
 
 			<h:panelGrid columns="1">
 				<p:outputLabel value="Senha" for="senha" indicateRequired="true"
 					styleClass="esconder" />
 				<p:password placeholder="Senha" alt="Senha" id="senha"
-					required="true" title="Informe a senha"
-					value="#{loginManagedBean.usuario.senha}" />
+					required="true" title="Informe a senha" 
+					value="#{loginManagedBean.usuario.senha}" validatorMessage="Senha inválida" />
 			</h:panelGrid>
 
 			<div class="barraBotao">

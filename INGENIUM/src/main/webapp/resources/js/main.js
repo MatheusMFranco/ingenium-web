@@ -139,3 +139,10 @@ function cadastroRealizado(){
 		$(".msgPOG").show();
 	}
 }
+
+/* Atualizar a página */
+function atualizar(){
+	setTimeout(function (){
+		location.reload();
+	}, 2000);
+}

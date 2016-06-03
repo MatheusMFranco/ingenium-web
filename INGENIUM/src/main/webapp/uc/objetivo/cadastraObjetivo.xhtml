@@ -66,13 +66,16 @@
 					rendered="#{objetivoManagedBean.acao == 'Excluir'}" />
 				
 				<p:panelGrid rendered="#{objetivoManagedBean.acao != 'Excluir'}">
-					<p:outputLabel value="Data Inicial" for="dataInicial" indicateRequired="true" />
-					<p:calendar id="dataInicial"  value="#{objetivoManagedBean.objetivo.dataInicial}" 
-						pattern="dd/MM/yyyy" mask="99/99/9999" required="true" showOn="button" title="Informe uma Data Inicial" />
-					
-					<p:outputLabel value="Data Final" for="dataFinal" indicateRequired="true" />
-					<p:calendar id="dataFinal"  value="#{objetivoManagedBean.objetivo.dataFinal}" 
-						pattern="dd/MM/yyyy" mask="99/99/9999" required="true" showOn="button" title="Informe uma Data Final" />	
+					<h:panelGrid columns="1">
+						<p:outputLabel value="Data Inicial" for="dataInicial" indicateRequired="true" />
+						<p:calendar id="dataInicial"  value="#{objetivoManagedBean.objetivo.dataInicial}"
+							pattern="dd/MM/yyyy" mask="99/99/9999" required="true"  maxlengh="10" title="Informe uma Data Inicial" />
+					</h:panelGrid>
+					<h:panelGrid columns="1">
+						<p:outputLabel value="Data Final" for="dataFinal" indicateRequired="true" />
+						<p:calendar id="dataFinal"  value="#{objetivoManagedBean.objetivo.dataFinal}" 
+							pattern="dd/MM/yyyy" mask="99/99/9999" required="true"  maxlengh="10" title="Informe uma Data Final" />	
+					</h:panelGrid>
 				</p:panelGrid>
 			</h:panelGrid>
 
