@@ -1,7 +1,5 @@
 package br.com.ingenium.test;
 
-import java.util.Calendar;
-
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -24,7 +22,7 @@ public class ObjetivoDAOTest {
 		
 		objetivo.setNome("JPA, JSF, GIT, MAVEN, PRIMEFACES");
 		objetivo.setDescricao("Estudo de Frameworks para Desenvolvimento de Sistema Ingenium");
-		objetivo.setData(Calendar.getInstance());
+		//objetivo.setData(Calendar.getInstance());
 		objetivo.setCategoria(categoria);
 		
 		objetivoDAO.salvar(objetivo);

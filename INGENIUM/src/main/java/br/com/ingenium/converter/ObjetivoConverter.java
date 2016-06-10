@@ -5,11 +5,11 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-import br.com.ingenium.model.Categoria;
+import br.com.ingenium.model.Objetivo;
 import br.com.ingenium.util.JPAUtil;
 
-@FacesConverter(forClass=Categoria.class)
-public class CategoriaConverter implements Converter{
+@FacesConverter(forClass=Objetivo.class)
+public class ObjetivoConverter implements Converter{
 	
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String string) {
@@ -17,16 +17,16 @@ public class CategoriaConverter implements Converter{
 			return null;
 		}
 		Long id = Long.valueOf(string);
-		return JPAUtil.getEntityManager().find(Categoria.class, id); 
+		return JPAUtil.getEntityManager().find(Objetivo.class, id); 
 	}
 
 	@Override
 	public String getAsString(FacesContext contect, UIComponent component, Object object) {
-		Categoria categoria = (Categoria)object;
-		if (categoria == null ||categoria.getId() == null) {
+		Objetivo objetivo = (Objetivo)object;
+		if (objetivo == null ||objetivo.getId() == null) {
 			return null;
 		}
-		return String.valueOf(categoria.getId());
+		return String.valueOf(objetivo.getId());
 	}
 
 }
