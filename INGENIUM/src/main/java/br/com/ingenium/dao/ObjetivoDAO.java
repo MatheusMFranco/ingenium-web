@@ -1,6 +1,5 @@
 package br.com.ingenium.dao;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -12,8 +11,8 @@ import br.com.ingenium.model.Categoria;
 import br.com.ingenium.model.Objetivo;
 import br.com.ingenium.util.JPAUtil;
 
-@SuppressWarnings("serial")
-public class ObjetivoDAO implements Serializable {
+
+public class ObjetivoDAO  {
 
 	EntityManager em = JPAUtil.getEntityManager();
 	Objetivo objetivo = new Objetivo();
