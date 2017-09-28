@@ -49,7 +49,7 @@ public class UsuarioDAOTest {
 	public void login(){
 		Usuario usuario = new Usuario();
 		usuario.setUsuario("wesleyosantos91");
-		usuario.setSenha("120691bt1");
+		usuario.setSenha("12345");
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		boolean login = usuarioDAO.login(usuario);
 		System.out.println(login);
