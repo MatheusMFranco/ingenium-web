@@ -23,24 +23,24 @@ public class UsuarioManagedBean implements Serializable {
 		usuario = new Usuario();
 		usuarioDAO = new UsuarioDAO();
 	}
-	
 
 	public void salvar() {
 		
 	try{
 		usuarioDAO.salvar(usuario);
+	
 		this.usuario = new Usuario();
+		
 		JSFUtil.adicionarMensagemSucesso("Cadastro realizado com sucesso!");
 		System.out.println("Cadastro realizado com sucesso!");
-		}catch(Exception e){
+		} catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("erro sql");
 			JSFUtil.adicionarMensagemErro("Erro interno do sistema.");
 		}
 	}
 	
-	
-	public void alterar(){
+	public void alterar() {
 		Usuario usuario = UsuarioDTO.getNick();
 
 		usuarioDAO.alterar(usuario);
@@ -52,16 +52,16 @@ public class UsuarioManagedBean implements Serializable {
 	public void excluir() {
 		Usuario usuario = UsuarioDTO.getNick();
 
-		try{
-			
+		try {
 			usuarioDAO.excluir(usuario);
 			this.usuario = new Usuario();
+
 			LoginManagedBean conta = new LoginManagedBean();
 			conta.logout();
 			JSFUtil.adicionarMensagemSucesso("Conta excluída com sucesso!");
 			System.out.println("Conta excluída com sucesso!");
 			
-			}catch(Exception e){
+			} catch(Exception e) {
 				e.printStackTrace();
 				System.out.println("erro sql");
 				System.out.println("Erro Interno do Sistema.");
@@ -70,19 +70,15 @@ public class UsuarioManagedBean implements Serializable {
 		}
 	
 	public List<Usuario> consultar() {
-		List<Usuario> usuarios = usuarioDAO.buscarTodos();
-		return usuarios;
+		return usuarioDAO.buscarTodos();
 	}
 	
-	public Usuario consultarPorUserName(){
-		usuario = UsuarioDTO.getNick();
-		//System.out.println("Usuário logado no momento: " + usuario.getUsuario());
-		return usuario;
+	public Usuario consultarPorUserName() {
+		return UsuarioDTO.getNick();
 	}
 	
 	public Usuario consultarPorId(){
 		System.out.println(usuario.getId());
-		//usuario = usuarioDAO.buscarPeloCodigo(usuario.getId());
 		return usuario;
 	}
 
@@ -97,5 +93,4 @@ public class UsuarioManagedBean implements Serializable {
 	public void novo() {
 		usuario = new Usuario();
 	}
-
 }

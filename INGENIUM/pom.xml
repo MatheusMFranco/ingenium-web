@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.ingenium</groupId>
 	<artifactId>INGENIUM</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>war</packaging>
 	
   <developers>
@@ -40,9 +40,9 @@
 		<java.version>1.8</java.version>
 		<junit.version>4.12</junit.version>
 		<mysql-connector-java.version>5.1.36</mysql-connector-java.version>
-		<hibernate-core.version>5.1.0.Final</hibernate-core.version>
-		<hibernate-validator.version>5.1.2.Final</hibernate-validator.version>
-		<hibernate-entitymanager.version>5.1.0.Final</hibernate-entitymanager.version>
+		<hibernate-core.version>5.2.6.Final</hibernate-core.version>
+		<hibernate-validator.version>5.2.5.Final</hibernate-validator.version>
+		<hibernate-entitymanager.version>5.2.6.Final</hibernate-entitymanager.version>
 		<primefaces.version>5.1</primefaces.version>
 		<jsf-api.version>2.2.10</jsf-api.version>
 		<jsf-impl.version>2.2.10</jsf-impl.version>

@@ -12,7 +12,7 @@ import br.com.ingenium.model.Objetivo;
 import br.com.ingenium.util.JPAUtil;
 
 
-public class ObjetivoDAO  {
+public class ObjetivoDAO {
 
 	EntityManager em = JPAUtil.getEntityManager();
 	Objetivo objetivo = new Objetivo();
@@ -27,9 +27,6 @@ public class ObjetivoDAO  {
 		em.getTransaction().begin();
 		em.persist(objetivo);
 		em.getTransaction().commit();
-		em.close();
-
-
 	}
 
 	@SuppressWarnings("unchecked")
@@ -58,17 +55,14 @@ public class ObjetivoDAO  {
 	}
 
 	public void excluir(Objetivo objetivo) {
-
 		objetivo = em.find(Objetivo.class, objetivo.getId());
 		if (objetivo != null) {
 			objetivo.setCategoria(CategoriaDTO.getCategoria());
 			em.getTransaction().begin();
 			em.remove(objetivo);
 			em.getTransaction().commit();
-			em.close();
 		} else {
 			em.getTransaction().rollback();
-			em.close();
 		}
 	}
 
@@ -86,6 +80,5 @@ public class ObjetivoDAO  {
 			em.merge(objetivo);
 			em.getTransaction().commit();
 		}
-
 	}
 }

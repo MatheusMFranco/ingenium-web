@@ -9,7 +9,7 @@ import br.com.ingenium.model.Categoria;
 import br.com.ingenium.util.JPAUtil;
 
 @FacesConverter(forClass=Categoria.class)
-public class CategoriaConverter implements Converter{
+public class CategoriaConverter implements Converter {
 	
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String string) {
@@ -28,5 +28,4 @@ public class CategoriaConverter implements Converter{
 		}
 		return String.valueOf(categoria.getId());
 	}
-
 }

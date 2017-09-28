@@ -5,7 +5,7 @@ import java.io.Serializable;
 import br.com.ingenium.model.Usuario;
 
 @SuppressWarnings("serial")
-public class UsuarioDTO implements Serializable{
+public class UsuarioDTO implements Serializable {
 
 	public static String usuario;
 	public static Usuario nick;
@@ -57,9 +57,8 @@ public class UsuarioDTO implements Serializable{
 	public static String getUsuario() {
 		return usuario;
 	}
-	
+
 	public static Usuario getNick() {
 		return nick;
 	}
-
 }

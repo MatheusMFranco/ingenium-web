@@ -41,9 +41,9 @@ public class CategoriaManagedBean implements Serializable {
 		}
 	}
 	
-	public void alterar(){
+	public void alterar() {
 		//carregarCategoria();
-		try{
+		try {
 			//CategoriaDAO categoriaDAO = new CategoriaDAO();
 			categoriaDAO.alterar(categoria);
 			this.categoria = new Categoria();
@@ -51,7 +51,7 @@ public class CategoriaManagedBean implements Serializable {
 			//this.categoria = categoriaDAO.buscarPeloCodigo(categoria.getId());
 			JSFUtil.adicionarMensagemSucesso("Categoria alterada com sucesso!");
 			System.out.println("Categoria alterada com sucesso!");
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			e.printStackTrace();
 			System.out.println("Não foi possível alterar a categoria informada.");
 			JSFUtil.adicionarMensagemErro("Erro ao tentar alterar a categoria.");
@@ -59,7 +59,7 @@ public class CategoriaManagedBean implements Serializable {
 	}
 	
 	public void excluir() {
-		try{
+		try {
 			//carregarCategoria();
 			CategoriaDAO categoriaDAO = new CategoriaDAO();
 			categoriaDAO.excluir(CategoriaDTO.getCategoria());
@@ -70,7 +70,7 @@ public class CategoriaManagedBean implements Serializable {
 			JSFUtil.adicionarMensagemSucesso("Categoria excluída com sucesso!");
 			System.out.println("Categoria excluída com sucesso!");
 			this.categoria = new Categoria();
-		}catch(Exception e){
+		} catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("Não foi possível excluir a categoria informada.");
 			JSFUtil.adicionarMensagemErro("Erro ao tentar excluir a categoria.");
@@ -78,34 +78,31 @@ public class CategoriaManagedBean implements Serializable {
 	}
 	
 	public List<Categoria> consultar() {
-		List<Categoria> categorias = categoriaDAO.buscarTodos();
-		return categorias;
+		return categoriaDAO.buscarTodos();
 	}
 	
-	public Categoria consultarPeloNome(){
-		categoria = categoriaDAO.buscarPeloNome(categoria.getNome());
-		return categoria;
+	public Categoria consultarPeloNome() {
+		return categoriaDAO.buscarPeloNome(categoria.getNome());
 	}
 	
-	public Categoria consultarPorId(){
-		categoria = categoriaDAO.buscarPeloCodigo(categoria.getId());
-		return categoria;
+	public Categoria consultarPorId() {
+		return categoriaDAO.buscarPeloCodigo(categoria.getId());
 	}
 
-	public void carregarCategoria(){
-		try{
+	public void carregarCategoria() {
+		try {
 			//acao = JSFUtil.getParam("catAcao");
 			//String valor = JSFUtil.getParam("catCod");
 			
-			if(codigo != null){
+			if (codigo != null) {
 				//Long codigo = Long.parseLong(valor);
-				CategoriaDAO categoriaDAO = new CategoriaDAO();
+				//CategoriaDAO categoriaDAO = new CategoriaDAO();
 				categoria = categoriaDAO.buscarPeloCodigo(codigo);
 				CategoriaDTO.setCategoria(categoria);
 				CategoriaDTO.setId(codigo);
 			}
 			
-		}catch(RuntimeException ex){
+		} catch(RuntimeException ex) {
 			//JSFUtil.adicionarMensagemErro("Erro ao tentar obter os dados de categoria.");
 			System.out.println("Erro ao tentar obter os dados de categoria.");
 		}
@@ -155,5 +152,4 @@ public class CategoriaManagedBean implements Serializable {
 	public void setParametrosFilter(ParametrosFilter parametrosFilter) {
 		this.parametrosFilter = parametrosFilter;
 	}
-	
 }

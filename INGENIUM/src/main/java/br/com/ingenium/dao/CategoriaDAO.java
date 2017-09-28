@@ -14,14 +14,12 @@ public class CategoriaDAO {
 	EntityManager em = JPAUtil.getEntityManager();
 	Categoria categoria = new Categoria();
 	
-	public void salvar(Categoria categoria){	
+	public void salvar(Categoria categoria) {	
 		categoria.setUsuario(UsuarioDTO.getNick());
 		em.getTransaction().begin();
 		em.persist(categoria);
 		em.getTransaction().commit();
 		em.close();
-
-
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -48,10 +46,8 @@ public class CategoriaDAO {
 			em.getTransaction().begin();
 			em.remove(categoria);
 			em.getTransaction().commit();
-			em.close();
 		} else {
 			em.getTransaction().rollback();
-			em.close();
 		}
 	}
 
@@ -66,5 +62,4 @@ public class CategoriaDAO {
 		}
 
 	}
-	
 }

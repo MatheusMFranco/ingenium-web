@@ -7,27 +7,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
+@Table(name = "usuario")
+@NamedQueries({
+	@NamedQuery(query="SELECT u FROM Usuario as u where u.usuario = :usuario and u.senha = :senha", name = "Usuario.findByUsuarioAndSenha")
+})
 public class Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@Column(length = 15, nullable = false, unique = true)
+	@Column(name = "usuario", length = 15, nullable = false, unique = true)
 	private String usuario;
 	@Column(length = 100, nullable = false)
 	private String nome;
 	@Column(length = 255, nullable = true)
 	private String descricao;
-	/*@Transient
-	private String caminhoFoto;
-	@Lob
-	private byte[] foto;*/
 	@Column(length = 100, nullable = false)
 	private String email;
-	@Column(length = 32, nullable = false)
+	@Column(name ="senha", length = 32, nullable = false)
 	private String senha;
 
 	public Long getId() {
@@ -61,23 +64,6 @@ public class Usuario implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
-/*	public String getCaminhoFoto() {
-		return caminhoFoto;
-	}
-	
-	public void setCaminhoFoto(String caminhoFoto) {
-		this.caminhoFoto = caminhoFoto;
-	}
-	
-	public byte[] getFoto() {
-		return foto;
-	}
-	
-	public void setFoto(byte[] foto) {
-		this.foto = foto;
-		
-	}*/
 
 	public String getEmail() {
 		return email;
@@ -150,7 +136,4 @@ public class Usuario implements Serializable {
 			return false;
 		return true;
 	}
-
-	
-
 }

@@ -57,5 +57,4 @@ public class JPAUtil implements Serializable {
 			JPAUtil.emf.close();
 		}
 	}
-
 }

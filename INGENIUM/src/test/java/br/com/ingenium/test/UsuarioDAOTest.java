@@ -14,29 +14,25 @@ public class UsuarioDAOTest {
 	@Ignore
 	public void salvar() {
 		
-        
 		Usuario usuario = new Usuario();
-
 		usuario.setUsuario("Wesleyosantos91");
 		usuario.setNome("Wesley Oliveira");
 		usuario.setDescricao(" Teste1 ");
-		//usuario.setCaminhoFoto("C:/Users/Public/Pictures/Sample Pictures/Tulips.jpg");
 		usuario.setEmail("wesleyosantos91@gmail.com");
 		usuario.setSenha("123456d");
 
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		usuarioDAO.salvar(usuario);
-
 	}
 
 	@Test
-	//@Ignore
+	@Ignore
 	public void buscartodos() {
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 
 		List<Usuario> usuariolist = usuarioDAO.buscarTodos();
-
-		for (Usuario usuario : usuariolist) {
+		
+		usuariolist.forEach(usuario -> {
 			System.out.println(usuario.getId());
 			System.out.println(usuario.getUsuario());
 			System.out.println(usuario.getNome());
@@ -44,28 +40,25 @@ public class UsuarioDAOTest {
 			System.out.println(usuario.getEmail());
 			System.out.println(usuario.getSenha());
 			System.out.println();
+		});
 
-		}
 	}
 	
 	@Test
-	@Ignore
+	//@Ignore
 	public void login(){
 		Usuario usuario = new Usuario();
 		usuario.setUsuario("wesleyosantos91");
-		usuario.setSenha("12345");
+		usuario.setSenha("120691bt1");
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		
-		usuarioDAO.login(usuario);
-		
-		
+		boolean login = usuarioDAO.login(usuario);
+		System.out.println(login);
 	}
 
 	@Test
 	@Ignore
 	public void excluir() {
 		Usuario usuario = new Usuario();
-
 		usuario.setId(5L);
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		usuarioDAO.excluir(usuario);
@@ -74,9 +67,7 @@ public class UsuarioDAOTest {
 	@Test
 	@Ignore
 	public void buscarPorCodigo() {
-
 		Long codigo = 1L;
-
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 
 		Usuario usuario = usuarioDAO.buscarPeloCodigo(codigo);
@@ -105,8 +96,5 @@ public class UsuarioDAOTest {
 
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		usuarioDAO.alterar(usuario);
-
 	}
-	
-	
 }

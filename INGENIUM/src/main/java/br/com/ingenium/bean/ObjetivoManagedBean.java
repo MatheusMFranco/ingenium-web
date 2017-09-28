@@ -28,12 +28,12 @@ public class ObjetivoManagedBean implements Serializable {
 	}
 	
 	public void salvar() {
-		try{
+		try {
 			objetivoDAO.salvar(objetivo);
 			this.objetivo = new Objetivo();
 			JSFUtil.adicionarMensagemSucesso("Objetivo incluído com sucesso!");
 			System.out.println("Objetivo incluído com sucesso!");
-		}catch(Exception e){
+		} catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("Não foi possível incluir o objetivo informado.");
 			JSFUtil.adicionarMensagemErro("Erro interno do sistema.");
@@ -54,7 +54,7 @@ public class ObjetivoManagedBean implements Serializable {
 	}
 	
 	public void excluir() {
-		try{
+		try {
 			ObjetivoDAO objetivoDAO = new ObjetivoDAO();
 			objetivoDAO.excluir(ObjetivoDTO.getObjetivo());
 			System.out.println("Objetivo excluído: " + ObjetivoDTO.getNome());
@@ -63,7 +63,7 @@ public class ObjetivoManagedBean implements Serializable {
 			JSFUtil.adicionarMensagemSucesso("Objetivo excluído com sucesso!");
 			System.out.println("Objetivo excluído com sucesso!");
 			this.objetivo = new Objetivo();
-		}catch(Exception e){
+		} catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("Não foi possível excluir o objetivo informado.");
 			JSFUtil.adicionarMensagemErro("Erro ao tentar excluir o objetivo.");
@@ -81,21 +81,21 @@ public class ObjetivoManagedBean implements Serializable {
 		return categorias;
 	}
 	
-	public Objetivo consultarPorId(){
+	public Objetivo consultarPorId() {
 		objetivo = objetivoDAO.buscarPeloCodigo(objetivo.getId());
 		return objetivo;
 	}
 
-	public void carregarObjetivo(){
-		try{
-			if(codigo != null){
+	public void carregarObjetivo() {
+		try {
+			if (codigo != null) {
 				ObjetivoDAO objetivoDAO = new ObjetivoDAO();
 				objetivo = objetivoDAO.buscarPeloCodigo(codigo);
 				ObjetivoDTO.setObjetivo(objetivo);
 				ObjetivoDTO.setId(codigo);
 			}
 			
-		}catch(RuntimeException ex){
+		} catch(RuntimeException ex) {
 			System.out.println("Erro ao tentar obter os dados do objetivo.");
 		}
 	}

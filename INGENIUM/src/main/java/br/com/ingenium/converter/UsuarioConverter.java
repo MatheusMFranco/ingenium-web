@@ -9,7 +9,7 @@ import br.com.ingenium.model.Usuario;
 import br.com.ingenium.util.JPAUtil;
 
 @FacesConverter(forClass=Usuario.class)
-public class UsuarioConverter implements Converter{
+public class UsuarioConverter implements Converter {
 	
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String string) {
@@ -28,5 +28,4 @@ public class UsuarioConverter implements Converter{
 		}
 		return String.valueOf(usuario.getId());
 	}
-
 }

@@ -21,12 +21,11 @@ public class AuthorizationFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-
 	}
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
 		try {
 
 			HttpServletRequest reqt = (HttpServletRequest) request;
@@ -34,23 +33,18 @@ public class AuthorizationFilter implements Filter {
 			HttpSession ses = reqt.getSession(false);
 
 			String reqURI = reqt.getRequestURI();
-			if (reqURI.indexOf("/login.xhtml") >= 0
-					|| (ses != null && ses.getAttribute("username") != null)
-					|| reqURI.indexOf("/public/") >= 0
-					|| reqURI.contains("javax.faces.resource")
+			if (reqURI.indexOf("/login.xhtml") >= 0 || (ses != null && ses.getAttribute("username") != null)
+					|| reqURI.indexOf("/public/") >= 0 || reqURI.contains("javax.faces.resource")
 					|| reqURI.indexOf("/uc/usuario/cadastraUsuario.xhtml") >= 0)
 				chain.doFilter(request, response);
 			else
 				resp.sendRedirect(reqt.getContextPath() + "/login.xhtml");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			//System.out.println("Não foi possível efetuar o login.");
-			//JSFUtil.adicionarMensagemErro("Não foi possível efetuar o login.");
 		}
 	}
 
 	@Override
 	public void destroy() {
-
 	}
 }

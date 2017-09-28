@@ -54,7 +54,7 @@ public class CategorioDAOTest {
 	}
 	
 	@Test
-	//@Ignore
+	@Ignore
 	public void buscarPorCodigo() {
 
 		Long codigo = 1L;
