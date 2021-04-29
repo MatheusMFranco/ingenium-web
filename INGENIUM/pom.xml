@@ -47,7 +47,7 @@
 		<jsf-api.version>2.2.10</jsf-api.version>
 		<jsf-impl.version>2.2.10</jsf-impl.version>
 		<all-themes.version>1.0.10</all-themes.version>
-		<poi.version>3.10.1</poi.version>
+		<poi.version>3.17</poi.version>
 		<itext.version>2.1.7</itext.version>
 		<jstl.version>1.2</jstl.version>
 		<servlet-api.version>2.5</servlet-api.version>
