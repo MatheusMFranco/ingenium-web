@@ -43,7 +43,7 @@
 		<hibernate-core.version>5.2.6.Final</hibernate-core.version>
 		<hibernate-validator.version>5.2.5.Final</hibernate-validator.version>
 		<hibernate-entitymanager.version>5.2.6.Final</hibernate-entitymanager.version>
-		<primefaces.version>5.1</primefaces.version>
+		<primefaces.version>6.0</primefaces.version>
 		<jsf-api.version>2.2.10</jsf-api.version>
 		<jsf-impl.version>2.2.10</jsf-impl.version>
 		<all-themes.version>1.0.10</all-themes.version>
