@@ -52,7 +52,7 @@
 		<jstl.version>1.2</jstl.version>
 		<servlet-api.version>2.5</servlet-api.version>
 		<jsp-api.version>2.1</jsp-api.version>
-		<el-ri.version>1.0</el-ri.version>
+		<el-ri.version>3.0.4</el-ri.version>
 		<javaee-web-api.version>7.0</javaee-web-api.version>
 		<javax.faces.version>2.2.8-02</javax.faces.version>
 		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
