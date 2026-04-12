@@ -1,116 +1,158 @@
 <!DOCTYPE html>
 <ui:composition template="/WEB-INF/templates/Layout.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="jakarta.faces.html"
+    xmlns:f="jakarta.faces.core"
+    xmlns:ui="jakarta.faces.facelets"
+    xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="metadata">
-		<f:metadata>
-			<f:viewParam name="objAcao" value="#{objetivoManagedBean.acao}" />
-			<f:viewParam name="objCod" value="#{objetivoManagedBean.codigo}" />
-			<f:event listener="#{objetivoManagedBean.carregarObjetivo()}" type="preRenderView" />
-		</f:metadata>
-	</ui:define>
-	<ui:define name="corpo">
-		<h:form id="frm" class="formulario">
-			<label class="obr">( <span>*</span> ) Preenchimento
-				Obrigatório
-			</label>
-			<p:outputLabel styleClass="titulo" rendered="#{objetivoManagedBean.acao == 'Novo'}">Cadastro de Objetivo</p:outputLabel>
-			<p:outputLabel styleClass="titulo" rendered="#{objetivoManagedBean.acao == 'Alterar'}">Alteração de Objetivo</p:outputLabel>
-			<p:outputLabel styleClass="titulo" rendered="#{objetivoManagedBean.acao == 'Excluir'}">Exclusão de Objetivo</p:outputLabel>
-			<br /><br />
-			<p:messages id="mensagem" closable="true" styleClass="msgPrime"/>
-			<h:panelGrid columns="1">
-				<p:outputLabel value="Nome" for="nomeObj" indicateRequired="#{objetivoManagedBean.acao != 'Excluir'}" />
-				
-				<p:outputLabel styleClass="labelValor" value="#{objetivoManagedBean.objetivo.nome}"
-					rendered="#{objetivoManagedBean.acao == 'Excluir'}" />
-				<p:inputText id="nomeObj" rendered="#{objetivoManagedBean.acao != 'Excluir'}"
-					placeholder="O nome do objetivo. Ex.: Estudar pronomes."
-					alt="Nome" title="Informe o nome do objetivo" maxlength="100" required="true"
-					value="#{objetivoManagedBean.objetivo.nome}"/>
-			</h:panelGrid>
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewParam name="objAcao" value="#{goalBean.action}" />
+            <f:viewParam name="objCod" value="#{goalBean.goalId}" />
+            <f:viewAction action="#{goalBean.loadGoal()}" onPostback="false" />
+        </f:metadata>
+    </ui:define>
 
-			<h:panelGrid columns="1">
-				<p:outputLabel value="Categoria" for="catObj" indicateRequired="#{objetivoManagedBean.acao != 'Excluir'}" />
-				
-				<p:outputLabel styleClass="labelValor" value="#{objetivoManagedBean.objetivo.categoria}"
-					rendered="#{objetivoManagedBean.acao == 'Excluir'}" />
-				<h:selectOneMenu id="catObj" required="true" title="Informe uma opção">
-					<f:selectItem itemLabel=" Selecione uma categoria " itemValue="" />
-					<f:selectItems value="#{categoriaManagedBean.consultar()}"
-						var="categoriaObj" itemValue="#{categoriaObj.id}" itemLabel="#{categoriaObj.nome}" />
-				</h:selectOneMenu>
-			</h:panelGrid>
+    <ui:define name="corpo">
+        <h:form id="frm" styleClass="surface-card form-card">
+            <div class="form-card__header">
+                <h:panelGroup rendered="#{goalBean.action == 'Novo' or empty goalBean.action}">
+                    <h1 class="form-card__title">Novo objetivo</h1>
+                    <p class="form-card__subtitle">Defina o objetivo, prazo e categoria para acompanhamento.</p>
+                </h:panelGroup>
+                <h:panelGroup rendered="#{goalBean.action == 'Alterar'}">
+                    <h1 class="form-card__title">Editar objetivo</h1>
+                    <p class="form-card__subtitle">Ajuste dados de planejamento do objetivo selecionado.</p>
+                </h:panelGroup>
+                <h:panelGroup rendered="#{goalBean.action == 'Excluir'}">
+                    <h1 class="form-card__title">Excluir objetivo</h1>
+                    <p class="form-card__subtitle">Confirme os dados abaixo antes de remover o objetivo.</p>
+                </h:panelGroup>
+            </div>
 
-			<h:panelGrid columns="1">
-				<p:outputLabel value="Tipo de Duração" for="tipoObj" indicateRequired="#{objetivoManagedBean.acao != 'Excluir'}" />
-				
-				<p:outputLabel styleClass="labelValor" value="#{objetivoManagedBean.objetivo.tipoDuracao}"
-					rendered="#{objetivoManagedBean.acao == 'Excluir'}" />
-				<h:selectOneMenu id="tipoObj" required="true" title="Informe uma opção">
-					<f:selectItem itemLabel=" Selecione o tipo da Duração" itemValue="#{objetivoManagedBean.objetivo.tipoDuracao}" />
-					<f:selectItem itemLabel="Semanal" itemValue="Semanal" />
-					<f:selectItem itemLabel="Mensal" itemValue="Mensal" />
-					<f:selectItem itemLabel="Anual" itemValue="Anual" />
-				</h:selectOneMenu>
-			</h:panelGrid>
+            <p class="required-note" rendered="#{goalBean.action != 'Excluir'}">(<span>*</span>) Campos obrigatórios</p>
+            <p:messages id="mensagem" closable="true" showDetail="true" />
 
-			<h:panelGrid columns="1">
-				<p:outputLabel value="Duração" for="duracaoObj" indicateRequired="#{objetivoManagedBean.acao != 'Excluir'}" 
-					rendered="#{objetivoManagedBean.acao == 'Excluir'}"/>
-				<p:outputLabel styleClass="labelValor" value="#{objetivoManagedBean.objetivo.dataInicial} - {objetivoManagedBean.objetivo.dataFinal}"
-					rendered="#{objetivoManagedBean.acao == 'Excluir'}" />
-				
-				<p:panelGrid rendered="#{objetivoManagedBean.acao != 'Excluir'}">
-					<h:panelGrid columns="1">
-						<p:outputLabel value="Data Inicial" for="dataInicial" indicateRequired="true" />
-						<p:calendar id="dataInicial"  value="#{objetivoManagedBean.objetivo.dataInicial}"
-							pattern="dd/MM/yyyy" mask="99/99/9999" required="true"  maxlengh="10" title="Informe uma Data Inicial" />
-					</h:panelGrid>
-					<h:panelGrid columns="1">
-						<p:outputLabel value="Data Final" for="dataFinal" indicateRequired="true" />
-						<p:calendar id="dataFinal"  value="#{objetivoManagedBean.objetivo.dataFinal}" 
-							pattern="dd/MM/yyyy" mask="99/99/9999" required="true"  maxlengh="10" title="Informe uma Data Final" />	
-					</h:panelGrid>
-				</p:panelGrid>
-			</h:panelGrid>
+            <div class="form-grid">
+                <div class="form-field">
+                    <p:outputLabel value="Nome" for="nomeObj" indicateRequired="#{goalBean.action != 'Excluir'}" />
+                    <h:outputText styleClass="readonly-value"
+                                  value="#{goalBean.goal.name}"
+                                  rendered="#{goalBean.action == 'Excluir'}" />
+                    <p:inputText id="nomeObj"
+                                 rendered="#{goalBean.action != 'Excluir'}"
+                                 required="true"
+                                 maxlength="100"
+                                 value="#{goalBean.goal.name}"
+                                 placeholder="Ex.: Estudar pronomes" />
+                </div>
 
-			<h:panelGrid columns="1">
-				<p:outputLabel value="Descrição" for="descricaoObj" />
-				
-				<p:outputLabel styleClass="labelValor" value="#{objetivoManagedBean.objetivo.descricao}"
-				rendered="#{objetivoManagedBean.acao == 'Excluir'}" />
-				<p:inputTextarea id="descricaoObj" rendered="#{objetivoManagedBean.acao != 'Excluir'}"
-					placeholder="Descreva esta categoria, exemplo: Todos as metas para estudar pronomes em japonês."
-					alt="Descrição" title="Informe a descrição do objetivo"
-					maxlength="255" value="#{objetivoManagedBean.objetivo.descricao}" />
-			</h:panelGrid>
-			
-			<br/>
-			<div class="barraBotao">
-				<p:commandButton value="Incluir" actionListener="#{objetivoManagedBean.salvar()}" styleClass="ativo"
-					title="Clique aqui para confirmar a inclusão" alt="Incluir" update=":frm:mensagem :frm"
-					rendered="#{(objetivoManagedBean.acao != 'Excluir') and (objetivoManagedBean.acao != 'Alterar')}" />
-				
-				<p:commandButton value="Excluir" actionListener="#{objetivoManagedBean.excluir()}" styleClass="ativo"
-					title="Clique aqui para excluir o objetivo" alt="Excluir"  update=":frm:mensagem"
-					outcome="consultaObjetivo.xhtml"
-					rendered="#{(objetivoManagedBean.acao != 'Novo') and (objetivoManagedBean.acao != 'Alterar')}" />
-				
-				<p:commandButton value="Alterar" actionListener="#{objetivoManagedBean.alterar()}" styleClass="ativo"
-					title="Clique aqui para alterar o objetivo" alt="Alterar" update=":frm:mensagem :frm"
-					rendered="#{(objetivoManagedBean.acao != 'Novo') and (objetivoManagedBean.acao != 'Excluir')}" />
-				
-				<p:commandButton value="Limpar" styleClass="passivo limpar"
-					title="Clique aqui para limpar" alt="Limpar" type="reset" />
-				<p:commandButton value="Voltar" styleClass="passivo voltar dir"
-					title="Clique aqui para voltar" alt="Voltar" type="button" />
-			</div>
+                <div class="form-field">
+                    <p:outputLabel value="Categoria" for="catObj" indicateRequired="#{goalBean.action != 'Excluir'}" />
+                    <h:outputText styleClass="readonly-value"
+                                  value="#{goalBean.goal.category.name}"
+                                  rendered="#{goalBean.action == 'Excluir'}" />
+                    <p:selectOneMenu id="catObj"
+                                     rendered="#{goalBean.action != 'Excluir'}"
+                                     required="true"
+                                     autoWidth="false"
+                                     appendTo="@(body)"
+                                     value="#{goalBean.selectedCategoryId}">                        <f:selectItem itemLabel="Selecione uma categoria" itemValue="#{null}" noSelectionOption="true" />
+                        <f:selectItems value="#{goalBean.availableCategories}" var="categoriaObj"
+                                       itemValue="#{categoriaObj.id}" itemLabel="#{categoriaObj.name}" />
+                    </p:selectOneMenu>
+                </div>
 
-		</h:form>
-	</ui:define>
+                <div class="form-field">
+                    <p:outputLabel value="Tipo de duração" for="tipoObj" indicateRequired="#{goalBean.action != 'Excluir'}" />
+                    <h:outputText styleClass="readonly-value"
+                                  value="#{goalBean.goal.durationType.label}"
+                                  rendered="#{goalBean.action == 'Excluir'}" />
+                    <p:selectOneMenu id="tipoObj"
+                                     rendered="#{goalBean.action != 'Excluir'}"
+                                     required="true"
+                                     autoWidth="false"
+                                     appendTo="@(body)"
+                                     value="#{goalBean.goal.durationType}">
+                        <f:selectItem itemLabel="Selecione o tipo de duração" itemValue="#{null}" noSelectionOption="true" />
+                        <f:selectItems value="#{goalBean.durationTypes}" var="tipoDuracao"
+                                       itemValue="#{tipoDuracao}" itemLabel="#{tipoDuracao.label}" />
+                    </p:selectOneMenu>
+                </div>
+
+                <div class="form-field">
+                    <p:outputLabel value="Data inicial" for="dataInicial" indicateRequired="#{goalBean.action != 'Excluir'}" />
+                    <h:outputText styleClass="readonly-value" rendered="#{goalBean.action == 'Excluir'}">
+                        <h:outputText value="#{goalBean.goal.startDate}">
+                            <f:convertDateTime type="localDate" pattern="dd/MM/yyyy" />
+                        </h:outputText>
+                    </h:outputText>
+                    <p:datePicker id="dataInicial"
+                                  rendered="#{goalBean.action != 'Excluir'}"
+                                  value="#{goalBean.goal.startDate}"
+                                  pattern="dd/MM/yyyy"
+                                  required="true"
+                                  mask="true" />
+                </div>
+
+                <div class="form-field">
+                    <p:outputLabel value="Data final" for="dataFinal" indicateRequired="#{goalBean.action != 'Excluir'}" />
+                    <h:outputText styleClass="readonly-value" rendered="#{goalBean.action == 'Excluir'}">
+                        <h:outputText value="#{goalBean.goal.endDate}">
+                            <f:convertDateTime type="localDate" pattern="dd/MM/yyyy" />
+                        </h:outputText>
+                    </h:outputText>
+                    <p:datePicker id="dataFinal"
+                                  rendered="#{goalBean.action != 'Excluir'}"
+                                  value="#{goalBean.goal.endDate}"
+                                  pattern="dd/MM/yyyy"
+                                  required="true"
+                                  mask="true" />
+                </div>
+
+                <div class="form-field form-field--full">
+                    <p:outputLabel value="Descrição" for="descricaoObj" />
+                    <h:outputText styleClass="readonly-value"
+                                  value="#{goalBean.goal.description}"
+                                  rendered="#{goalBean.action == 'Excluir'}" />
+                    <p:inputTextarea id="descricaoObj"
+                                     rendered="#{goalBean.action != 'Excluir'}"
+                                     maxlength="255"
+                                     autoResize="false"
+                                     rows="3"
+                                     value="#{goalBean.goal.description}"
+                                     placeholder="Detalhes do objetivo" />
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <p:commandButton value="Salvar objetivo"
+                                 action="#{goalBean.create()}"
+                                 update=":frm:mensagem :frm"
+                                 styleClass="btn btn-primary"
+                                 rendered="#{goalBean.action != 'Excluir' and goalBean.action != 'Alterar'}" />
+
+                <p:commandButton value="Atualizar objetivo"
+                                 action="#{goalBean.update()}"
+                                 update=":frm:mensagem :frm"
+                                 styleClass="btn btn-primary"
+                                 rendered="#{goalBean.action == 'Alterar'}" />
+
+                <p:commandButton value="Confirmar exclusão"
+                                 action="#{goalBean.deleteAndRedirect()}"
+                                 styleClass="btn btn-danger"
+                                 rendered="#{goalBean.action == 'Excluir'}" />
+
+                <p:commandButton value="Limpar"
+                                 type="button"
+                                 styleClass="btn btn-secondary js-clear-form"
+                                 rendered="#{goalBean.action != 'Excluir'}" />
+
+                <p:button value="Voltar"
+                          outcome="/uc/objetivo/consultaObjetivo.xhtml"
+                          styleClass="btn btn-subtle" />
+            </div>
+        </h:form>
+    </ui:define>
 </ui:composition>

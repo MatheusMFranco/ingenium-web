@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.0"
-	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-	
-	<persistence-unit name="ingeniumPU">
-		
+<persistence version="3.1"
+	xmlns="https://jakarta.ee/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_1.xsd">
+
+	<persistence-unit name="ingeniumPU" transaction-type="JTA">
+		<jta-data-source>java:/jdbc/IngeniumDS</jta-data-source>
+		<class>br.com.ingenium.domain.model.User</class>
+		<class>br.com.ingenium.domain.model.Category</class>
+		<class>br.com.ingenium.domain.model.Goal</class>
+
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ingenium"/>
-			<property name="javax.persistence.jdbc.user" value="root"/>
-			<property name="javax.persistence.jdbc.password" value="12345"/>
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-			
-			<!-- validate | update | create | create-drop -->
 			<property name="hibernate.hbm2ddl.auto" value="update"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+			<property name="hibernate.show_sql" value="false"/>
+			<property name="hibernate.format_sql" value="false"/>
 		</properties>
-	
+
 	</persistence-unit>
-	
+
 </persistence>

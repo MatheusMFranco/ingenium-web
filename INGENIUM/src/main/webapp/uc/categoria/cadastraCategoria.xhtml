@@ -1,84 +1,95 @@
 <!DOCTYPE html>
 <ui:composition template="/WEB-INF/templates/Layout.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="jakarta.faces.html"
+    xmlns:f="jakarta.faces.core"
+    xmlns:ui="jakarta.faces.facelets"
+    xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="metadata">
-		<f:metadata>
-			<f:viewParam name="catAcao" value="#{categoriaManagedBean.acao}" />
-			<f:viewParam name="catCod" value="#{categoriaManagedBean.codigo}" />
-			<f:event listener="#{categoriaManagedBean.carregarCategoria()}" type="preRenderView" />
-		</f:metadata>
-	</ui:define>
-	<ui:define name="corpo">
-		<h:form id="frm" class="formulario">
-			<label class="obr">( <span>*</span> ) Preenchimento
-				Obrigatório
-			</label>
-			<p:outputLabel styleClass="titulo" rendered="#{categoriaManagedBean.acao == 'Novo'}">Cadastro de Categoria</p:outputLabel>
-			<p:outputLabel styleClass="titulo" rendered="#{categoriaManagedBean.acao == 'Alterar'}">Alteração de Categoria</p:outputLabel>
-			<p:outputLabel styleClass="titulo" rendered="#{categoriaManagedBean.acao == 'Excluir'}">Exclusão de Categoria</p:outputLabel>
-			<br /><br />
-			<p:messages id="mensagem" closable="true" styleClass="msgPrime"/>
-			<h:panelGrid columns="1">
-				<p:outputLabel value="Nome" for="nomeCat" indicateRequired="#{categoriaManagedBean.acao != 'Excluir'}" />
-				
-				<p:outputLabel styleClass="labelValor" value="#{categoriaManagedBean.categoria.nome}"
-				rendered="#{categoriaManagedBean.acao == 'Excluir'}" />
-				<p:inputText id="nomeCat" rendered="#{categoriaManagedBean.acao != 'Excluir'}"
-					placeholder="O nome da categoria, exemplo: Gramática Japonesa"
-					alt="Nome" title="Informe o nome da categoria" maxlength="100" required="true"
-					value="#{categoriaManagedBean.categoria.nome}"/>
-			</h:panelGrid>
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewParam name="catAcao" value="#{categoryBean.action}" />
+            <f:viewParam name="catCod" value="#{categoryBean.categoryId}" />
+            <f:viewAction action="#{categoryBean.loadCategory()}" onPostback="false" />
+        </f:metadata>
+    </ui:define>
 
-			<h:panelGrid columns="1">
-				<p:outputLabel value="Descrição" for="descricaoCat" />
-				
-				<p:outputLabel styleClass="labelValor" value="#{categoriaManagedBean.categoria.descricao}"
-				rendered="#{categoriaManagedBean.acao == 'Excluir'}" />
-				<p:inputTextarea id="descricaoCat" rendered="#{categoriaManagedBean.acao != 'Excluir'}"
-					placeholder="Descreva esta categoria, exemplo: Todos os objetivos relacionados a gramática japonesa."
-					alt="Descrição" title="Informe a descrição da categoria"
-					maxlength="255" value="#{categoriaManagedBean.categoria.descricao}" />
-			</h:panelGrid>
-			
-			<!--  <h:panelGrid columns="1" styleClass="quadroArquivo">
-				<p:outputLabel value="Foto" for="fotoCat" />				
-				<p:fileUpload id="fotoCat" fileUploadListener="#{categoriaManagedBean.categoria.caminhoFoto}" title="Informe o ícone da categoria"
-					mode="simple" auto="true" sizeLimit="100000"
-					allowTypes="/(\.|\/)(gif|jpe?g|png)$/" uploadLabel="Enviar Foto"
-					styleClass="capturaArquivo" />
-					
-				<p:commandButton value="Selecionar Arquivo" styleClass="ativo botaoCapturaArquivo"
-					title="Clique aqui para selecionar um arquivo" alt="Selecione um Arquivo" />
-					
-				<span id="textoArquivo"></span>	
-			</h:panelGrid> -->
-			
-			<br/>
-			<div class="barraBotao">
-				<p:commandButton value="Incluir" actionListener="#{categoriaManagedBean.salvar()}" styleClass="ativo"
-					title="Clique aqui para confirmar a inclusão" alt="Incluir" update=":frm:mensagem :frm"
-					rendered="#{(categoriaManagedBean.acao != 'Excluir') and (categoriaManagedBean.acao != 'Alterar')}" />
-				
-				<p:commandButton value="Excluir" actionListener="#{categoriaManagedBean.excluir()}" styleClass="ativo"
-					title="Clique aqui para excluir a categoria" alt="Excluir"  update=":frm:mensagem"
-					outcome="consultaCategoria.xhtml"
-					rendered="#{(categoriaManagedBean.acao != 'Novo') and (categoriaManagedBean.acao != 'Alterar')}" />
-				
-				<p:commandButton value="Alterar" actionListener="#{categoriaManagedBean.alterar()}" styleClass="ativo"
-					title="Clique aqui para alterar a categoria" alt="Alterar" update=":frm:mensagem :frm"
-					rendered="#{(categoriaManagedBean.acao != 'Novo') and (categoriaManagedBean.acao != 'Excluir')}" />
-				
-				<p:commandButton value="Limpar" styleClass="passivo limpar"
-					title="Clique aqui para limpar" alt="Limpar" type="button" />
-				<p:commandButton value="Voltar" styleClass="passivo voltar dir"
-					title="Clique aqui para voltar" alt="Voltar" type="button" />
-			</div>
+    <ui:define name="corpo">
+        <h:form id="frm" styleClass="surface-card form-card">
+            <div class="form-card__header">
+                <h:panelGroup rendered="#{categoryBean.action == 'Novo' or empty categoryBean.action}">
+                    <h1 class="form-card__title">Nova categoria</h1>
+                    <p class="form-card__subtitle">Crie uma categoria para organizar seus objetivos.</p>
+                </h:panelGroup>
+                <h:panelGroup rendered="#{categoryBean.action == 'Alterar'}">
+                    <h1 class="form-card__title">Editar categoria</h1>
+                    <p class="form-card__subtitle">Atualize os dados da categoria selecionada.</p>
+                </h:panelGroup>
+                <h:panelGroup rendered="#{categoryBean.action == 'Excluir'}">
+                    <h1 class="form-card__title">Excluir categoria</h1>
+                    <p class="form-card__subtitle">Revise os dados antes de confirmar a exclusão.</p>
+                </h:panelGroup>
+            </div>
 
-		</h:form>
-	</ui:define>
+            <p class="required-note" rendered="#{categoryBean.action != 'Excluir'}">(<span>*</span>) Campos obrigatórios</p>
+            <p:messages id="mensagem" closable="true" showDetail="true" />
+
+            <div class="form-grid form-grid--single">
+                <div class="form-field">
+                    <p:outputLabel value="Nome" for="nomeCat" indicateRequired="#{categoryBean.action != 'Excluir'}" />
+                    <h:outputText styleClass="readonly-value"
+                                  value="#{categoryBean.category.name}"
+                                  rendered="#{categoryBean.action == 'Excluir'}" />
+                    <p:inputText id="nomeCat"
+                                 rendered="#{categoryBean.action != 'Excluir'}"
+                                 required="true"
+                                 maxlength="100"
+                                 value="#{categoryBean.category.name}"
+                                 placeholder="Ex.: Gramática Japonesa" />
+                </div>
+
+                <div class="form-field">
+                    <p:outputLabel value="Descrição" for="descricaoCat" />
+                    <h:outputText styleClass="readonly-value"
+                                  value="#{categoryBean.category.description}"
+                                  rendered="#{categoryBean.action == 'Excluir'}" />
+                    <p:inputTextarea id="descricaoCat"
+                                     rendered="#{categoryBean.action != 'Excluir'}"
+                                     maxlength="255"
+                                     autoResize="false"
+                                     rows="3"
+                                     value="#{categoryBean.category.description}"
+                                     placeholder="Contexto da categoria" />
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <p:commandButton value="Salvar categoria"
+                                 action="#{categoryBean.create()}"
+                                 update=":frm:mensagem :frm"
+                                 styleClass="btn btn-primary"
+                                 rendered="#{categoryBean.action != 'Excluir' and categoryBean.action != 'Alterar'}" />
+
+                <p:commandButton value="Atualizar categoria"
+                                 action="#{categoryBean.update()}"
+                                 update=":frm:mensagem :frm"
+                                 styleClass="btn btn-primary"
+                                 rendered="#{categoryBean.action == 'Alterar'}" />
+
+                <p:commandButton value="Confirmar exclusão"
+                                 action="#{categoryBean.deleteAndRedirect()}"
+                                 styleClass="btn btn-danger"
+                                 rendered="#{categoryBean.action == 'Excluir'}" />
+
+                <p:commandButton value="Limpar"
+                                 type="button"
+                                 styleClass="btn btn-secondary js-clear-form"
+                                 rendered="#{categoryBean.action != 'Excluir'}" />
+
+                <p:button value="Voltar"
+                          styleClass="btn btn-subtle"
+                          outcome="/uc/categoria/consultaCategoria.xhtml" />
+            </div>
+        </h:form>
+    </ui:define>
 </ui:composition>

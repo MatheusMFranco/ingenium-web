@@ -1,70 +1,65 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
-	<f:view contentType="text/html">
-		<ui:insert name="metadata" />
-	
-		<h:head>
-			<meta charset="UTF-8" />
-			<title>Ingenium</title>
-<!-- 			<link rel="shortcut icon" type="image/x-icon" -->
-<!-- 				href="#{request.contextPath}/resources/img/favicon.ico" /> -->
-			<h:outputStylesheet library="css" name="reset.css" />
-			<h:outputStylesheet library="css" name="estilo.css" />
-			<h:outputStylesheet library="css" name="cores.css" />
-			<h:outputStylesheet library="css" name="impressao.css" />
-		
-		</h:head>
-		<h:body>
-		
-			<header>
-				<div id="cabecalho">
-					<h:form>
-						<p:link href="http://localhost:8080/INGENIUM/"> <h:graphicImage library="img" name="logo.png" /></p:link>
-		
-						<div class="menuTopo">
-							<a href="#{request.contextPath}/uc/usuario/alteraUsuario.xhtml">Usuário</a>
-							<a href="#{request.contextPath}/uc/categoria/consultaCategoria.xhtml">Categoria</a>
-							<a href="#{request.contextPath}/uc/objetivo/consultaObjetivo.xhtml">Objetivo</a>
-							<a href="#{request.contextPath}/uc/meta/consultaMeta.xhtml">Meta</a>
-							<a href="#{request.contextPath}/uc/relatorio/geral.xhtml">Relatório</a>
-		
-							<div class="menuInput">
-								<p:inputText style="margin-right:10px" placeholder="Buscar" />
-								<p:commandButton value="Sair"  alt="Sair"
-								title="Clique aqui para deslogar" onclick="atualizar()" 
-								action="#{loginManagedBean.logout()}" />
-							</div>
-						</div>
-					</h:form>
-				</div>
-			</header>
-		
-			<div id="conteudo">
-				<ui:insert name="corpo" />
-				<!-- Recebe o conteúdo dinâmico -->
-			</div>
-		
-			<footer>
-				<b>Ingenium - </b>Uma aplicação da Vieweiv
-			</footer>
-		
-			<h:form>
-				<p:confirmDialog global="true">
-					<!-- Dialogo de confirmação compartilhado -->
-					<p:commandButton value="Sim" type="button"
-						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-					<p:commandButton value="Não" type="button"
-						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-					<!-- Essa classe diz que vai fechar -->
-				</p:confirmDialog>
-			</h:form>
-		
-			<h:outputScript library="js" name="jquery.js" />
-			<h:outputScript library="js" name="main.js" />
-		</h:body>
-	</f:view>
+      lang="pt-br"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:p="http://primefaces.org/ui">
+<f:view contentType="text/html">
+    <ui:insert name="metadata" />
+
+    <h:head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Ingenium</title>
+        <h:outputStylesheet library="css" name="app.css" />
+    </h:head>
+
+    <h:body styleClass="app-shell app-auth">
+        <header class="app-topbar">
+            <div class="app-topbar__inner">
+                <h:link outcome="/telaLogado.xhtml" styleClass="brand">
+                    <span class="brand__logo-wrap">
+                        <h:graphicImage library="img" name="logo.png" styleClass="brand__logo" alt="Ingenium" />
+                    </span>
+                    <span class="brand__label">Ingenium</span>
+                </h:link>
+
+                <nav class="app-nav" aria-label="Navegação principal">
+                    <h:link outcome="/telaLogado.xhtml" value="Painel" />
+                    <h:link outcome="/uc/categoria/consultaCategoria.xhtml" value="Categorias" />
+                    <h:link outcome="/uc/objetivo/consultaObjetivo.xhtml" value="Objetivos" />
+                    <h:link outcome="/uc/usuario/alteraUsuario.xhtml" value="Perfil" />
+                </nav>
+
+                <h:form id="sessionForm" styleClass="session-panel">
+                    <h:outputText styleClass="session-panel__user" value="#{userSession.fullName}" />
+                    <p:commandButton value="Sair"
+                                     action="#{authBean.logout()}"
+                                     styleClass="btn btn-secondary"
+                                     title="Encerrar sessão" />
+                </h:form>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <div class="app-main__inner">
+                <ui:insert name="corpo" />
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <b>Ingenium</b> - Planejamento e acompanhamento de objetivos
+        </footer>
+
+        <h:form id="confirmForm">
+            <p:confirmDialog global="true" styleClass="confirm-dialog" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Confirmar" type="button" styleClass="ui-confirmdialog-yes btn btn-primary" />
+                <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no btn btn-secondary" />
+            </p:confirmDialog>
+        </h:form>
+
+        <h:outputScript library="js" name="main.js" />
+    </h:body>
+</f:view>
 </html>

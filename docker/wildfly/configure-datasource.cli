@@ -1,0 +1,4 @@
+embed-server --server-config=standalone.xml --std-out=echo
+/subsystem=datasources/jdbc-driver=mysql:add(driver-name=mysql,driver-module-name=com.mysql,driver-class-name=com.mysql.cj.jdbc.Driver)
+data-source add --name=IngeniumDS --jndi-name=java:/jdbc/IngeniumDS --driver-name=mysql --connection-url="${env.DB_URL}" --user-name="${env.DB_USER}" --password="${env.DB_PASSWORD}" --jta=true --use-ccm=true --enabled=true --min-pool-size=5 --max-pool-size=20 --validate-on-match=true --background-validation=false --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter
+stop-embedded-server

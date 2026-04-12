@@ -7,3 +7,14 @@ INGENIUM/.Servers
 INGENIUM/.RemoteSystemsTempFiles
 INGENIUM/.metadata
 INGENIUM/.recommenders
+/.agents/
+/.claude/
+/.codex/
+/.idea/
+/CLAUDE.md
+/AGENTS.md
+/.gemini/
+/GEMINI.md
+/docs/
+*.jsfdia
+.env

@@ -1,108 +1,92 @@
 <!DOCTYPE html>
 <ui:composition template="/WEB-INF/templates/Layout.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="jakarta.faces.html"
+    xmlns:f="jakarta.faces.core"
+    xmlns:ui="jakarta.faces.facelets"
+    xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="metadata">
-		<f:metadata>
-			<f:viewAction action="#{usuarioManagedBean.consultarPorUserName()}" />
-		</f:metadata>
-	</ui:define>
-	<ui:define name="corpo">
-		<h:form id="frm" class="formulario">
-			<label class="obr">( <span>*</span> ) Preenchimento
-				Obrigatório
-			</label>
-			
-			<h1>Alteração de Usuário</h1>
-			<br />
-			<p:messages id="mensagem" closable="true" styleClass="msgPrime"/>
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewAction action="#{userBean.loadProfile()}" onPostback="false" />
+        </f:metadata>
+    </ui:define>
 
-			<h:panelGrid columns="1">
-				<p:outputLabel  for="username"  value="Usuário" />
-				<p:inputText id="username" alt="Usuário" title="Seu nome de usuário"
-					maxlength="15" disabled="true"
-					value="#{usuarioManagedBean.usuario.usuario}" />
-			</h:panelGrid>
+    <ui:define name="corpo">
+        <h:form id="frm" styleClass="surface-card form-card">
+            <div class="form-card__header">
+                <h1 class="form-card__title">Meu perfil</h1>
+                <p class="form-card__subtitle">Atualize seus dados cadastrais e credenciais de acesso.</p>
+            </div>
 
-			<h:panelGrid columns="1">
-				<p:outputLabel value="Nome" for="nomeUsu" />
-				<p:inputText id="nomeUsu" alt="Nome"
-					title="Informe o seu nome completo" maxlength="100"
-					value="#{usuarioManagedBean.usuario.nome}" />
-			</h:panelGrid>
+            <p class="required-note">(<span>*</span>) Campos obrigatórios</p>
+            <p:messages id="mensagem" closable="true" showDetail="true" />
 
-			<h:panelGrid columns="1">
-				<p:outputLabel value="Descrição" for="descricaoUsu" />
-				<p:inputTextarea id="descricaoUsu" alt="Descrição"
-					title="Informe a descrição do perfil" maxlength="255"
-					value="#{usuarioManagedBean.usuario.descricao}" />
-			</h:panelGrid>
+            <div class="form-grid">
+                <div class="form-field">
+                    <p:outputLabel for="username" value="Usuário" />
+                    <p:inputText id="username" disabled="true" value="#{userBean.user.username}" />
+                </div>
 
-		<!--	<h:panelGrid columns="1" styleClass="quadroArquivo">
-				<p:outputLabel value="Foto" for="fotoUsu" />
-				<p:fileUpload id="fotoUsu"
-					value="#{usuarioManagedBean.usuario.caminhoFoto}"
-					title="Informe a foto de perfil" mode="simple" auto="true"
-					sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-					uploadLabel="Enviar Foto" styleClass="capturaArquivo" />
+                <div class="form-field">
+                    <p:outputLabel value="Nome completo" for="nomeUsu" />
+                    <p:inputText id="nomeUsu" maxlength="100" value="#{userBean.user.fullName}" />
+                </div>
 
-				<p:commandButton value="Selecionar Arquivo"
-					styleClass="ativo botaoCapturaArquivo"
-					title="Clique aqui para selecionar um arquivo"
-					alt="Selecione um Arquivo" />
+                <div class="form-field form-field--full">
+                    <p:outputLabel value="Descrição" for="descricaoUsu" />
+                    <p:inputTextarea id="descricaoUsu"
+                                     maxlength="255"
+                                     autoResize="false"
+                                     rows="3"
+                                     value="#{userBean.user.description}" />
+                </div>
 
-				<span id="textoArquivo"></span>
-			</h:panelGrid> -->
+                <div class="form-field">
+                    <p:outputLabel value="E-mail" for="emailUsu" indicateRequired="true" />
+                    <p:inputText id="emailUsu" required="true" maxlength="100" value="#{userBean.user.email}" />
+                </div>
 
-			<h:panelGrid columns="1">
-				<p:outputLabel value="E-mail" for="emailUsu" indicateRequired="true" />
-				<p:inputText id="emailUsu" alt="E-mail" title="Informe o seu e-mail"
-					maxlength="100" required="true"
-					value="#{usuarioManagedBean.usuario.email}" />
-			</h:panelGrid>
+                <div class="form-field">
+                    <p:outputLabel value="Nova senha" for="senhaUsu" />
+                    <p:password id="senhaUsu"
+                                value="#{userBean.user.password}"
+                                feedback="true"
+                                promptLabel="Digite uma nova senha"
+                                weakLabel="Fraca"
+                                goodLabel="Boa"
+                                strongLabel="Forte"
+                                placeholder="Deixe em branco para manter a senha atual" />
+                </div>
 
-			<h:panelGrid columns="1">
-				<p:outputLabel value="Senha" for="senhaUsu" />
-				<p:password
-					placeholder="Sua palavra-chave. Lembre-se, não divulgue sua senha por aí."
-					alt="Senha" id="senhaUsu" title="Informe a sua nova senha"
-					value="#{usuarioManagedBean.usuario.senha}" />
-			</h:panelGrid>
+                <div class="form-field">
+                    <p:outputLabel value="Confirmação de senha" for="senhaCUsu" />
+                    <p:password id="senhaCUsu"
+                                feedback="false"
+                                value="#{userBean.confirmPassword}"
+                                placeholder="Repita a nova senha" />
+                </div>
+            </div>
 
-			<h:panelGrid columns="1">
-				<p:outputLabel value="Confirmação de Senha" for="senhaCUsu"
-					indicateRequired="true" />
-				<p:password placeholder="Informe novamente a nova senha."
-					alt="Confirmação de Senha" id="senhaCUsu"
-					title="Informe a nova senha novamente" />
-			</h:panelGrid>
+            <div class="form-actions">
+                <p:commandButton value="Salvar alterações"
+                                 action="#{userBean.updateProfile()}"
+                                 update=":frm :frm:mensagem"
+                                 styleClass="btn btn-primary" />
 
-			<br />
-			<div class="barraBotao">
-				<p:commandButton value="Alterar"
-					action="#{usuarioManagedBean.alterar()}" styleClass="ativo"
-					title="Clique aqui para alterar os dados da sua conta"
-					alt="Alterar" update=":frm :frm:mensagem"/>
+                <p:commandButton value="Excluir conta"
+                                 action="#{userBean.deleteProfile()}"
+                                 update=":frm :frm:mensagem"
+                                 styleClass="btn btn-danger">
+                    <p:confirm header="Excluir conta"
+                               message="Confirma a exclusão da conta? Essa ação remove todos os dados cadastrados."
+                               icon="ui-icon-alert" />
+                </p:commandButton>
 
-				<p:commandButton value="Excluir"
-					action="#{usuarioManagedBean.excluir()}" styleClass="ativo"
-					update=":frm :frm:mensagem" alt="Excluir" oncomplete="atualizar()" 
-					title="Clique aqui para excluir sua conta">
-
-					<p:confirm header="Confirmação de Exclusão de Conta"
-						message="Você tem certeza que deseja excluir sua conta? Todos os dados cadastrados serão apagados."
-						icon="ui-icon-alert" />
-
-				</p:commandButton>
-
-				<p:commandButton value="Limpar" styleClass="passivo limpar"
-					title="Clique aqui para limpar" alt="Limpar" />
-			</div>
-
-		</h:form>
-	</ui:define>
+                <p:commandButton value="Limpar"
+                                 type="button"
+                                 styleClass="btn btn-secondary js-clear-form" />
+            </div>
+        </h:form>
+    </ui:define>
 </ui:composition>
